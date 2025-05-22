@@ -1,0 +1,2196 @@
+1
+
+Faculty of Engineering & Applied Science
+
+METE 4100U Mechatronics Design
+PHASE B PROJECT REPORT
+Cover Page
+Professor: Dr. Jaho Seo
+Lab Teaching Assistant: Fattah Hanafi Sheikhha
+Project Phase B - Autonomous Delivery of package at the front door of the office building
+Lab Group Members
+#
+
+Name
+
+I.D
+
+Signature
+
+1
+
+Pranav Banga
+
+100799008
+
+PB
+
+2
+
+Hardik Maheshwari
+
+100781873
+
+HM
+
+3
+
+Rajsharan Jeetu
+
+100808372
+
+R.J.
+
+2
+
+Table of Contents
+PHASE B PROJECT REPORT​
+Cover Page​
+Table of Contents​
+Abstract​
+Introduction​
+
+1
+1
+2
+5
+6
+
+Requirements​
+Background​
+
+6
+8
+
+Design Plan and Project Management​
+
+11
+
+Brainstorming and Concept Generation​
+Power Supply​
+Robot Actuation​
+Sensing Mechanisms​
+Terrain Navigating Movement Mechanisms​
+Main Chassis​
+Package Collection and Delivery Mechanism​
+Engineering Specifications and Benchmarking​
+House of Quality​
+Customer Requirements​
+Engineering Specifications​
+Rank​
+
+12
+12
+13
+14
+14
+15
+15
+17
+17
+17
+18
+19
+
+Functional Decomposition​
+
+21
+
+Functional Overview​
+System Components​
+Concept Development and Screening​
+Decision Matrix for Power Supply​
+Decision Matrix for Motors​
+Decision Matrix for Sensors​
+Decision Matrix for Drive Mechanisms​
+Decision Matrix for Payload Collection and Delivery Mechanism​
+Engineering Analysis​
+Form Design​
+Wiring Schematic​
+Code Implementation​
+Components Analysis​
+Design for Safety​
+Mechanical Safety​
+Electrical Safety​
+Operational Safety​
+
+21
+22
+23
+23
+24
+24
+25
+25
+26
+29
+30
+34
+35
+37
+37
+37
+38
+
+3
+Failure Mode and Effect Analysis​
+Design for Manufacturing​
+3D Printing Process Overview​
+Support Structures and Infill Strategy​
+Tolerancing and Assembly Fit​
+Serviceability and Modularity​
+Test Plan, Test Results, and Product Validation​
+Low-Level Tests​
+Medium Level Tests​
+High-Level Tests​
+Results During Demo​
+Modifications for the Next Phase​
+Conclusions​
+
+38
+39
+39
+40
+40
+41
+43
+43
+44
+45
+46
+47
+48
+
+References​
+
+50
+
+Appendix​
+Appendix A: Initial Sketches​
+Appendix B: House of Quality Matrix​
+Appendix C: Functional Decomposition of a Delivery Robot​
+Appendix D: Decision Matrix​
+Decision Matrix for Power Supply​
+Decision Matrix for Motors​
+Decision Matrix for Sensors​
+Decision Matrix for Drive Mechanisms​
+Decision Matrix for Payload Collection and Delivery Mechanism​
+Appendix E: FMEA Table​
+Appendix F: Code Implementation​
+Loop Function​
+A screenshot of a computer programDescription automatically generated​
+Wall-Following Logic​
+A screen shot of a computer programDescription automatically generated​
+Appendix G: Engineering Drawings​
+Chassis Assembly BOM​
+Chassis Exploded BOM​
+Chassis Renders​
+Chassis Phase B​
+Front Spur Gear Phase B​
+Rear Spur Gear​
+Roof Phase B​
+Roof Phase A​
+Motor Gripper Actuator​
+Motor Holder​
+
+52
+52
+60
+61
+62
+62
+62
+62
+63
+63
+64
+66
+66
+66
+67
+67
+68
+68
+69
+70
+71
+73
+75
+76
+77
+78
+79
+
+4
+Chain Drive Assembly​
+Chain Link​
+Chain Pin​
+Chain Lock​
+Left and Right Grippers​
+Gripper Base​
+
+80
+81
+82
+83
+84
+85
+
+5
+
+Abstract
+This report details the design and development of an autonomous delivery robot capable of
+navigating diverse terrains and performing package delivery tasks within an office setting. The
+robot is engineered to autonomously transport, stack, and retrieve packages while effectively
+avoiding obstacles and addressing environmental challenges. The project incorporates a variety
+of sensors, such as infrared (IR) and ultrasonic sensors, to facilitate obstacle detection and terrain
+navigation. The robot is powered by N20 motors, managed by a Cytron 2A motor driver,
+allowing for real-time speed regulation and motor control. Furthermore, servo motors are utilized
+for package handling, including mechanisms for lifting and releasing.
+Phase B of the project emphasizes autonomous navigation and obstacle avoidance, wherein the
+robot successfully delivers a package to a specified location. The control system is based on the
+Arduino Due platform and utilizes the Shield 2A Motor library for motor management, with
+encoder feedback ensuring precise movement control. A significant aspect of the system is its
+ability to adapt to dynamic environments, which is made possible through the integration of
+sensors that enable the robot to modify its path autonomously.
+This project exemplifies the effective integration of mechanical design, embedded systems, and
+control algorithms to develop a functional prototype for autonomous delivery applications,
+underscoring the potential for automation in office logistics.
+
+6
+
+Introduction
+The Mechatronics Design project aims to develop a mechatronics system that can complete
+real-world tasks. The mechatronics system in question is an autonomous delivery robot that can
+navigate a variety of terrains, as well as fetch, convey, and dispatch packages. The objective for
+the semester is for the delivery robot to navigate and transport packages inside a
+purpose-designed two-story cardboard building. This main objective is split into three phases:
+Phases A, B, and C.
+For phase B of the project, the autonomous robot must start from the lobby of the building,
+located on the second floor, and navigate to the lower floor via the ramp, to identify the box
+within the maze on the lower floor. After picking up the box, the robot is to return to the upper
+floor lobby. The terrain for this phase alternated between plywood on the ramp and glass within
+the maze, adding complexity to the design process. The second phase ends as soon as the robot
+returns to the upper lobby, package in hand. The phase is deemed successful irrespective of
+whether the package is dropped or not. The block’s weight and maximum dimensions were
+given.
+
+Requirements
+The standards to be met for the delivery robot could be divided into physical and functional
+requirements. The physical requirements are the conditions and constraints related to physics,
+materials, or design the robot needs to achieve to allow it to traverse within the building. The
+functional requirements refer to the conditions and constraints related to the behavior, features,
+and capabilities within the robot that allow it to achieve its intended purpose. The requirements
+are referenced with the prefix P or F (such as P1 for the first physical requirement, and F1 for the
+first functional requirement, respectively), throughout the document as necessary. Additionally,
+some luxury requirements can be installed on the robot to inculcate cutting-edge technology,
+premium materials, and user-centric features on the robot.
+
+7
+Physical Requirements:
+1.​ Space Constraints: The robot must be able to fit within the dimensions of the lobby
+entrance on the second floor, and more importantly, the maze corridor on the first floor.
+Additionally, openings or vents will need to be designed to prevent overheating,
+particularly when running multiple sensors and motor drivers that generate heat during
+extended use.
+2.​ Weight Constraints: The robot must be of appropriate weight such that it provides
+enough traction to maneuver difficult terrain, but also not be too heavy that the drive
+motors are not able to provide thrust to the robot.
+3.​ Material Constraints: The materials must be fabricated from robust, lightweight
+materials that can safely carry the payload and components, and withstand accidental
+contact without fracture.
+4.​ Low Center of Gravity: The robot should be designed to arrange components in such a
+way as to avoid tipping the robot during functioning. This is necessary as there are
+several inclines and tight turns between the floors and in the maze.
+5.​ Motion Constraints: The robot's movement must be regulated by a controller to ensure
+accuracy. Additionally, the fetching and dispatching of packages must be constrained
+with proper motion control.
+Functional Requirements:
+1.​ Navigation: The robot must be able to navigate its environment thoroughly, without any
+external intervention. This must include obstacle detection and a reasonable amount of
+mapping capabilities. This should be achieved using sensors to gather data of the
+surroundings.
+2.​ Payload Delivery: The robot must be able to securely load, carry, and unload the
+prescribed payload of 0.25 kg.
+3.​ Power and Energy Management: The robot must have a power supply capacity to
+conduct all of its functions, and the ability to recharge its battery when low.
+4.​ Safety: The robot must have a safety mechanism such as a manual override button to
+stop functioning. The robot must also be able to function without causing damage or
+harm to its environment.
+
+8
+5.​ Manufacturability: The robot must be scalable for manufacturability. Importance should
+be given to ease of maintenance, customizability, and design modularity.
+Luxury Requirements:
+1.​ High-Grade Materials: Use materials like carbon fiber, anodized aluminum, or brushed
+stainless steel to provide a classy, durable exterior.
+2.​ AI-Powered Navigation: Equipped with AI and machine learning algorithms for
+seamless navigation in complex environments.
+3.​ Smartphone Integration: A luxury feature to customize delivery preferences via a
+dedicated app, track deliveries in real-time, or communicate with the robot.
+4.​ Advanced Security System: Incorporate biometric security for access to the payload in
+the robot’s storage compartment.
+These are just a few features that could be implemented after creating early prototypes to provide
+an exceptional experience for customers about functionality, security, and aesthetics.
+
+Background
+To comprehend the team's design, a thorough understanding of the history of delivery robots and
+the team's utilized solutions is crucial.
+Delivery robots are gaining relevance with the advent of autonomous vehicle technology. These
+robots deal with the issue of last-mile logistics, as they are used to significantly reduce delivery
+time, costs, and emissions. Delivery robots first emerged in the early 2000s, with companies like
+Kiva Systems relying on automation for warehouse storage and retrieval [1]. The automation
+industry did not find much evolution till technology companies like Google and Tesla delved into
+the concept of autonomous vehicles, which in turn developed smaller, localized robots. In 2014,
+two startup companies named Starship Technologies and Nuro continued growth in the sector.
+Starship Technologies aimed to deploy compact robots for short-distance neighborhood
+deliveries in a mission to reduce costs and emissions, whereas Nuro focussed on Level 4
+autonomous robots that could travel on roads without the need for a human driver. An accelerator
+to the adoption of automated delivery systems was the COVID-19 pandemic, as contactless
+
+9
+distribution became the norm. These systems naturally entailed a new skilled job requirement for
+robot operation, maintenance, and software development. In the wake of fresh developments in
+the field of robotics, the assignment to create delivery robots is extremely pertinent [2].
+The team robot’s framework was inspired by the chassis style of the Panzerhaubitze 2000 (PzH
+2000). This tank claims a multi-level chassis, the second level being drawn back from the first.
+The PzH was developed in 1995 by German defense companies KMW and Rheinmetall for the
+German Army, where the chassis components were derived from the Leopard 2 tank. This
+development was driven by the obsolescence of the earlier PzH 155-1 program, which had
+several design defects and reliability issues. The tank boasted a chassis built on armored steel,
+along with the passive roof-liner enabling a protection level previously unknown [3].
+Continuous tracks or tracked treads used in the team's design are similar to the tracks on a
+bulldozer or tank. These tracks on the team's system run on a gear cog and a wheel, while
+conventional tracks run on track plates. The modern form of tracked treads was invented and
+patented by Benjamin Holt in 1904, to aid agriculture in areas of soft soil, where typical rubber
+wheels would sink. These tracks were christened Caterpillar, and commercialized by the Holt
+Manufacturing Company, owned by the patent proprietor. The tracks found their use in military
+operations during the First World War in later years [4]. The advantages of the tracks were
+several, including ●​
+
+Weight distribution across the track plates, allows it to maneuver on rough terrain.
+
+●​
+
+Provide better traction for handling large loads.
+
+●​
+
+Structural strength that delivered resistance to wear and tear.
+
+However, there are some disadvantages to be considered, such as ●​
+
+Lesser maximum speed.
+
+●​
+
+Environmental damage caused by the track surface.
+
+●​
+
+Greater power usage.
+
+●​
+
+The loss of a single track segment renders the system inoperable.
+
+These were the considerations while choosing this form of transportation.
+
+10
+The claw design the team implemented in the project was inspired by the claw arcade machine,
+which can move the claw in all three axes and pick up objects by actuating the claws. These claw
+machines date back to the 1890s when they were built to resemble machinery to construct the
+Panama Canal in North America. They first emerged as arcade games when the Erie Digger was
+introduced. This had a coin-operated steam shovel that moved in an arc operated by a handle and
+could pick up small objects like candy. William Bartlett was able to patent (US patent 1,882,563)
+a design improvement by supplying power through an electric motor and giving the claw
+complete access within a box [5]. These machines gained fame as arcade games during the 1990s,
+during the economic crisis in Japan and South Korea when pressured youth struggled to find
+employment [6]. Many pros make the claw design viable, such as ●​
+
+Versatility in picking up various objects.
+
+●​
+
+Superior grip strength by being able to apply pressure on the load. This allows it to carry
+heavier objects with no issue.
+
+●​
+
+Precision and control when handling objects.
+
+●​
+
+The claw design requires less maintenance compared to manual or pneumatic systems.
+
+The disadvantage of the claw system must also be considered. This being ●​
+
+Difficulty in holding fragile objects, as the pressure from the claws may cause it to break.
+
+●​
+
+Limited surface contact which could lead to dropping the load if insecure.
+
+●​
+
+Requiring a consistent supply of power for applying pressure on the object.
+
+These points were considered and the team's design was adapted to accommodate the cons of the
+design.
+
+11
+
+Design Plan and Project Management
+The structure and organization of the project were maintained using Miro, which served as a
+collaborative tool for planning, brainstorming, and tracking progress. Miro allowed the team to
+visualize project phases, assign tasks, and document key decisions, ensuring that everyone was
+aligned on the timeline and objectives.
+
+The Gantt chart provides a structured timeline for the autonomous delivery robot project, broken
+down into three key phases: Research and Resourcing, Phase A and B Development, and
+additionally, phase C and Testing. Starting with brainstorming, concept sketching, and
+component sourcing, the project lays a strong foundation by ensuring all necessary resources are
+identified and acquired.
+During the development phases, the team focused on printing the chassis, establishing motor
+control, and developing initial navigation capabilities for Phase A requirements. By October’s
+end, the team will achieve a functional Proof of Concept (POC) that addresses basic delivery
+tasks using sensor integration and coding, building the core functionality required for
+autonomous movement. The final phase emphasizes refining algorithms, enhancing sensor
+efficiency, and performing comprehensive testing to optimize the robot’s performance. The
+project culminates with final adjustments and an assessment of the Minimum Viable Product
+(MVP) to ensure it meets all requirements for successful demonstration.
+
+12
+
+Brainstorming and Concept Generation
+The team began the team's concept design by researching the optimal materials and technologies
+that could be implemented in the system. The team broke the robot's functionalities into several
+key aspects and then explored each feature to yield a vast number of options that could be
+implemented on the robot. During this phase, it is important to remember that the team only
+focused on gathering as many alternatives for each feature as possible. Once all courses of action
+were surveyed, the subsequent steps would aim to narrow down the options to champion the
+optimal solutions for the project.
+
+Power Supply
+The team started with the problem of powering the robot. This was the first thing to consider as it
+is the integral component that provides the mandated energy to operate all system components.
+The power supply must be chosen based on the current and voltage requirements of the system to
+ensure stable operation and prevent damage to the electronic components (F3). Since the team's
+robot was a mobile robot that would not be stationary, it would have to implement a rechargeable
+energy-dense battery design, for which the team was able to find three variants: Lithium-Ion
+(Li-ion), Lithium-Polymer (LiPo), and Nickel-metal hydride (NiMH).
+●​
+
+Li-ion batteries are high-energy density batteries made up of a lithium-based cathode and
+graphite-based anode. These are lightweight and provide 800 life cycles of consistent use.
+
+●​
+
+LiPo batteries are similar to Li-ion batteries, but instead of a liquid, they use a polymer
+electrolyte. This makes the batteries flexible, making them moldable to any shape or size.
+These batteries are also extremely lightweight and provide a decent 600 life cycle.
+
+Both Li-ion and LiPo batteries provide a similar nominal voltage of 3.7V per cell and have a
+slow discharge rate.
+●​
+
+NiMH batteries use a nickel oxide cathode and a hydrogen-absorbing anode. These
+batteries are heavier and less energy-dense, providing lesser voltage (1.2V per cell) in
+comparison to Lithium batteries, but have a higher number of life cycles (2000 life
+cycles) and are regarded as safer batteries under duress. NiMH also has a higher
+self-discharge when not in use.
+
+13
+These were the essential trade-offs to consider when deliberating on the power supply of the
+robot.
+
+Robot Actuation
+The team’s next focus was on robot actuation, as that was pivotal to the success of phase B of the
+project. This problem required taking note of motor specifications since they would decide the
+maximum output torque. Based on these factors, the maximum weight of the robot would also be
+determined, so that the robot does not struggle in adverse terrain (F1). The team began by
+exploring all motors that would fit the requirements.
+●​
+
+Small geared DC motors give high torque at lower speeds via its built-in gear reduction
+system. An example of a small-geared DC motor is the N20.
+
+●​
+
+Brushed DC Motors provide high speed and low torque, and are typically smaller and
+more compact as compared to small geared DC motors. The speed and direction are
+controlled via pulse-width modulation (PWM) and a motor driver. An example of a
+brushed DC motor would be the 130 DC motor.
+
+●​
+
+Brushless DC Motors, instead of brushed DC motors, use electronic commutation rather
+than physical brushes to achieve motion. These motors require an electronic speed
+controller (ESC) for operation controlled by a PWM. An example of the BLDC motor
+would be the 2212 1000 KV Brushless Motor.
+
+●​
+
+Stepper Motors would rotate in precise steps, offering control of the rotation and
+position of the propelling system without needing feedback sensors. The precise control
+is owed to the step pulses sent by the microcontroller that moves the motor in discrete
+increments. An example of a stepper motor would be the 28BYJ-48 Stepper Motor.
+
+●​
+
+Continuous Rotation Servo Motors is a variation of servo motors modified for 360°
+rotation, thereby being a suitable motor for actuation. PWM signals set the speed and
+direction of the motor, but the precise speed adjustment applicable to regular servo
+motors applies to this motor. An example of a continuous rotation servo motor would be
+the FS90R Continuous Rotation Servo.
+
+These were the team's options, taking into consideration the weight and size of the robot, and
+terrain factors.
+
+14
+
+Sensing Mechanisms
+Sensors will be the primary method with which the team obtains feedback on the positioning and
+orientation of the robot. This detail underlines the importance of implementing sensors with
+precision. Sensors will also mandate the use of an appropriate control logic to navigate the maze
+for phase B. Many sensors that could find purpose in the project arose during the team's research,
+namely ●​
+
+Ultrasonic Sensors use sound waves to detect objects and subsequently measure
+distances. The sensor sends a pulse wave and then calculates the distance to the nearest
+object by recording the time taken for the pulse wave to return. An example of an
+ultrasonic sensor would be the HC-SR04.
+
+●​
+
+Infrared Sensors detect objects using reflected infrared light. IR sensors excel in
+detecting nearby objects, while some IR sensors, like the Sharp sensor, can also measure
+distance similar to the Ultrasonic Sensor. An example of an IR sensor would be the
+TCRT5000.
+
+●​
+
+LIDAR Sensors use laser beams to scan the environment and create a map of obstacles
+in the vicinity. This assists in navigating complex spaces. An example of the LIDAR
+sensor would be YDLIDAR X4.
+
+●​
+
+Proximity sensors also work similarly to distance sensors, by measuring the distance
+using time-of-flight technology. This allows the robot to detect walls or objects in narrow
+spaces. An example of this would be the VL53L0X TOF sensor.
+
+●​
+
+Wheel encoders are a type of sensor that can directly track the rotation of the wheels to
+measure the distance traveled. This assists with navigating mapped paths and providing
+accurate speed control. Wheel encoders are provided as a feature with many motors in
+use in the Arduino environment.
+
+Terrain Navigating Movement Mechanisms
+For navigation, the movement mechanisms would have to be tailored to the motor, ensuring a
+tight fit with no slip. During research, the team was able to identify three different movement
+mechanisms: wheels, a propeller, and a chain drive system.
+●​
+
+The wheel and propeller would function similarly, but the wheel would have a rubberized
+grip and treads for increased traction. The outer ring would be connected to the inner hub
+
+15
+utilizing spokes for structural integrity.
+●​
+
+The propeller would have curved blades making contact with the terrain. The curved
+blade would be connected to the propeller via the propeller hub. The curved blades must
+have a large surface area that can make contact with the ground to enable movement.
+
+●​
+
+The chain drive system, on the other hand, would actuate similarly to a tank locomotion
+system, where the system would latch onto the motor using a gear cog. The chain drive
+could be created by fabricating a series of chain links, attached using pins and locking in
+place using a lock.
+
+Main Chassis
+Next in the process was designing the main chassis. The main criteria the chassis would have to
+achieve were the initial constraints of space, weight, and material, outlined in the introduction
+(P1, P2, P3). This chassis would also be required to house all of the components and provide
+enough space for wiring and motor actuation. The team also strived to provide safety for the
+payload in question, therefore requiring a secure position during package transportation. With
+these benchmarks to attain, the team brainstormed between two approaches to the team's chassis
+design: the vertical and horizontal chassis.
+●​
+
+The vertical chassis would be a configuration where all the components would be stacked
+up one after another on multi-level housings. These housings would be supported by rigid
+pillars on each end of the chassis. The box structure would house each component.
+
+●​ The horizontal chassis would have all the components placed next to each other. The
+single-level chassis will have separate partitions printed for modularity and to assemble
+the components in specific compartments. Horizontal chassis will also have a lower
+center of gravity owing to the single level.
+The team’s decision would have to be made based on the placement and configuration of the
+components and the space of the building (i.e. the environment).
+
+Package Collection and Delivery Mechanism
+The final part to be designed was the mechanism to pick and place the package. The team’s
+initial concepts revolved around a claw-like gripper and a shovel to scoop the package up from
+its position.
+
+16
+●​
+
+A gripper would allow for handling small parts or delicate objects with excellent
+precision. The claw would be able to adjust to different objects and geometries by
+opening the claw to different configurations. The one downside to the gripper is that it
+would allow any object to slip through if not held securely. Additionally, the gripper
+would struggle with holding several objects at once.
+
+●​
+
+A shovel mechanism is better suited for picking up bulkier, loose materials. It would also
+manage to hold several objects at once, which can be an advantage. The downside to the
+shovel is that it cannot handle intricate or fragile objects.
+
+The decision between using the gripper and the shovel would depend on the precision and
+accuracy required in picking up and placing the object or the number of objects in question.
+Note: For initial multiview sketches of each component on grid paper, please refer to Appendix
+A.
+
+17
+
+Engineering Specifications and Benchmarking
+​
+
+House of Quality
+The House of Quality matrix is defined based on Quality Function Deployment (QFD)
+principles. Quality Function Deployment is a comprehensive quality design system that focuses
+on understanding customer requirements and ultimately improving positive qualities that will
+add value to the product. The goal of the system is straightforward: it is a useful tool that helps
+with converting customer requirements into quantifiable design and engineering specifications.
+
+Customer Requirements
+In the case of this project, the customer requirements refer to the outlined requirements in the
+relevant subsection, namely ●​
+
+Robot Size Restrictions
+
+●​
+
+Robot Weight Restrictions
+
+●​
+
+Robot Material Strength
+
+●​
+
+Low Center of Gravity
+
+●​
+
+Motion Control and Terrain Adaptability
+
+●​
+
+Navigation & Obstacle Detection
+
+●​
+
+Payload Delivery
+
+●​
+
+Power Management
+
+●​
+
+Safety
+
+●​
+
+Manufacturability
+
+Each requirement has an importance rating (out of 5), which determines how useful the
+requirement is to the delivery robot project. As can be seen in the diagram, Payload Delivery and
+Robot Size Restriction are ranked highest (5), as they are essential to the successful completion
+of the objective. Robot Weight Restriction and Manufacturability, on the other hand, is relatively
+less important.
+
+18
+
+Engineering Specifications
+The next task is evaluating engineering specifications that can satisfy the customer’s
+requirements. This was the most difficult as there are a variety of technical specifications that
+can match the requirements. In the end, the team filtered out the most significant ones to
+cross-relate with the customer requirements. Each relationship would be given a rank (labeled
+importance rating) based on the level of association. These ranks would then be multiplied with
+the customer requirement rank from the previous step and an absolute rank for each engineering
+specification is then obtained. The engineering specifications in question are ●​
+
+Payload Weight - Relates to the robot characteristics being affected by the weight of the
+payload. Since the package size and weight are already given, the robot would have to be
+modeled to transport this payload as efficiently as possible. The robot must be optimized
+to carry the heaviest payload weight it can handle. The unit for payload weight is
+measured in Kilogram (kg).
+
+●​
+
+Battery Capacity - Relates to the size and power output of the battery. The team aims to
+have a robot that can achieve a minimum runtime of 60 minutes. For this, a sizable
+battery will be needed that can maintain the actuation of the robot, gripper, and activation
+of the sensors and Arduino. Battery capacity is measured in mAh.
+
+●​
+
+Ultrasonic/IR Sensor Accuracy - Denotes the accuracy required in the components and
+control logic to ensure the robot's ability to navigate, avoid obstacles, and accurately
+reach delivery destinations. Ultrasonic accuracy is directly tied to safety as well, as fault
+sensors could lead to compromised safety. Sensor accuracy is measured in cm.
+
+●​
+
+Wheel Encoder Resolution - Mentions the encoder resolution accuracy in reading the
+RPM of the robot drive motors. This is important because if the encoders fail to read the
+revolutions correctly, the robot could misjudge the distance and cause an accident.
+Encoder resolution is measured in RPM.
+
+●​
+
+Motor Torque - Motor Torque is crucial in autonomous robots as it determines the
+robot's ability to move, maneuver, and handle different terrains. This specification should
+be optimized to carry maximum load and traverse steeper inclines. Motor Torque is
+measured in Nm.
+
+●​
+
+Motor Speed Control - Motor speed control is vital for the safe, efficient, and reliable
+operation of the robot. It allows for precise navigation, adaptability in the face of
+
+19
+ever-changing conditions, energy conservation, and ensuring safety, all of which are
+essential for continuous successful deliveries. Motor Speed Control is measured in PWM
+or duty cycle sent from the microcontroller.
+●​
+
+Servo Tilt/Pan Angle - The Servo Tilt and Pan angle are the engineering specifications
+related to the operation of the gripper. This is important as the pick and place operation of
+the package is integral to the success of the project. The exact angle of the gripper
+holding the package for the robot will also determine the latter’s stability. The Servo
+Angle is measured in ° (degrees).
+
+●​
+
+Robot Dimensions - Robot dimensions refer to the size and height of the robot itself.
+This is crucial for allowing delivery to tight spaces within the maze with obstacles
+present. This can also help with optimizing power efficiency, as well as maintaining
+stability. Robot dimensions are measured in centimeters.
+
+●​
+
+Robot Stability on Inclines - Robot Stability refers to the foundational requirement for a
+robot to prevent tipping or falling. As a consequence, the bot will be more reliable on
+different terrain and provide more consistent performance under load variations. The
+robot will also be able to face steeper inclines with higher confidence. Stability on
+inclines is determined using ° (degrees).
+
+●​
+
+Chassis Material Tensile Strength - This metric determines the durability and reliability
+of the robot. Structural integrity and impact resistance is a direct consequence of the
+chassis material tensile strength. Additionally, the load-bearing capacity - with the weight
+of components and payloads - is affected by the toughness of the material. Tensile
+Strength is measured by MPa.
+
+Rank
+The rank in a House of Quality matrix is a way to organize engineering specifications to be
+focussed on, based on their importance in meeting customer requirements. Importance ratings are
+assigned by associating the customer requirement importance with the intersecting weight
+relating customer requirements with engineering specifications. The importance rating is
+calculated for each engineering specification, and then the total for all specifications is
+calculated. The percentage of each specification is computed, and ranks are allocated according
+to descending percentages.
+
+20
+
+As can be seen from the House of Quality Matrix (In appendix), Ultrasonic/IR Sensor Accuracy
+is given the highest importance, Payload Weight is given second, Motor torque and Robot
+Dimensions are tied third, Servo Tilt is at fourth place, Motor Speed Control is fifth, Chassis
+Material Tensile Strength is at sixth, Battery Capacity is at seventh, Stability on Inclines is at
+eighth and Wheel Encoder Resolution is at the ninth position. This by no means indicates that
+engineering specifications at lower ranks can be ignored, but rather that proper functioning of
+higher rank specifications must be uncompromised to ensure successful operation.
+
+21
+
+Functional Decomposition
+Functional decomposition is a process used to break down the overall function of a complex
+system into smaller, manageable, and more specific sub-functions. For an autonomous delivery
+robot, the primary function can be decomposed into several sub-functions. The primary function
+of an autonomous delivery robot is to deliver packages from one location to another.
+The figure in Appendix C describes the functional breakdown into a block diagram for easy
+understanding. The white box characterizes the package delivery function (primary), with
+energy, material, and information flowing through it. As can be seen, the input for the function is
+the raw material required for the system to function. The output from the function directs the
+robot peripherals to accomplish tasks within the surrounding environment. The details are listed
+below:
+
+Functional Overview
+Function Inputs:
+●​ Energy: Energy input from the 7V LiPo battery, is supplied to the system for component
+functioning.
+●​ Material: Material input would be the payload transported by the module. Additionally,
+this would cover interaction with surrounding physical objects and surfaces.
+●​ Information: Information input would be the raw sensor data from infrared and
+ultrasonic sensors.
+
+Function Outputs:
+●​ Energy: Energy output is supplied to the servo and drive motors for movement of the
+grippers and module.
+●​ Material: Material output would be the delivery of the payload transported by the
+module. Additionally, physical wear and tear of components can be considered under this
+section.
+
+22
+●​ Information: Information output would consist of the processed control signals for
+navigation and gripper control.
+
+System Components
+Voltage Regulation System - The voltage regulation system outputs a fixed voltage regardless
+of input fluctuations from the battery system. It is part of the electrical flow in the system
+function, sending a stable 5V power supply to the Arduino and components, and input voltage to
+the drive motors.
+Position Sensing - Position sensing uses ultrasonic sensors to collect proximity data related to
+the robot’s position. Two ultrasonic sensors on either side of the module process this data into
+distance measurements and feed the result into the control system for real-time navigation.
+Payload and Obstacle Sensing - This system uses a dual IR sensor setup to detect obstacles and
+the payload to be picked up. This data would be fed back to the control system - similar to the
+positioning sensing system - for handling obstacles and ensuring payload collection.
+Control System - The control system can be likened to a central processing unit, where the
+distance measurement data from the sensors is processed. These distances are fed into the control
+function to output control signals to the drive motor system and payload collect system for
+navigation and payload handling, respectively.
+Drive Motor System - The Drive Motor System resembles the Cytron 2A Motor Driver Module
+that receives control signals from the control system and relays it to the drive motors for
+movement and positioning. Additionally, the drive motor system relays the necessary energy
+from the voltage regulator to the motors for functioning.
+Payload Collect System - This system handles the collection and delivery of payloads. The data
+released from the control system block is relayed to the servo motors through this system.
+Additionally, the energy for the servo motors is also imparted through this system.
+
+23
+
+Concept Development and Screening
+The next phase takes into consideration the screening of the components discussed in the
+brainstorming and concept generation phase. The screening can be most accurately determined
+by the use of a decision matrix.
+A decision matrix is a tool used to evaluate different available options based on weighted
+criteria. It is utilized to provide structured comparisons for objective decision-making. This
+allows the team to clarify trade-offs and identify the best choice. Since the team will be
+evaluating each of the options for specific components, the team shall blend relevant engineering
+specifications from the Engineering Specifications and Benchmarking section, along with
+applicable specifications for each component type in the team's project itself. The relevant
+engineering specifications will be chosen based on the relationship chart built in the House of
+Quality matrix. All Decision Matrices can be found in Appendix D.
+
+Decision Matrix for Power Supply
+For the team's power supply, the options of Li-Ion, LiPo, and NiMH battery cells were
+brainstormed. Using a decision matrix with the criteria of Battery Lifespan, Battery Capacity,
+Output Voltage, Cost, Energy Density, Consistent Motor Torque, Battery Dimensions, Safety and
+Maintenance.
+LiPo batteries have scored the highest, with a total score of 144, compared to 134 from Li-ion
+and 121 from NiMH batteries. LiPo batteries are made with flexible polymer electrolytes.
+Therefore, while the energy density of Li-ion batteries is typically higher in terms of volume,
+LiPo batteries excel in compact applications where their flat, flexible form can be packed more
+efficiently, making the most out of the available space. LiPo batteries are generally lighter than
+Li-ion and NiMH batteries in these cases. LiPo batteries can deliver higher discharge rates (burst
+power), ideal for instant power demands without degrading. They are less likely to overheat
+under load compared to Li-ion and NiMH. More importantly, LiPo batteries give consistent
+voltage for regulated motor torque output. These favorable characteristics directed the team to
+choose LiPo batteries for the project.
+
+24
+
+Decision Matrix for Motors
+For the team's motor choice, 5 ideas were brainstormed: Geared DC Motor, Continuous Rotation
+Servo Motor, Stepper Motor, Brushless DC Motor, and Brushed DC Motor. The criteria used for
+the decision matrix are required input voltage, cost, efficiency, motor torque, motor speed
+control, motor dimensions, robot stability on inclines, and durability.
+As can be seen, the Geared DC Motor has the highest total value of 132, compared to the
+Continuous Rotation Servo Motor with a value of 130, the Brushless DC Motor scored 126, the
+Stepper Motor scored 115 and the Brushed DC Motor scored 113. Geared DC Motors have high
+torque at low speeds, allowing them to carry heavy payload weights and uneven terrain.
+Additionally, Geared DC Motors are compact for their relatively high power output. Finally, they
+require a lower input voltage, efficiency, and durability.
+
+Decision Matrix for Sensors
+For the team’s sensing mechanism, 5 ideas were brainstormed: Ultrasonic Sensor, IR Sensor,
+LIDAR Sensor, Proximity Sensor, and Wheel Encoders. The criteria used for the decision matrix
+are Accuracy, Range, Environmental Adaptability, Cost, Power Consumption, Reliability, Ease
+of Integration, and Sensor Dimension.
+As can be seen, the IR sensor (Sharp) has the highest total value of 128, compared to Ultrasonic
+Sensors with a value of 127, LIDAR Sensors with a value of 122, Wheel Encoders with a score
+of 120, and Proximity Sensors with a value of 96. IR Sensors are championed for their small size
+and low cost, making them favorable for small, low-cost delivery robots. Additionally, they are
+reliable, easy to integrate, and have a good range. They can also adapt to a variety of
+environments. While LIDAR Sensors were also initially ideated as an alternative, their low score
+on sensor dimensions, high cost, and power consumption made this option less lucrative.
+Ultrasonic Sensors are screened to be a good option for calculating distance for their higher
+accuracy as compared to IR Sensors. With this screening process, the team deliberated on using
+IR Sensors for front object and wall detection, while using Ultrasonic Sensors for wall following
+on the robot’s sides.
+
+25
+
+Decision Matrix for Drive Mechanisms
+For the robot’s drive mechanism, 3 ideas were brainstormed: Wheels, Propellers, and a Chain
+Drive System. The criteria used for the decision matrix are Terrain Adaptability, Efficiency,
+Payload Capacity, Stability, Maneuverability, Cost, Ease of Implementation, and Durability.
+As can be seen, the Wheels have the highest total value of 151, compared to Chain Drives with a
+value of 142 and Propellers with a value of 107. Wheels are tendered for their low cost, ease of
+implementation, and efficiency. Wheels, however, are lower rated for their terrain adaptability
+and payload weight, whereas Chain Drives are graded highly. Chain Drives are poor in efficiency
+and Dimensions, but are durable in operation and stable on inclines. Propellers are low-rated for
+their poor terrain adaptability, instability, and difficulty in implementation, which made them less
+favorable for the project.
+
+Decision Matrix for Payload Collection and Delivery Mechanism
+For the payload pickup and delivery mechanism, 2 ideas were brainstormed: Grippers and
+Shovel Mechanism. The criteria used for the decision matrix are Stability of Payload, Precision,
+Ease of Use, Cost, Payload Weight, Durability, Material Strength, Payload Versatility, and
+Dimensions.
+As can be seen, the Grippers have the highest total value of 150, and the Shovels have a value of
+135. Grippers are proffered for their payload stability, payload precision, payload versatility, and
+ease of use. Shovels, on the other hand, are rated highly for holding high payload weights but are
+not good for payload precision, versatility, and stability. Since these criteria are highly important
+for this project, grippers are chosen as the team’s primary payload collection and delivery
+mechanism.
+
+26
+
+Engineering Analysis
+Engineering Analysis
+This section presents a comprehensive engineering evaluation of the autonomous delivery robot,
+emphasizing calculations that guarantee the design adheres to performance, stability, and
+efficiency standards. The review encompasses load calculations, motor torque specifications,
+power consumption analysis, stability evaluation, and sensor positioning to meet the functional
+requirements detailed in the report.
+1.​ Load and Weight Distribution Assessment
+To verify that the robot can adequately support its payload and navigate inclined surfaces without
+the risk of tipping, the team performs a load distribution analysis and evaluates stability.
+Payload Weight Calculation:
+●​ Payload Weight (W_payload): 0. 25 𝑘𝑔
+●​ Gravitational Acceleration (g): 9. 81 𝑚/𝑠²
+●​ Force Exerted by Payload:
+𝐹_𝑝𝑎𝑦𝑙𝑜𝑎𝑑 = 𝑊_𝑝𝑎𝑦𝑙𝑜𝑎𝑑 × 𝑔 = 0. 25 × 9. 81 = 2. 45 𝑁
+Total Weight of Robot Components: Assuming the combined weight of the robot's
+components, which include sensors, motors, and the frame, is approximately 1.5 kg:
+●​ Total Force from Weight (F_total):
+𝐹_𝑡𝑜𝑡𝑎𝑙 = (1. 5 + 0. 25) × 9. 81 = 17. 14 𝑁
+Center of Gravity Evaluation:
+●​ The design of the robot incorporates a low center of gravity by positioning heavier
+elements, such as the battery and motors, near the base. This configuration reduces the
+likelihood of tipping.
+Stability Assessment on Inclined Surfaces: For an incline angle (θ) of 15°:
+
+27
+𝐹_𝑝𝑎𝑟𝑎𝑙𝑙𝑒𝑙 = 𝐹_𝑡𝑜𝑡𝑎𝑙 × 𝑠𝑖𝑛(θ) = 17. 14 × 𝑠𝑖𝑛(15°) = 4. 44 𝑁
+If F_parallel surpasses the available traction force, the robot may slide. Adjustments to the
+weight distribution can be made to enhance stability, or additional traction materials can be
+applied to the wheels.
+2.​ Motor Torque and Power Requirements
+The motors of the robot must produce adequate torque to facilitate the movement of both the
+robot and its payload, particularly on sloped surfaces.
+Torque Necessary for Movement:
+●​ Wheel Radius (r): 0.03 m
+●​ Total Required Force (Ftotal): 17.14 N
+●​ Required Torque (τ):
+τ = 𝐹𝑡𝑜𝑡𝑎𝑙 × 𝑟 = 17. 14 × 0. 03 = 0. 514 𝑁𝑚
+Motor Selection: The chosen N20 DC motors, each with a rated torque of 0.6 Nm, are capable
+of delivering sufficient force to propel the robot and its payload.
+Power Consumption Calculation: With a motor voltage of 6V and a current draw of 1.5A:
+●​ Power per motor (P):
+𝑃 = 𝑉 × 𝐼 = 6 × 1. 5 = 9 𝑊
+Thus, with two motors, the total power requirement for movement amounts to 18 W.
+3.​ Battery Capacity and Runtime
+The robot's battery must supply sufficient energy to ensure a minimum operational duration of 60
+minutes.
+
+28
+Battery Capacity Calculation:
+●​
+
+The total power consumption (P_total) from sensors, control boards, and motors is
+estimated to be 20 W.
+
+●​
+
+The required runtime (T) is 1 hour (3600 seconds).
+
+●​
+
+Energy required:
+𝐸 = 𝑃_𝑡𝑜𝑡𝑎𝑙 × 𝑇 = 20 × 3600 = 72000 𝐽 = 20 𝑊ℎ
+
+For a 7.4V LiPo battery:
+●​
+
+Required capacity (C):
+𝐶 = 𝐸 / 𝑉 = 20 / 7. 4 ≈ 2. 7 𝐴ℎ
+
+A battery with a capacity of 3000mAh (3Ah) is adequate to fulfill the runtime requirement.
+4.​ Sensor Range and Precision
+In the context of obstacle detection and navigation:
+Ultrasonic Sensor Range: 2–400 cm with an accuracy of ±1 cm
+IR Sensor Range: 10–80 cm with an accuracy of ±0.5 cm
+These sensors are suitable for identifying obstacles within the maze, as the ultrasonic sensor
+offers extended-range detection while the IR sensor facilitates precise measurements at close
+distances.
+5.​ Mechanical Strength Evaluation
+Chassis Material Stress Assessment: Materials: PLA and PETG
+●​
+
+Tensile Strength of PLA: 60 MPa
+
+●​
+
+Tensile Strength of PETG: 50 MPa
+
+Maximum Load on Chassis: Applying a conservative safety factor of 2:
+𝐴𝑙𝑙𝑜𝑤𝑎𝑏𝑙𝑒 𝑆𝑡𝑟𝑒𝑠𝑠 = 𝑇𝑒𝑛𝑠𝑖𝑙𝑒 𝑆𝑡𝑟𝑒𝑛𝑔𝑡ℎ / 𝐹𝑎𝑐𝑡𝑜𝑟 𝑜𝑓 𝑆𝑎𝑓𝑒𝑡𝑦 = 60 / 2 = 30 𝑀𝑃𝑎
+
+29
+The anticipated maximum stress on the chassis remains significantly below this threshold,
+demonstrating adequate material strength for resilience under standard operational loads.
+6.​ Analysis of Grip and Traction
+Condition of Wheel Slip: To prevent slipping on slopes:
+●​
+
+The coefficient of friction (μ) for rubber on smooth surfaces is roughly 0.7.
+
+●​
+
+The necessary traction force (F_traction) is calculated as follows:
+𝐹_𝑡𝑟𝑎𝑐𝑡𝑖𝑜𝑛 = 𝐹_𝑡𝑜𝑡𝑎𝑙 × μ = 17. 14 × 0. 7 = 12 𝑁
+
+Given that F_traction surpasses F_parallel, the wheels are capable of delivering sufficient
+traction.
+
+Form Design
+Chassis and Gripper: The team chose the horizontal chassis for the lower center of gravity and
+ease of modifications, with additional levels added to support electronics and sensors over the
+three phases of the project. Moreover, a Gripper Assembly was created to meet the requirements
+of the package the team has to handle.
+
+Chassis Design 1
+
+Chassis Design 2
+
+30
+Chassis Structure: The chassis provides a durable, compact frame that supports all components.
+Its modularity allows for easy upgrades and maintenance, enabling the robot to handle diverse
+loads and terrain forces effectively.​
+Drive System: A chain-driven wheel mechanism enhances torque transfer and minimizes
+slippage, optimizing traction on varied surfaces. This setup allows flexible adjustments for
+improved performance on rough terrain​.
+Servo Motor Mounting: Securely mounted servo
+motors reduce vibrations, allowing precise positioning
+for tasks requiring careful control, such as object
+manipulation​.
+Component Housing: Designated compartments for
+electronic
+
+components facilitate balanced weight
+
+distribution, efficient wiring, and heat dissipation, crucial for stability and prolonged operation​.
+Weight Distribution: A low center of gravity provides stability on inclines, reducing the risk of
+tipping and improving maneuverability with payloads​.
+Adaptability for Future Enhancements: The modular chassis design supports expansions, like
+adding sensors or batteries, making it easy to adapt to evolving task requirements​.
+
+Wiring Schematic
+The delivery robot system comprises several essential components that collectively facilitate
+autonomous navigation and package management. This section delineates the function of each
+component within the system, elucidating their input-output relationships and their roles in the
+overall architecture.
+
+31
+
+Figure: Wiring Schematic
+1. Arduino Due
+The Arduino Due functions as the primary controller of the system. It interprets data from
+various sensors and encoders, subsequently dispatching control signals to the motors and servos.
+The principal inputs include sensor data (such as infrared readings and encoder feedback), while
+the outputs are PWM signals directed to the motor driver and control signals for the servo
+motors.[6]
+Inputs: Encoder signals, sensor data (infrared sensor and ultrasonic sensor), serial input (for
+debugging purposes).
+Outputs: Motor control signals (PWM), and servo control signals.
+2. Cytron L298P Motor Driver
+The Cytron L298P motor shield regulates the N20 motors based on commands received from the
+Arduino Due. It controls both the speed and direction of the motors through an H-Bridge
+configuration, thereby enabling the robot to navigate independently.[7]
+Inputs: PWM signals from pins 4, 5, 6, and 7 for motor control, along with common VCC and
+ground connections.
+
+32
+Outputs: Power is supplied to the N20 motors, facilitating movement in both forward and
+reverse directions.
+3. N20 Motors (with Encoders)
+The N20 motors are tasked with propelling the robot. Each motor is fitted with encoders that
+deliver feedback regarding the number of rotations, which is crucial for precise movement
+control.[8] The encoders generate pulses that enable the system to calculate speed and distance
+traveled.
+Inputs: PWM signals from the motor driver for speed regulation.
+Outputs: Rotational movement of the wheels, encoder feedback signals transmitted via C1 and
+C2 pins to the Arduino.
+4. Encoder (N20 Motor)
+The encoders connected to the N20 motors deliver critical information regarding the motor's
+velocity and the distance it has covered. They function by generating two distinct signals (C1 and
+C2) that convey both the direction of rotation and the total number of rotations of the motor.
+These signals are subsequently analyzed by the Arduino Due, which facilitates precise
+movement and regulates the robot's positioning.
+Inputs: Rotations of the motor, which are mirrored in the motion of the wheels.
+Outputs: Pulse signals are transmitted to the Arduino Due to counting revolutions and assessing
+speed.
+5. Micro Servo Motor (Pin 12)
+The micro servo motor located at pin 12 is responsible for managing the tilt mechanism of the
+delivery system. Its primary function is to modify the angle of the apparatus that manipulates the
+package.[11]
+Inputs: Control signals transmitted from the Arduino Due (PWM).
+Outputs: Mechanical rotation facilitating the positioning of the tilt mechanism (ranging from 0
+to 110 degrees).
+
+33
+6. Futaba S3003 Servo Motor (Pin 13)
+The Futaba S3003 servo motor, connected to pin 13, governs the gripper mechanism that is
+tasked with grasping and releasing the package. The position of the servo dictates the gripper's
+opening and closing actions.[9]
+Inputs: PWM signal received from the Arduino Due.
+Outputs: Mechanical rotation that regulates the gripper, with an opening angle of 20 degrees and
+a closing angle of 70 degrees.
+7. Common Ground and Common VCC (Prototyping Shield)
+A unified ground and VCC have been implemented within the circuit by means of a prototyping
+shield to guarantee that all components operate with a consistent reference voltage and
+grounding. This configuration is essential for ensuring stable functionality across the various
+sensors, servos, and motors.[7][8]
+Inputs: Power supply and ground connections sourced from an external power supply.
+Outputs: A shared reference voltage for all components.
+8. IR and Ultrasonic Sensors
+The autonomous delivery robot is outfitted with both infrared (IR) and ultrasonic sensors to
+facilitate accurate obstacle detection and navigation.
+
+●​
+
+IR Sensors: These sensors utilize infrared light to identify nearby objects and assess
+distances over short ranges. They are particularly adept at detecting obstacles in tight
+spaces, providing rapid feedback that assists the robot in avoiding collisions in
+constrained environments such as mazes.
+
+●​
+
+Ultrasonic Sensors: By employing high-frequency sound waves, ultrasonic sensors
+enable detection over longer distances and measure distances by timing the return of
+sound waves after they reflect off an object. These sensors are well-suited for identifying
+obstacles at greater distances, aiding the robot in navigating open spaces, and determining
+safe routes down ramps and through mazes.
+
+34
+
+System Operation Flow:
+Initial Positioning and Descent:
+●​ The robot starts at the top of the ramp on the second floor and begins descending. Using
+feedback from the ultrasonic sensors, it carefully maneuvers down the ramp, adjusting
+speed and direction to avoid obstacles.
+Maze Navigation:
+●​ Upon reaching the first floor, the robot enters the maze. Using both IR and ultrasonic
+sensors, it detects nearby walls and calculates the optimal path through the maze to locate
+the package.
+Package Retrieval:
+●​ Upon finding the package, the gripper opens, secures the package, and lifts it for
+transport. The tilt mechanism adjusts to ensure a stable hold on the payload.
+Return Navigation:
+●​ The robot retraces its path through the maze and returns to the ramp. It then ascends the
+ramp, making necessary adjustments for any new obstacles, and finally reaches the
+designated delivery point at the starting position.
+This design guarantees that all components collaborate effectively to facilitate accurate,
+autonomous navigation and package delivery within an indoor office setting. Refer to Appendix,
+for the system operation flow block diagram.
+
+Code Implementation
+The section in Appendix F presents the conclusive code implementation for the team's
+autonomous delivery robot system. This code governs the operation of two servo motors and
+facilitates the forward movement of the robot through the utilization of the Shield2AMotor
+library. The servos are tasked with managing the tilt of the base and the gripper mechanism,
+
+35
+enabling the robot to grasp and release packages, while the motors propel the robot forward for a
+predetermined period.
+
+Components Analysis
+Shield2AMotor Library:
+Facilitates the control of the motor driver, enabling precise management of both speed and
+direction for the motors.[10]
+●​
+
+motor.control(80, 100) propels the motors forward at predetermined speeds for 7
+seconds. Following this interval, the motors cease operation with the command
+motor.control(0, 0).
+
+Sensors:
+●​
+
+IR Sensors, connected to A0 and A2, are tasked to detect nearby obstacles, providing
+immediate feedback on the robot's surroundings. Their quick response time is particularly
+effective in confined spaces, where the robot must avoid sudden obstacles or walls within
+the maze.
+
+●​
+
+Ultrasonic Sensors, connected to pins 2, 3, 4, and 5, are tasked to offer long-range
+detection capabilities by measuring the time delay of sound waves bouncing back from
+objects. They are instrumental in the robot's navigation down the ramp and through open
+sections of the maze, allowing it to plan paths and adjust its course to avoid distant
+obstacles.
+
+Servo Motors:
+●​
+
+The gripper servo, connected to pin 8, is tasked with the functions of grasping and
+releasing the package. It operates by opening to an angle of 20 degrees and closing to an
+angle of 70 degrees.
+
+●​
+
+The base servo, linked to pin 9, adjusts from 0 degrees to 110 degrees to elevate the
+package before returning to its original position at 0 degrees.
+
+Operational Sequence:
+●​
+
+Initial Configuration: The gripper is in a closed position, while the base is set at 0
+degrees.
+
+●​
+
+Package Retrieval Process: The gripper opens to facilitate the pickup of the package.
+After a delay of 2 seconds, the gripper closes to firmly grasp the package.
+
+36
+Elevation and Transit:
+●​
+
+The base tilts to 110 degrees to lift the package.
+
+●​
+
+The robot then advances for 7 seconds.
+
+Halting and Releasing:
+The robot comes to a stop, the base reverts to 0 degrees, and the gripper opens to release the
+package. This design guarantees the efficient operation of both motors and servos, thereby
+ensuring the necessary automation and control within the package delivery system.
+
+37
+
+Design for Safety
+The design of the autonomous delivery robot prioritizes safety across various dimensions,
+encompassing mechanical, electrical, and operational aspects. The robot needs to function safely
+within dynamic environments, particularly when maneuvering around obstacles and carrying
+payloads. This section delineates the safety measures integrated into the design and presents a
+comprehensive Failure Mode and Effects Analysis (FMEA) aimed at identifying, assessing, and
+addressing potential failure modes, thereby ensuring that the robot adheres to safety standards
+during its operation.
+
+Mechanical Safety
+1.​ Chassis Integrity:
+●​
+
+The chassis is engineered to endure the stresses associated with supporting the payload
+and navigating diverse terrains. The use of PLA and PETG materials, combined with an
+appropriate safety factor, guarantees adequate strength while preserving a lightweight
+design.
+
+●​
+
+The horizontal configuration of the chassis contributes to a low center of gravity, thereby
+diminishing the likelihood of tipping, particularly on slopes and during turns.
+
+2.​ Component Mounting and Vibration Mitigation:
+●​
+
+Essential components, such as motors and sensors, are firmly affixed to avert
+displacement caused by vibration or impact. The incorporation of rubber gaskets and
+vibration dampeners effectively reduces the movement of delicate components.
+
+●​
+
+Ensuring proper alignment and secure fastening of gears minimizes wear and facilitates
+dependable power transmission, thereby preventing unforeseen mechanical failures.
+
+Electrical Safety
+1.​ Battery Management:
+●​
+
+The chosen 7.4V LiPo battery is equipped with overcharge and discharge safeguards,
+significantly reducing the likelihood of thermal runaway and promoting safe usage over
+prolonged durations.
+
+38
+●​
+
+All electrical connections are meticulously soldered and insulated with heat shrink tubing
+to avert unintentional short circuits. A unified ground design guarantees a consistent
+voltage reference throughout the components.
+
+2.​ Circuit Protection:
+●​
+
+A voltage regulation system is implemented to ensure a stable power supply to sensors
+and control systems, thereby shielding delicate electronics from power surges.
+
+●​
+
+Additionally, safety features, including a manual override switch, are incorporated to
+facilitate immediate shutdown in the event of a system failure or emergency.
+
+Operational Safety
+1.​ Obstacle Detection and Navigation:
+●​
+
+The integration of ultrasonic and infrared sensors enables real-time detection of obstacles
+and navigation, thereby minimizing the likelihood of collisions. The control system
+analyzes sensor information to dynamically modify the robot's trajectory, effectively
+averting accidents in restricted environments.
+
+2.​ Payload Security:
+●​
+
+The gripper mechanism is designed to firmly hold payloads during movement, thereby
+mitigating the risk of unintentional drops. Additionally, the servo-controlled tilt
+mechanism enhances payload stability, ensuring secure transport across uneven surfaces.
+
+Failure Mode and Effect Analysis
+The FMEA table in Appendix E outlines potential failure modes, their causes, effects, and
+recommended actions to improve safety and reliability. The table identifies high-priority risks
+with high Severity and RPN scores, including chassis integrity, battery overheating, and control
+circuitry short circuits. Actions focus on reinforcing structural integrity, ensuring proper battery
+management, and securing circuitry to reduce the likelihood of critical failures.
+
+39
+
+Design for Manufacturing
+The design process of the autonomous delivery robot prioritized manufacturing efficiency, ease
+of service, and modularity. Utilizing a Creality Ender 3 Pro 3D printer, the design was refined to
+enhance precision and durability, while also facilitating straightforward assembly, repair, and
+modification. Important manufacturing choices encompassed the strategic application of
+supports, the use of varying infill densities to bolster strength in areas subjected to high stress,
+and adjustments in tolerances for press-fit connections, particularly for essential components
+such as gears and bearings.
+
+3D Printing Process Overview
+1.​ Printer Model: Creality Ender 3 Pro
+The Ender 3 Pro is a highly adaptable FDM (Fused Deposition Modeling) printer
+recognized for its dependability and cost-effectiveness, making it an excellent choice for
+prototyping and creating functional parts. Notable features that enhance this project
+include a spacious build volume, compatibility with PLA and PETG materials, and a
+magnetic build platform that facilitates easy removal of printed parts.
+2.​ Material Selection: PLA and PETG
+●​
+
+PLA: This material is selected for components that experience minimal load, offering
+ease of printing, a smooth surface finish, and adequate rigidity for non-load-bearing
+applications.
+
+●​
+
+PETG: This material is preferred for parts that endure higher stress, providing superior
+impact resistance, flexibility, and durability. The enhanced strength of PETG is
+particularly beneficial for components such as the chassis and gripper, which are subject
+to increased wear.
+
+40
+
+Support Structures and Infill Strategy
+1.​ Support Structures:
+●​
+
+The design of the chassis and roof components incorporates a mix of tree supports and
+standard grid supports to maintain structural integrity while minimizing material
+consumption and reducing post-processing efforts. Tree supports are utilized for
+overhangs and intricate geometries, resulting in lightweight and easily removable support
+structures. In contrast, grid supports are employed in areas requiring additional stability,
+offering a robust foundation for larger, flat sections.
+
+●​
+
+This strategy effectively reduces overall material usage and printing duration without
+compromising print quality or durability.
+
+2.​ Infill Density Optimization:
+To achieve an optimal balance between weight and strength, infill density is adjusted throughout
+the chassis:
+●​
+
+Motor and Gear Mounting Areas: These high-stress regions feature a 25% increase in
+infill density compared to other chassis components, thereby enhancing their durability
+and resistance to forces encountered during operation.
+
+●​
+
+Other Chassis Sections: The remaining parts of the chassis, which bear lighter loads,
+utilize a standard 15% infill, optimizing material consumption while ensuring adequate
+strength. By strategically increasing infill in critical areas, the design is effectively
+reinforced.
+
+Tolerancing and Assembly Fit
+1.​ Press-Fit Tolerances:
+●​
+
+High-precision tolerances were implemented for the front spur gears to facilitate a
+press-fit connection with the ball bearings, ensuring a secure attachment that eliminates
+the need for additional fasteners. This tolerance specification promotes snug and
+dependable fits, thereby enhancing the durability and longevity of the gear assembly by
+minimizing the risk of unwanted movement and slippage.
+
+41
+●​
+
+The careful adjustment of these tolerances was crucial for the Ender 3 Pro, which is
+capable of achieving precise outcomes but necessitates thorough calibration to prevent
+fits that are either excessively tight or too loose.
+
+2.​ Standardized Fasteners:
+●​
+
+Standard screws and bolts were utilized for components that require easy detachment,
+allowing for rapid assembly and disassembly. This approach enhances maintenance
+efficiency, enabling the swift replacement or adjustment of any damaged parts without
+the need for specialized tools.
+
+Serviceability and Modularity
+The design of the robot prioritizes serviceability and modularity, allowing for straightforward
+access, repair, or replacement of individual components, thereby extending the robot's
+operational lifespan and facilitating modifications.
+1.​ Modular Component Design:
+●​
+
+The chassis is segmented into distinct sections, each housing specific modules such as the
+motor mount, battery holder, and sensor mounts. This modular approach permits the
+replacement or enhancement of individual sections without the need to dismantle the
+entire assembly.
+
+●​
+
+For instance, the gripper and sensor assemblies can be detached, enabling swift updates
+or repairs in response to wear or the integration of advanced technologies, such as more
+sophisticated sensors.
+
+2.​ Easy Access Points for Maintenance:
+●​
+
+The chassis features designated access points for servicing essential components,
+including the motors, battery, and sensors. These access points streamline inspection and
+replacement processes, reducing downtime and enhancing the robot's maintainability.
+
+●​
+
+Fastening points within the chassis are strategically located to ensure convenient access,
+allowing technicians to reach internal components without the necessity of removing
+unrelated sections.
+
+42
+3.​ Alignment and Calibration:
+●​
+
+The design includes alignment guides for gears and motors, which help to minimize
+assembly errors and enhance durability. These guides ensure precise alignment of
+components like the gear train, thereby reducing wear and vibration.
+
+●​
+
+The press-fit tolerance for the gears guarantees secure, vibration-free operation,
+promoting long-lasting performance and facilitating easier realignment during
+maintenance.
+
+4.​ Future Expansion and Customization:
+●​
+
+The modular chassis design accommodates future expansions. Additional mounting
+points and standardized connections enable the integration of new sensors, battery
+upgrades, or even custom gripper attachments.
+
+●​
+
+This design flexibility allows the robot to adapt to new tasks or environments, thereby
+increasing its applicability across various domains.
+
+43
+
+Test Plan, Test Results, and Product Validation
+Low-Level Tests
+●​
+
+Motor Load, Power, and Rotation: The motor’s efficiency was assessed by measuring
+the load it could sustain while maintaining consistent power output and rotation speed.
+The motor showed adequate performance on moderate loads, but as the load increased,
+power consumption rose, indicating a need for stronger support or better power
+management for heavier tasks.
+
+●​
+
+Speed Analysis on Each Chain: The speed consistency across the chains was tested to
+ensure smooth motion. Observations showed slight discrepancies in speed, potentially
+due to variances in chain length or tension.
+
+●​
+
+Gear Cog Size Issue: During testing, it became apparent that the initial gear cog size was
+insufficient for effective transmission. Larger gears were implemented, requiring chain
+link adjustments. This change allowed for better force distribution and smoother motion.
+
+44
+●​
+
+Sensor Testing: Sensor testing for mobile robots is a critical process to ensure that the
+robot can accurately perceive its environment, navigate, and interact with objects. Results
+showed that the two front IR sensors and side Ultrasonic sensors were accurate. All
+sensors were able to detect objects in front of them with sufficient precision to ensure
+stable operation.
+
+Medium Level Tests
+●​
+
+Gripper Assembly Precision: Precise control of the servo motor was essential for
+accurate position alignment and was tested by manipulating the drive chain. Results
+showed that proper alignment was maintained under various loads, confirming the servo’s
+reliability in keeping the chain in its correct position.
+
+●​
+
+Navigational Accuracy: To test the accuracy of navigation for the robot, the team tested
+the sensors mounted on the chassis with the code mentioned in the appendix. The sensors
+were able to detect objects in the robot’s path, thereby instructing the drive motors to
+redirect the robot by turning left or right based on the side ultrasonic sensor readings.
+This indicated the successful navigation of the robot.
+
+●​
+
+Terrain Efficiency: The robot was tested on different surfaces, including grass, wood,
+pebbles, and mirrors It performed well on less coarse terrains like grass and wood.
+However, traction was significantly compromised on pebbles and mirrors, where the
+drive chain struggled. These results indicated a need for improved traction capabilities to
+handle more demanding surfaces confidently.
+
+45
+●​ Electronics and Software Efficiency: Faulty and loose connections were identified
+during the testing process, resulting in uneven motor performance. After securing
+soldered wire connections and enclosing them for protection using heat shrinks,
+consistency improved. Despite these efforts, one motor continued to underperform,
+increasing the battery load. One battery exhibited bulging, necessitating a replacement to
+prevent safety hazards. These issues were further resolved for Phase B by implementing
+the prototype shield, connecting common Vcc and GND connections, and reducing the
+number of connections.
+
+High-Level Tests
+●​
+
+Robot Operational Results:
+
+●​
+
+Ramp Descent Testing:
+○​ Objective: Assess the control logic's capability to facilitate a smooth descent of
+the robot down the ramp, while modulating speed and direction in response to
+sensor input.
+○​ Method: The robot utilized ultrasonic sensors to measure distances and identify
+obstacles along the descent route. Upon detecting an obstacle in proximity, the
+control logic decreased the motor speed and modified the trajectory to prevent
+collisions.
+○​ Outcome: The robot demonstrated the ability to dynamically adjust its descent,
+validating that the control logic effectively governed speed and obstacle
+avoidance in real time.
+
+46
+
+●​
+
+Maze Navigation Testing:
+○​ Objective: Analyze the control logic's performance in navigating confined spaces
+and executing complex turns through wall-following and path-finding techniques.
+○​ Method: Infrared sensors were employed to identify walls and narrow passages,
+allowing the robot to adopt a wall-following navigation strategy within the maze.
+The control algorithm also monitored turn sequences and distances to facilitate
+path retracing when necessary.
+
+○​ Outcome: The control logic of the robot successfully navigated the maze with
+precision, adapting its route based on sensor feedback. Nonetheless, opportunities
+for optimization in path retracing were recognized as a potential enhancement for
+improved exit efficiency.
+
+Results During Demo
+The robot started successfully but encountered issues with executing the wall-following logic,
+which resulted in the robot having trouble in keeping itself centered within the ramp itself. The
+robot was able to enter the maze upon reaching the bottom of the ramp, but there were issues
+with navigating the maze itself. During both attempts of Phase B, the robot was able to enter the
+maze by using minimal save moves, but continuing toward the maze cell which contained the
+package seemed to prove difficult. The results indicated that while the team’s components were
+operating perfectly, some adjustments in the code were needed to ensure success for the next
+phase.
+
+47
+
+Modifications for the Next Phase
+●​
+
+Re-configure Chain Drive System: The team will optimize the chain drive system to
+improve performance and increase efficiency. The plan is to layer wheels with chain links
+to ensure proper tension and reduce motor load. Adding the chain links will also give
+improved traction on the number of terrains to be faced in Phase C.
+
+●​
+
+Introduce Control System to Enhance Module Localization: The team will aim to
+implement a control system that enables precise localization of the module, by
+establishing a feedback loop and improving the sensor integration. The plan is to also
+execute interrupts for the front IR sensors, which will enhance the localization process.
+
+●​
+
+Voltage Regulation: Efforts will be focused on ensuring a stable and consistent voltage
+supply to protect sensitive components and enhance the reliability of the system.
+
+48
+
+Conclusions
+The autonomous delivery robot initiative has achieved notable progress in fulfilling the goals set
+for both Phases A and B, showcasing a successful amalgamation of mechanical, electrical, and
+control systems into a cohesive mechatronic structure. During Phase A, the robot adeptly
+navigated various terrains, including grass, pebbles, and mulch, while autonomously delivering
+packages within a controlled setting. This accomplishment underscored the effective
+collaboration among essential components, such as the Arduino Due, Cytron L298P motor
+driver, and N20 motors, which ensured dependable control over movement, speed, and direction.
+The incorporation of encoders provides accurate feedback, significantly improving the robot's
+capability to adhere to predefined paths.
+In Phase B, these functionalities were further enhanced, with an emphasis on navigating intricate
+environments, such as descending ramps and maneuvering through mazes. Although the robot
+successfully entered the maze, it faced difficulties in retrieving the package and exiting the maze.
+Nevertheless, the advancements made highlight the design's operational effectiveness and the
+potential for further enhancements. The IR and ultrasonic sensors were instrumental, offering
+real-time obstacle detection that facilitated safe navigation through the maze. The chain-driven
+drive system, modular chassis design, and secure servo motor mounts collectively enhanced the
+robot's stability and adaptability, enabling controlled movement in restricted areas.
+The project has emphasized modularity, ease of maintenance, and efficient power management,
+allowing the robot to maintain equilibrium, comply with physical limitations, and function within
+a specified environment. The servo motors designed for package manipulation effectively
+controlled the base tilt and gripper mechanisms, ensuring secure handling of packages—a vital
+aspect of the robot's capability to autonomously complete delivery tasks.
+As the project advances, enhancements including sophisticated sensor integration, optimized
+navigation algorithms, and enhanced terrain adaptability will significantly augment the robot's
+capabilities. The modular design permits easy upgrades, promoting scalability and flexibility for
+undertaking more complex tasks in subsequent phases.
+
+49
+In conclusion, Phases A and B of the project have effectively established a strong foundation for
+autonomous package delivery, achieving immediate goals while creating a solid platform for
+ongoing development. The progress made in precise motor control, dependable package
+handling, and autonomous navigation has positioned the robot as a viable solution for indoor
+logistics automation, providing valuable contributions to the domains of mechatronics and
+autonomous systems.
+
+50
+
+References
+1.​ C. Contreras, “Kiva Systems Founders Share Company’s Story at Robotics Invest Event
+in Boston,” Robotics 24/7, Accessed: Oct. 10, 2024. [Online]. Available:
+https://www.robotics247.com/article/kiva_systems_founders_share_companys_story_dur
+ing_robotics_invest_event_boston
+
+2.​ M. Hossain, “Self-Driving Robots: A Revolution in the Local Delivery,” California
+Management Review Insights, Apr. 2022, Accessed: Oct. 10, 2024. [Online]. Available:
+https://cmr.berkeley.edu/2022/04/self-driving-robots-a-revolution-in-the-local-delivery/
+
+3.​ “PzH 2000 Combat Proven Artillery Superiority,” Accessed: Oct. 11, 2024. [Online].
+Available:
+https://www.knds.de/fileadmin/user_upload/broschueren_2024/KNDS_B_Ansicht_PzH2
+000_EN.pdf
+
+4.​ “NIHF Inductee Benjamin Holt Invented the Caterpillar Tractor,” National Inventors Hall
+of Fame, US Patent No. 874,008, Accessed: Oct. 10, 2024. [Online]. Available:
+https://www.invent.org/inductees/benjamin-holt
+
+5.​ W. D. Bartlett, “Coin Controlled Vending Machine,” US Patent No. 1882563, 1932,
+Accessed: Oct. 10, 2024. [Online]. Available:
+https://ppubs.uspto.gov/dirsearch-public/print/downloadBasicPdf/1882563?requestToken
+=eyJzdWIiOiJiMWE5NjY4MS02MzU4LTRkZTAtOTQwNS1lNjcyZTdkYTZiNGMiLC
+J2ZXIiOiI1YWQ3ODlhNS01YWQzLTQ5MjQtODFjMi03Zjg2OWNkNDI5NDAiLCJle
+HAiOjB9
+
+6.​ D. Yoon, “Grasping for Hope,” US News & World Report, 2017, Accessed: Oct. 10,
+2024. [Online]. Available:
+https://www.usnews.com/news/best-countries/articles/2017-09-29/south-koreas-claw-arca
+des-explode-in-popularity
+7.​ Arduino. (n.d.). Arduino Due. Retrieved from
+ourhttps://www.arduino.cc/en/Main/ArduinoBoardDue
+
+51
+8.​ Cytron Technologies. (n.d.). 2A Motor Driver Shield for Arduino (Cytron L298P).
+Retrieved from https://www.cytron.io/p-shield-2a-motor-driver
+9.​ Pololu Robotics and Electronics. (n.d.). Pololu - Micro Metal Gearmotors with Encoders.
+Retrieved from https://www.pololu.com/product/3081
+10.​Futaba. (n.d.). Futaba S3003 Standard Servo. Retrieved from
+https://www.futabarc.com/servos/futb3003.html
+11.​Cytron Technologies. (n.d.). Shield2AMotor Arduino Library Documentation. Retrieved
+from https://github.com/CytronTechnologies/CytronMotorDriver
+12.​ServoCity. (n.d.). Servo Motors: A Beginner's Guide. Retrieved from
+https://www.servocity.com/servos
+13.​Bolton, W. (2015). Mechatronics: Electronic Control Systems in Mechanical and
+Electrical Engineering (6th ed.). Pearson Education.
+14.​Siegwart, R., Nourbakhsh, I. R., & Scaramuzza, D. (2011). Introduction to Autonomous
+Mobile Robots (2nd ed.). MIT Press.
+15.​Siciliano, B., Sciavicco, L., Villani, L., & Oriolo, G. (2009). Robotics: Modelling,
+Planning, and Control. Springer Science & Business Media.
+16.​Schilling, R. J. (1990). Fundamentals of Robotics: Analysis and Control. Prentice Hall.
+
+52
+
+Appendix
+Appendix A: Initial Sketches
+
+Robot Actuation: Wheels
+
+53
+
+Robot Actuation: Propellers
+
+54
+
+Robot Actuation: Chain Drive System
+
+55
+
+Main Chassis: Vertical Structure
+
+56
+
+Main Chassis: Horizontal Structure
+
+57
+
+Gripper Mechanism: Shovel
+
+58
+
+Gripper Mechanism: Gripper
+
+59
+
+Initial Sketches for Component Placements
+
+60
+
+Appendix B: House of Quality Matrix
+
+61
+
+Appendix C: Functional Decomposition of a Delivery Robot
+
+Functional Decomposition of the Delivery Robot in terms of Energy, Material and Information Flow
+
+62
+
+Appendix D: Decision Matrix
+Decision Matrix for Power Supply
+
+Decision Matrix for Motors
+
+Decision Matrix for Sensors
+
+63
+
+Decision Matrix for Drive Mechanisms
+
+Decision Matrix for Payload Collection and Delivery Mechanism
+
+64
+
+Appendix E: FMEA Table
+
+Component
+
+Failure Mode
+
+Cause
+
+Effect
+
+Severity
+
+Occurrence
+
+Detection
+
+RPN
+
+Actions Taken
+
+Chassis
+
+Structural
+fracture
+
+Excessive load,
+impact, or
+material fatigue
+
+Loss of
+structural
+integrity,
+tipping, or
+collapse
+
+9
+
+4
+
+5
+
+180
+
+Use
+reinforcements
+in high-stress
+areas, consider
+higher-strength
+materials like
+reinforced PLA
+
+Gears/Wheels
+
+Misalignment
+or wear
+
+Vibration, loose
+fit, inadequate
+traction
+
+Reduced
+maneuverability
+, motor strain
+
+8
+
+5
+
+4
+
+160
+
+Tighten
+tolerances,
+apply adhesive
+grip tapes,
+re-purpose
+chain drive
+
+Ultrasonic/IR
+Sensors
+
+Detection
+failure
+
+Misalignment,
+dirt
+accumulation,
+or sensor
+malfunction
+
+Inaccurate
+navigation,
+collision risk
+
+7
+
+3
+
+6
+
+126
+
+Secure sensor
+mounts and
+connections,
+regular
+efficiency tests
+using SM
+
+Battery
+
+Overheating or
+bulging
+
+Excessive
+current draw,
+poor ventilation
+
+Thermal
+runaway, fire
+hazard
+
+10
+
+3
+
+4
+
+120
+
+Use LiPo
+batteries with
+overcharge
+protection,
+ensure proper
+ventilation, and
+conduct
+temperature
+checks
+
+65
+
+Motor (N20)
+
+Overheating or
+stalling
+
+High load,
+inadequate
+ventilation
+
+Reduced motor
+lifespan,
+potential
+shutdown
+
+7
+
+4
+
+5
+
+140
+
+Provide
+ventilation
+openings, add
+ball bearing for
+smooth
+rotations
+
+Control
+Circuitry
+
+Short circuit
+
+Loose
+connections,
+vibration
+
+System failure,
+potential fire
+hazard
+
+9
+
+3
+
+6
+
+162
+
+Solder and
+insulate all
+connections, use
+vibration
+dampeners, and
+inspect
+regularly
+
+Gripper
+Mechanism
+
+Loss of grip or
+tilt angle
+
+Servo
+malfunction,
+loose
+components
+
+Payload drop,
+failure to
+complete
+delivery
+
+8
+
+4
+
+5
+
+160
+
+Calibrate grip
+force, use
+mechanical
+locks for the
+gripper, conduct
+periodic checks
+on servo
+alignment
+
+Drive Motor
+Encoders
+
+Inaccurate
+feedback
+
+Dust, wear, or
+poor
+connection
+
+Navigation
+errors, poor
+speed control
+
+6
+
+3
+
+5
+
+90
+
+Clean encoders
+regularly, use
+protective
+covers, verify
+connections
+
+Control System
+(Arduino)
+
+Software
+malfunction
+
+Code errors,
+sensor feedback
+issues
+
+Erratic
+operation,
+navigation
+errors
+
+8
+
+3
+
+6
+
+144
+
+Conduct
+extensive
+software testing,
+and implement
+error-checking
+routines,
+including
+emergency stop
+button
+
+66
+
+Appendix F: Code Implementation
+Loop Function
+
+67
+
+Wall-Following Logic
+
+68
+
+Appendix G: Engineering Drawings
+Chassis Assembly BOM
+
+69
+
+Chassis Exploded BOM
+
+70
+
+Chassis Renders
+
+Phase B Render
+
+Phase A Render
+
+71
+
+Chassis Phase B
+
+72
+Chassis Phase A
+
+73
+
+Front Spur Gear Phase B
+
+74
+Front Spur Gear Phase A
+
+75
+
+Rear Spur Gear
+
+76
+
+Roof Phase B
+
+77
+
+Roof Phase A
+
+78
+
+Motor Gripper Actuator
+
+79
+
+Motor Holder
+
+80
+
+Chain Drive Assembly
+
+81
+
+Chain Link
+
+82
+
+Chain Pin
+
+83
+
+Chain Lock
+
+84
+
+Left and Right Grippers
+
+85
+
+Gripper Base
+
+

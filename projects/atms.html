@@ -1,0 +1,747 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ATMS Project | Pranav Banga Portfolio</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="../images/favicon.png">
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project.css">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- GSAP Animation Library -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container nav-wrapper">
+            <a href="../index.html" class="logo">PB</a>
+            
+            <div class="nav-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            
+            <ul class="nav-links">
+                <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                <li><a href="../index.html#about" class="nav-link">About</a></li>
+                <li><a href="../index.html#experience" class="nav-link">Experience</a></li>
+                <li><a href="../index.html#projects" class="nav-link active">Projects</a></li>
+                <li><a href="../index.html#additive" class="nav-link">Additive Manufacturing</a></li>
+                <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                <li><a href="../index.html#gallery" class="nav-link">Gallery</a></li>
+                <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+    
+    <!-- Project Hero Section -->
+    <section class="project-hero">
+        <div class="project-hero-background">
+            <img src="../images/placeholders/projects/atms/atms_hero.jpg" alt="ATMS Project" class="project-hero-image">
+            <div class="project-hero-overlay"></div>
+        </div>
+        
+        <div class="container project-hero-content">
+            <div class="project-hero-text">
+                <span class="project-category-badge">Robotics & Automation</span>
+                <h1 class="project-hero-title">Autonomous Telescope Mount System (ATMS)</h1>
+                <p class="project-hero-description">A revolutionary system for automated astronomical observations with precision tracking and control</p>
+                
+                <div class="project-meta">
+                    <div class="project-meta-item">
+                        <div class="project-meta-label">Duration</div>
+                        <div class="project-meta-value">8 Months</div>
+                    </div>
+                    <div class="project-meta-item">
+                        <div class="project-meta-label">Role</div>
+                        <div class="project-meta-value">Project Lead</div>
+                    </div>
+                    <div class="project-meta-item">
+                        <div class="project-meta-label">Team Size</div>
+                        <div class="project-meta-value">5 Members</div>
+                    </div>
+                    <div class="project-meta-item">
+                        <div class="project-meta-label">Completion</div>
+                        <div class="project-meta-value">2023</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Project Overview -->
+    <section class="project-content">
+        <div class="container">
+            <div class="project-section">
+                <h2 class="project-section-title">Project Overview</h2>
+                <div class="project-overview-grid">
+                    <div class="project-text">
+                        <p>
+                            The Autonomous Telescope Mount System (ATMS) is a cutting-edge solution designed to revolutionize astronomical observations by automating telescope positioning and tracking. As the project lead, I spearheaded the development of this innovative system that combines precision mechanics, advanced electronics, and sophisticated software algorithms.
+                        </p>
+                        <p>
+                            ATMS enables astronomers and researchers to conduct automated observations with unprecedented accuracy, eliminating the need for manual adjustments and allowing for extended observation periods without human intervention. The system is capable of tracking celestial objects with high precision, compensating for Earth's rotation, and adapting to changing atmospheric conditions.
+                        </p>
+                    </div>
+                    
+                    <div class="project-image-container">
+                        <img src="../images/placeholders/projects/atms/atms_overview.jpg" alt="ATMS Overview">
+                    </div>
+                </div>
+                
+                <div class="project-stats-container">
+                    <div class="project-stat">
+                        <div class="stat-value" data-value="99.8">0</div>
+                        <div class="stat-label">Tracking Accuracy (%)</div>
+                    </div>
+                    <div class="project-stat">
+                        <div class="stat-value" data-value="8">0</div>
+                        <div class="stat-label">Hours Continuous Operation</div>
+                    </div>
+                    <div class="project-stat">
+                        <div class="stat-value" data-value="75">0</div>
+                        <div class="stat-label">Setup Time Reduction (%)</div>
+                    </div>
+                    <div class="project-stat">
+                        <div class="stat-value" data-value="5">0</div>
+                        <div class="stat-label">Team Members</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Technologies Used -->
+            <div class="project-section">
+                <h2 class="project-section-title">Technologies Used</h2>
+                <div class="project-technologies">
+                    <div class="project-technology">Python</div>
+                    <div class="project-technology">C++</div>
+                    <div class="project-technology">Raspberry Pi</div>
+                    <div class="project-technology">Arduino</div>
+                    <div class="project-technology">SolidWorks</div>
+                    <div class="project-technology">PCB Design</div>
+                    <div class="project-technology">Stepper Motors</div>
+                    <div class="project-technology">Optical Encoders</div>
+                    <div class="project-technology">Web Interface</div>
+                    <div class="project-technology">Computer Vision</div>
+                </div>
+            </div>
+            
+            <!-- Interactive Features Section -->
+            <div class="project-section">
+                <h2 class="project-section-title">Key Features</h2>
+                
+                <div class="project-features">
+                    <div class="project-feature">
+                        <div class="project-feature-icon">
+                            <i class="fas fa-crosshairs"></i>
+                        </div>
+                        <h3 class="project-feature-title">Precision Tracking</h3>
+                        <p class="project-feature-text">Sub-arcsecond tracking accuracy with real-time error correction and adaptive algorithms for atmospheric distortion compensation.</p>
+                    </div>
+                    
+                    <div class="project-feature">
+                        <div class="project-feature-icon">
+                            <i class="fas fa-robot"></i>
+                        </div>
+                        <h3 class="project-feature-title">Autonomous Operation</h3>
+                        <p class="project-feature-text">Fully automated celestial object acquisition and tracking with minimal human intervention required.</p>
+                    </div>
+                    
+                    <div class="project-feature">
+                        <div class="project-feature-icon">
+                            <i class="fas fa-laptop-code"></i>
+                        </div>
+                        <h3 class="project-feature-title">Remote Control</h3>
+                        <p class="project-feature-text">Web-based interface for remote operation and monitoring, accessible from any device with internet connection.</p>
+                    </div>
+                    
+                    <div class="project-feature">
+                        <div class="project-feature-icon">
+                            <i class="fas fa-database"></i>
+                        </div>
+                        <h3 class="project-feature-title">Object Database</h3>
+                        <p class="project-feature-text">Integrated celestial object database with automatic coordinate calculation and observation scheduling.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Development Process -->
+            <div class="project-section">
+                <h2 class="project-section-title">Development Process</h2>
+                
+                <div class="process-tabs">
+                    <div class="process-tab-buttons">
+                        <button class="process-tab-btn active" data-tab="research">Research</button>
+                        <button class="process-tab-btn" data-tab="design">Design</button>
+                        <button class="process-tab-btn" data-tab="development">Development</button>
+                        <button class="process-tab-btn" data-tab="testing">Testing</button>
+                        <button class="process-tab-btn" data-tab="deployment">Deployment</button>
+                    </div>
+                    
+                    <div class="process-tab-content active" id="research-content">
+                        <div class="tab-content-grid">
+                            <div class="tab-content-text">
+                                <h3>Research & Requirements</h3>
+                                <p>
+                                    The project began with extensive research into existing telescope mount systems and their limitations. We conducted stakeholder interviews with astronomers and observatory technicians to understand their needs and pain points.
+                                </p>
+                                <p>
+                                    Key requirements identified included:
+                                </p>
+                                <ul>
+                                    <li>Sub-arcsecond tracking accuracy</li>
+                                    <li>Minimum 8-hour continuous operation</li>
+                                    <li>Compatibility with various telescope models</li>
+                                    <li>User-friendly interface for both novice and expert users</li>
+                                    <li>Remote operation capabilities</li>
+                                    <li>Robust error handling and recovery</li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-image">
+                                <img src="../images/placeholders/projects/atms/research.jpg" alt="ATMS Research Phase">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-tab-content" id="design-content">
+                        <div class="tab-content-grid">
+                            <div class="tab-content-text">
+                                <h3>Design & Prototyping</h3>
+                                <p>
+                                    The design phase involved creating detailed mechanical models using SolidWorks and electrical schematics for the control system. We explored various motor and gearbox configurations to achieve the required precision.
+                                </p>
+                                <p>
+                                    Multiple prototypes were built to test different approaches:
+                                </p>
+                                <ul>
+                                    <li>Prototype 1: Basic concept validation with off-the-shelf components</li>
+                                    <li>Prototype 2: Custom gearbox design with improved motor controllers</li>
+                                    <li>Prototype 3: Integrated system with preliminary software control</li>
+                                    <li>Final Design: Refined mechanics, custom PCB, and complete software stack</li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-image">
+                                <img src="../images/placeholders/projects/atms/design.jpg" alt="ATMS Design Phase">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-tab-content" id="development-content">
+                        <div class="tab-content-grid">
+                            <div class="tab-content-text">
+                                <h3>Software & Hardware Development</h3>
+                                <p>
+                                    The development phase focused on implementing the control software and integrating all hardware components. The software was developed using Python for high-level control and C++ for performance-critical components.
+                                </p>
+                                <p>
+                                    Key development milestones included:
+                                </p>
+                                <ul>
+                                    <li>Motor control algorithms with PID feedback loops</li>
+                                    <li>Star tracking system using computer vision</li>
+                                    <li>Web-based user interface with responsive design</li>
+                                    <li>Custom PCB fabrication and assembly</li>
+                                    <li>Integration of all subsystems into a cohesive platform</li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-image">
+                                <img src="../images/placeholders/projects/atms/development.jpg" alt="ATMS Development Phase">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-tab-content" id="testing-content">
+                        <div class="tab-content-grid">
+                            <div class="tab-content-text">
+                                <h3>Integration & Testing</h3>
+                                <p>
+                                    Rigorous testing was conducted to ensure the system met all requirements. This included laboratory tests for precision and reliability, as well as field tests under real astronomical conditions.
+                                </p>
+                                <p>
+                                    Testing procedures included:
+                                </p>
+                                <ul>
+                                    <li>Precision measurements using laser interferometry</li>
+                                    <li>Long-duration stability tests (8+ hours)</li>
+                                    <li>Environmental testing (temperature, humidity, vibration)</li>
+                                    <li>User interface usability testing with target users</li>
+                                    <li>Stress testing with continuous operation cycles</li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-image">
+                                <img src="../images/placeholders/projects/atms/testing.jpg" alt="ATMS Testing Phase">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="process-tab-content" id="deployment-content">
+                        <div class="tab-content-grid">
+                            <div class="tab-content-text">
+                                <h3>Deployment & Refinement</h3>
+                                <p>
+                                    The final system was deployed at a university observatory for real-world use. User feedback was collected and used to make iterative improvements to both hardware and software components.
+                                </p>
+                                <p>
+                                    Post-deployment activities included:
+                                </p>
+                                <ul>
+                                    <li>User training sessions for observatory staff</li>
+                                    <li>Documentation creation (user manual, technical specifications)</li>
+                                    <li>Software updates based on user feedback</li>
+                                    <li>Performance monitoring and optimization</li>
+                                    <li>Preparation for potential commercialization</li>
+                                </ul>
+                            </div>
+                            <div class="tab-content-image">
+                                <img src="../images/placeholders/projects/atms/deployment.jpg" alt="ATMS Deployment Phase">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Challenges & Solutions -->
+            <div class="project-section">
+                <h2 class="project-section-title">Challenges & Solutions</h2>
+                
+                <div class="challenges-accordion">
+                    <div class="challenge-item">
+                        <div class="challenge-header">
+                            <h3>Precision Control</h3>
+                            <div class="challenge-toggle"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="challenge-content">
+                            <div class="challenge-description">
+                                <p>Achieving sub-arcsecond tracking accuracy required extremely precise motor control and mechanical design. Standard stepper motors and gearboxes were insufficient for the level of precision needed.</p>
+                            </div>
+                            <div class="solution">
+                                <h4>Solution:</h4>
+                                <p>We implemented a custom-designed gearbox with a high reduction ratio (1:1000) and developed a closed-loop control system with optical encoders providing 0.1 arcsecond resolution. This was combined with a PID controller that continuously adjusted motor movements based on real-time position feedback.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <div class="challenge-header">
+                            <h3>Power Management</h3>
+                            <div class="challenge-toggle"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="challenge-content">
+                            <div class="challenge-description">
+                                <p>The system needed to operate for extended periods while managing power consumption efficiently. Initial prototypes drained batteries quickly, limiting observation time.</p>
+                            </div>
+                            <div class="solution">
+                                <h4>Solution:</h4>
+                                <p>We designed a sophisticated power management system with sleep modes for non-critical components and implemented a battery backup system with solar charging capabilities. Power-hungry components were optimized for efficiency, and the software included power-saving algorithms that adjusted performance based on observation requirements.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <div class="challenge-header">
+                            <h3>Environmental Factors</h3>
+                            <div class="challenge-toggle"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="challenge-content">
+                            <div class="challenge-description">
+                                <p>Outdoor operation exposed the system to temperature variations, humidity, and other environmental challenges that affected mechanical precision and electronic reliability.</p>
+                            </div>
+                            <div class="solution">
+                                <h4>Solution:</h4>
+                                <p>We developed a weatherproof enclosure with active thermal management to maintain stable operating temperatures. The software included compensation algorithms that adjusted for thermal expansion/contraction of mechanical components. All electronic components were conformal coated for moisture resistance, and critical systems had redundant backups.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="challenge-item">
+                        <div class="challenge-header">
+                            <h3>User Interface Complexity</h3>
+                            <div class="challenge-toggle"><i class="fas fa-plus"></i></div>
+                        </div>
+                        <div class="challenge-content">
+                            <div class="challenge-description">
+                                <p>Creating an interface that was both powerful enough for expert astronomers and accessible to novice users proved challenging. Early versions were either too complex or too limited in functionality.</p>
+                            </div>
+                            <div class="solution">
+                                <h4>Solution:</h4>
+                                <p>We implemented a multi-layered user interface with basic, advanced, and expert modes. The basic mode offered simple point-and-track functionality with automated settings, while advanced and expert modes provided progressively more detailed control options. User testing with both novice and experienced astronomers helped refine the interface for optimal usability.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Gallery -->
+            <div class="project-section">
+                <h2 class="project-section-title">Project Gallery</h2>
+                
+                <div class="project-gallery">
+                    <div class="project-gallery-item" data-src="../images/placeholders/projects/atms/atms_gallery1.jpg">
+                        <img src="../images/placeholders/projects/atms/atms_gallery1.jpg" alt="ATMS Mechanical Design" class="project-gallery-image">
+                        <div class="gallery-item-overlay">
+                            <div class="gallery-item-title">Mechanical Design</div>
+                            <div class="gallery-item-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="project-gallery-item" data-src="../images/placeholders/projects/atms/atms_gallery2.jpg">
+                        <img src="../images/placeholders/projects/atms/atms_gallery2.jpg" alt="ATMS Electronics" class="project-gallery-image">
+                        <div class="gallery-item-overlay">
+                            <div class="gallery-item-title">Electronics</div>
+                            <div class="gallery-item-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="project-gallery-item" data-src="../images/placeholders/projects/atms/atms_gallery3.jpg">
+                        <img src="../images/placeholders/projects/atms/atms_gallery3.jpg" alt="ATMS Software Interface" class="project-gallery-image">
+                        <div class="gallery-item-overlay">
+                            <div class="gallery-item-title">Software Interface</div>
+                            <div class="gallery-item-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="project-gallery-item" data-src="../images/placeholders/projects/atms/atms_gallery4.jpg">
+                        <img src="../images/placeholders/projects/atms/atms_gallery4.jpg" alt="ATMS Testing" class="project-gallery-image">
+                        <div class="gallery-item-overlay">
+                            <div class="gallery-item-title">Testing Phase</div>
+                            <div class="gallery-item-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="project-gallery-item" data-src="../images/placeholders/projects/atms/atms_gallery5.jpg">
+                        <img src="../images/placeholders/projects/atms/atms_gallery5.jpg" alt="ATMS Deployment" class="project-gallery-image">
+                        <div class="gallery-item-overlay">
+                            <div class="gallery-item-title">Deployment</div>
+                            <div class="gallery-item-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                    <div class="project-gallery-item" data-src="../images/placeholders/projects/atms/atms_gallery6.jpg">
+                        <img src="../images/placeholders/projects/atms/atms_gallery6.jpg" alt="ATMS Team" class="project-gallery-image">
+                        <div class="gallery-item-overlay">
+                            <div class="gallery-item-title">Project Team</div>
+                            <div class="gallery-item-icon"><i class="fas fa-search-plus"></i></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Gallery Modal -->
+                <div class="gallery-modal">
+                    <div class="modal-content">
+                        <img src="" alt="Gallery Image" class="modal-image">
+                        <div class="modal-caption"></div>
+                        <div class="modal-close"><i class="fas fa-times"></i></div>
+                        <div class="modal-nav">
+                            <div class="modal-nav-btn modal-prev"><i class="fas fa-chevron-left"></i></div>
+                            <div class="modal-nav-btn modal-next"><i class="fas fa-chevron-right"></i></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Results & Impact -->
+            <div class="project-section">
+                <h2 class="project-section-title">Results & Impact</h2>
+                
+                <div class="results-container">
+                    <div class="results-text">
+                        <p>
+                            The ATMS project achieved all its primary objectives and exceeded expectations in several areas. The system has been successfully deployed at a university observatory where it has significantly improved the efficiency and capabilities of astronomical research.
+                        </p>
+                        <p>
+                            Key achievements include:
+                        </p>
+                        <ul>
+                            <li>Tracking accuracy of 0.2 arcseconds, exceeding the initial target of 0.5 arcseconds</li>
+                            <li>Continuous operation for over 8 hours without human intervention</li>
+                            <li>75% reduction in setup time compared to manual telescope mounts</li>
+                            <li>Successful integration with existing observatory equipment</li>
+                            <li>Recognition from the Brilliant Catalyst innovation program</li>
+                        </ul>
+                        <p>
+                            The project has opened up new possibilities for astronomical research at the university, enabling longer observation periods and more precise data collection. The technology developed has potential applications beyond astronomy, including satellite tracking, laser communication systems, and other precision positioning applications.
+                        </p>
+                    </div>
+                    
+                    <div class="results-image">
+                        <img src="../images/placeholders/projects/atms/results.jpg" alt="ATMS Results">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project Navigation -->
+            <div class="project-navigation">
+                <a href="terrain-robot.html" class="project-nav-link prev">
+                    <i class="fas fa-arrow-left"></i>
+                    <span>Previous Project</span>
+                </a>
+                <a href="autonomous-car.html" class="project-nav-link next">
+                    <span>Next Project</span>
+                    <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">PB</div>
+                <div class="footer-text">
+                    <p>&copy; 2025 Pranav Banga. All rights reserved.</p>
+                </div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- JavaScript -->
+    <script src="../js/project.js"></script>
+    <script>
+        // ATMS Project Page Specific JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Animate stats on scroll
+            const statValues = document.querySelectorAll('.stat-value');
+            
+            function animateStats() {
+                statValues.forEach(stat => {
+                    const targetValue = parseFloat(stat.getAttribute('data-value'));
+                    const duration = 2000; // 2 seconds
+                    const startTime = Date.now();
+                    const startValue = 0;
+                    
+                    function updateValue() {
+                        const currentTime = Date.now();
+                        const elapsed = currentTime - startTime;
+                        const progress = Math.min(elapsed / duration, 1);
+                        
+                        // Easing function for smoother animation
+                        const easeOutQuad = progress * (2 - progress);
+                        
+                        const currentValue = startValue + (targetValue - startValue) * easeOutQuad;
+                        stat.textContent = targetValue % 1 === 0 ? Math.floor(currentValue) : currentValue.toFixed(1);
+                        
+                        if (progress < 1) {
+                            requestAnimationFrame(updateValue);
+                        }
+                    }
+                    
+                    updateValue();
+                });
+            }
+            
+            // Create an Intersection Observer to trigger animation when stats are visible
+            const statsContainer = document.querySelector('.project-stats-container');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        animateStats();
+                        observer.unobserve(entry.target);
+                    }
+                });
+            }, { threshold: 0.5 });
+            
+            if (statsContainer) {
+                observer.observe(statsContainer);
+            }
+            
+            // Process Tabs Functionality
+            const processTabs = document.querySelectorAll('.process-tab-btn');
+            const processContents = document.querySelectorAll('.process-tab-content');
+            
+            processTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    processTabs.forEach(t => t.classList.remove('active'));
+                    processContents.forEach(c => c.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    // Show corresponding content
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(`${tabId}-content`).classList.add('active');
+                });
+            });
+            
+            // Challenges Accordion Functionality
+            const challengeHeaders = document.querySelectorAll('.challenge-header');
+            
+            challengeHeaders.forEach(header => {
+                header.addEventListener('click', () => {
+                    const item = header.parentElement;
+                    const isActive = item.classList.contains('active');
+                    
+                    // Close all items
+                    document.querySelectorAll('.challenge-item').forEach(i => {
+                        i.classList.remove('active');
+                        const toggle = i.querySelector('.challenge-toggle i');
+                        toggle.className = 'fas fa-plus';
+                    });
+                    
+                    // If clicked item wasn't active, open it
+                    if (!isActive) {
+                        item.classList.add('active');
+                        const toggle = header.querySelector('.challenge-toggle i');
+                        toggle.className = 'fas fa-minus';
+                    }
+                });
+            });
+            
+            // Gallery Modal Functionality
+            const galleryItems = document.querySelectorAll('.project-gallery-item');
+            const modal = document.querySelector('.gallery-modal');
+            const modalImage = document.querySelector('.modal-image');
+            const modalCaption = document.querySelector('.modal-caption');
+            const modalClose = document.querySelector('.modal-close');
+            const modalPrev = document.querySelector('.modal-prev');
+            const modalNext = document.querySelector('.modal-next');
+            
+            let currentIndex = 0;
+            
+            galleryItems.forEach((item, index) => {
+                item.addEventListener('click', () => {
+                    const imgSrc = item.getAttribute('data-src');
+                    const imgAlt = item.querySelector('img').getAttribute('alt');
+                    
+                    modalImage.src = imgSrc;
+                    modalCaption.textContent = imgAlt;
+                    modal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                    
+                    currentIndex = index;
+                });
+            });
+            
+            modalClose.addEventListener('click', () => {
+                modal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            modalPrev.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                updateModalImage();
+            });
+            
+            modalNext.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % galleryItems.length;
+                updateModalImage();
+            });
+            
+            function updateModalImage() {
+                const item = galleryItems[currentIndex];
+                const imgSrc = item.getAttribute('data-src');
+                const imgAlt = item.querySelector('img').getAttribute('alt');
+                
+                modalImage.style.opacity = '0';
+                
+                setTimeout(() => {
+                    modalImage.src = imgSrc;
+                    modalCaption.textContent = imgAlt;
+                    modalImage.style.opacity = '1';
+                }, 300);
+            }
+            
+            // Keyboard navigation for gallery
+            document.addEventListener('keydown', (e) => {
+                if (!modal.classList.contains('active')) return;
+                
+                if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+                    updateModalImage();
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % galleryItems.length;
+                    updateModalImage();
+                } else if (e.key === 'Escape') {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // GSAP Animations
+            gsap.registerPlugin(ScrollTrigger);
+            
+            // Animate project features on scroll
+            gsap.utils.toArray('.project-feature').forEach((feature, i) => {
+                gsap.from(feature, {
+                    y: 50,
+                    opacity: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: feature,
+                        start: "top 80%",
+                        once: true
+                    },
+                    delay: i * 0.2
+                });
+            });
+            
+            // Animate section titles
+            gsap.utils.toArray('.project-section-title').forEach(title => {
+                gsap.from(title, {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.8,
+                    scrollTrigger: {
+                        trigger: title,
+                        start: "top 85%",
+                        once: true
+                    }
+                });
+            });
+            
+            // Animate project gallery items
+            gsap.utils.toArray('.project-gallery-item').forEach((item, i) => {
+                gsap.from(item, {
+                    y: 30,
+                    opacity: 0,
+                    duration: 0.6,
+                    scrollTrigger: {
+                        trigger: item,
+                        start: "top 85%",
+                        once: true
+                    },
+                    delay: i * 0.1
+                });
+            });
+        });
+    </script>
+</body>
+</html>

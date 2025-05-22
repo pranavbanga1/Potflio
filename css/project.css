@@ -1,0 +1,322 @@
+/* 
+   Project Page Stylesheet for Pranav Banga's Portfolio
+   Hybrid Version - Based on V3 aesthetic with V4 features
+*/
+
+/* ===== PROJECT PAGE STYLES ===== */
+.project-hero {
+  position: relative;
+  height: 70vh;
+  min-height: 500px;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.project-hero-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+}
+
+.project-hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--bg-overlay);
+  z-index: 0;
+}
+
+.project-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 1000px;
+  padding: 0 var(--spacing-md);
+}
+
+.project-category-badge {
+  display: inline-block;
+  padding: 0.5rem 1.5rem;
+  background-color: var(--secondary-color);
+  color: var(--text-primary);
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-hero-title {
+  font-size: 6.4rem;
+  font-weight: 800;
+  line-height: 1.1;
+  margin-bottom: var(--spacing-md);
+}
+
+.project-hero-description {
+  font-size: 2rem;
+  max-width: 700px;
+  margin-bottom: var(--spacing-lg);
+}
+
+.project-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.project-meta-item {
+  flex: 1;
+  min-width: 200px;
+}
+
+.project-meta-label {
+  font-size: 1.4rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.project-meta-value {
+  font-size: 1.8rem;
+  font-weight: 600;
+}
+
+.project-content {
+  padding: var(--spacing-xl) 0;
+}
+
+.project-section {
+  margin-bottom: var(--spacing-xl);
+}
+
+.project-section-title {
+  font-size: 3.2rem;
+  margin-bottom: var(--spacing-md);
+  position: relative;
+  padding-bottom: var(--spacing-sm);
+}
+
+.project-section-title::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 60px;
+  height: 4px;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+}
+
+.project-text {
+  font-size: 1.8rem;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: var(--spacing-md);
+}
+
+.project-image-container {
+  margin: var(--spacing-lg) 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.project-image-container img {
+  width: 100%;
+  height: auto;
+}
+
+.project-gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.project-gallery-item {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+  aspect-ratio: 16 / 9;
+  cursor: pointer;
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.project-gallery-item:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.project-gallery-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform var(--transition-slow);
+}
+
+.project-gallery-item:hover .project-gallery-image {
+  transform: scale(1.05);
+}
+
+.project-video-container {
+  position: relative;
+  width: 100%;
+  padding-bottom: 56.25%; /* 16:9 aspect ratio */
+  margin: var(--spacing-lg) 0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+.project-video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.project-features {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: var(--spacing-md);
+  margin: var(--spacing-lg) 0;
+}
+
+.project-feature {
+  background-color: var(--bg-card);
+  padding: var(--spacing-md);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  transition: transform var(--transition-normal);
+}
+
+.project-feature:hover {
+  transform: translateY(-5px);
+}
+
+.project-feature-icon {
+  font-size: 3.2rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-feature-title {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.project-feature-text {
+  font-size: 1.6rem;
+  color: var(--text-secondary);
+}
+
+.project-technologies {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin: var(--spacing-md) 0;
+}
+
+.project-technology {
+  padding: 0.8rem 1.6rem;
+  background-color: var(--bg-card);
+  color: var(--text-secondary);
+  border-radius: var(--radius-full);
+  font-size: 1.4rem;
+  transition: all var(--transition-normal);
+}
+
+.project-technology:hover {
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  transform: translateY(-3px);
+}
+
+.project-navigation {
+  display: flex;
+  justify-content: space-between;
+  margin-top: var(--spacing-xl);
+  padding-top: var(--spacing-lg);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.project-nav-link {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: all var(--transition-normal);
+}
+
+.project-nav-link:hover {
+  color: var(--primary-color);
+  transform: translateX(-5px);
+}
+
+.project-nav-link.next:hover {
+  transform: translateX(5px);
+}
+
+.project-nav-link i {
+  font-size: 2.4rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .project-hero-title {
+    font-size: 5.6rem;
+  }
+  
+  .project-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .project-hero-title {
+    font-size: 4.8rem;
+  }
+  
+  .project-hero-description {
+    font-size: 1.8rem;
+  }
+  
+  .project-meta {
+    flex-direction: column;
+    gap: var(--spacing-sm);
+  }
+  
+  .project-gallery {
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  }
+}
+
+@media (max-width: 576px) {
+  .project-hero-title {
+    font-size: 3.6rem;
+  }
+  
+  .project-section-title {
+    font-size: 2.8rem;
+  }
+  
+  .project-text {
+    font-size: 1.6rem;
+  }
+  
+  .project-navigation {
+    flex-direction: column;
+    gap: var(--spacing-md);
+  }
+}

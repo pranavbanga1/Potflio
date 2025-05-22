@@ -1,0 +1,344 @@
+/* 
+   Additive Manufacturing Section Stylesheet for Pranav Banga's Portfolio
+   Hybrid Version with 3D Model Toggle
+*/
+
+/* Section Container */
+.additive-section {
+    padding: 100px 0;
+    background-color: var(--bg-darker);
+    position: relative;
+}
+
+.additive-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.additive-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff;
+    position: relative;
+    display: inline-block;
+}
+
+.additive-title::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: linear-gradient(90deg, var(--primary-color), #4d5aff);
+    border-radius: 2px;
+}
+
+/* Services Section */
+.services-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 50px;
+    margin-bottom: 80px;
+}
+
+.services-text {
+    color: var(--text-secondary);
+    font-size: 1.6rem;
+    line-height: 1.8;
+}
+
+.services-text h3 {
+    font-size: 2.4rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+}
+
+.services-image {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    min-height: 300px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.services-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Service Cards */
+.service-cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-bottom: 80px;
+}
+
+.service-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.service-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.service-icon {
+    width: 60px;
+    height: 60px;
+    background-color: rgba(77, 90, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+.service-icon i {
+    font-size: 2.4rem;
+    color: var(--primary-color);
+}
+
+.service-title {
+    font-size: 2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.service-description {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* 3D Model Viewer */
+.model-viewer-container {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    margin-bottom: 80px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+.model-viewer-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.model-viewer-title {
+    font-size: 2.4rem;
+    color: #fff;
+}
+
+.model-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.model-control-btn {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: var(--bg-dark);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.model-control-btn:hover {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+.model-viewer {
+    width: 100%;
+    height: 400px;
+    background-color: var(--bg-dark);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.model-placeholder {
+    text-align: center;
+    color: var(--text-muted);
+}
+
+.model-placeholder i {
+    font-size: 5rem;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.model-placeholder p {
+    font-size: 1.6rem;
+    margin-bottom: 20px;
+}
+
+.model-upload-btn {
+    padding: 10px 20px;
+    background-color: var(--primary-color);
+    color: #fff;
+    border: none;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.model-upload-btn:hover {
+    background-color: #ff8f6b;
+    transform: translateY(-3px);
+}
+
+.model-selector {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.model-option {
+    padding: 10px 20px;
+    background-color: var(--bg-dark);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 30px;
+    font-size: 1.4rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.model-option:hover {
+    background-color: rgba(255, 77, 90, 0.2);
+}
+
+.model-option.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Gallery */
+.additive-gallery {
+    position: relative;
+}
+
+.gallery-container {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.gallery-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+.gallery-slide.active {
+    opacity: 1;
+}
+
+.gallery-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gallery-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 15px;
+    z-index: 2;
+}
+
+.gallery-control {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: rgba(0, 0, 0, 0.5);
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-control:hover {
+    background-color: var(--primary-color);
+}
+
+.gallery-indicators {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.gallery-indicator {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: rgba(255, 255, 255, 0.5);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.gallery-indicator.active {
+    background-color: var(--primary-color);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 992px) {
+    .services-container {
+        grid-template-columns: 1fr;
+    }
+    
+    .service-cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .service-cards {
+        grid-template-columns: 1fr;
+    }
+    
+    .model-viewer {
+        height: 300px;
+    }
+}

@@ -1,0 +1,529 @@
+EcoCharge
+Hardik Maheshwari, Harsh Kachhia, Alan George, Pranav Banga
+
+Abstract—The growing dependence on portable electronic de-
+
+By addressing e-waste and prolonging the lifespan of dis-
+
+vices has heightened the demand for sustainable energy solutions
+
+carded batteries, EcoCharge not only provides an environmen-
+
+to address the environmental issues associated with electronic
+
+tally friendly alternative to traditional power banks but also ex-
+
+waste. EcoCharge offers a novel solution by creating a sustainable
+power bank that incorporates a real-time Battery Management
+
+emplifies the impact of sustainable technologies in minimizing
+
+System (BMS) using recycled lithium-ion cells sourced from
+
+environmental damage and promoting a circular economy. This
+
+discarded vape devices. This system tracks essential battery
+
+initiative underscores the potential of innovative approaches in
+
+metrics, including voltage, temperature, and charge-discharge
+
+effectively tackling global e-waste challenges.
+
+rates, presenting this information through an accessible webbased dashboard. Aiming to encourage e-waste recycling while
+
+II. BACKGROUND
+
+delivering a dependable energy source, EcoCharge merges effective hardware, such as ESP32 microcontrollers and custom PCBs,
+
+Humanity’s growing reliance on portable electronic devices
+
+with sophisticated software capabilities for real-time monitoring
+
+has brought with it the consequence of equally excessive
+
+and management. This initiative not only underscores the possi-
+
+electronic waste, or e-waste. The UN defines e-waste as any
+
+bilities of repurposing electronic waste but also provides a scal-
+
+discarded products with a battery or plug and features toxic
+
+able and eco-friendly alternative for portable energy solutions.
+
+and hazardous substances that pose severe risks to human and
+environmental health [1].
+
+I. I NTRODUCTION
+
+Disposable vapes contribute significantly to e-waste, with
+over 1.2 million used vapes disposed of weekly in the U.K. [2].
+
+The swift proliferation of portable electronic devices has
+
+These devices contain rechargeable lithium-ion batteries, mak-
+
+resulted in a heightened demand for power solutions, exacer-
+
+ing them a prime candidate for sustainable recycling and
+
+bating the environmental issue of electronic waste (e-waste).
+
+repurposing.
+
+Vape devices, which are a notable contributor to e-waste, often
+
+Existing methods of recycling lithium-ion batteries involve
+
+contain lithium-ion batteries that are frequently discarded in
+
+industrial processes that are hazardous, complex, and time-
+
+landfills, despite their potential for repurposing. This initiative
+
+consuming [3]. As an alternative, this project repurposes these
+
+seeks to mitigate these issues by reusing lithium-ion cells from
+
+batteries directly, integrating them into modular power banks
+
+abandoned vape devices to create a sustainable power bank.
+
+that can charge commonly used devices. Unlike existing power
+
+The EcoCharge system incorporates a real-time Battery
+
+banks, EcoCharge leverages recycled batteries and offers mod-
+
+Management System (BMS) that monitors essential parameters such as voltage, temperature, and charge-discharge rates,
+
+ularity, along with real-time performance monitoring.
+III. T ECHNICAL D ESCRIPTION
+
+thereby ensuring safe and efficient functionality. By employing
+recyclable materials and advanced software for real-time monitoring, the project advocates for sustainable practices while
+delivering a dependable energy solution.
+
+A. System Design
+The system consists of a 3D-printed modular enclosure
+housing recycled lithium-ion batteries, a Battery Management
+
+System (BMS), cooling fans, sensors, and microcontrollers.
+Figure 1 illustrates the design.
+
+IV. R EAL -T IME E XECUTION A NALYSIS
+The battery monitoring system underwent rigorous testing
+to ensure compliance with hard and soft real-time constraints.
+Challenges in data transmission, processing delays, and sensor
+integration were identified and resolved to meet performance
+and safety requirements.
+A. Hard Real-Time Constraints
+Thermal management and current monitoring required strict
+timing adherence to ensure safe operation. Early testing
+showed delayed fan activation due to inconsistent DHT11
+temperature readings, resolved by optimizing sensor polling
+intervals and prioritizing critical tasks in the Arduino’s loop.
+
+Fig. 1. System Design Overview.
+
+Current monitoring faced issues with detecting rapid spikes,
+which were resolved by refining the INA219 sensor configu-
+
+B. Hardware Design
+
+ration and improving data accuracy. The system successfully
+shut down output power within 200 milliseconds during over-
+
+Key hardware components include:
+•
+
+D24V22F Voltage Regulator: Converts 4.5V–42V input
+to stable 3.3V/5V output.
+
+•
+
+CF-4S30A-A BMS: Protects and balances 4S lithium-ion
+
+current events, such as when testing with a stalled 12V motor.
+Fan control was validated to respond dynamically, activating at
+25°C (PWM 128) and reaching full speed (PWM 255) at 27°C,
+maintaining battery temperatures under the 30°C threshold.
+
+battery packs.
+•
+
+Recycled Lithium-ion Batteries: 3.7V, 850mAh cells
+recovered from vape devices.
+
+B. Soft Real-Time Constraints
+Dashboard updates and data transmission between the Ar-
+
+ESP32 WROOM: Hosts the web server for real-time
+
+duino and ESP32 required consistent performance to meet the
+
+monitoring.
+
+5-second refresh interval. Initial issues with data corruption
+
+•
+
+DHT11 Sensors: Monitors temperature at battery layers.
+
+during UART communication were resolved by implementing
+
+•
+
+INA219 Sensors: Measures current, voltage, and power.
+
+a structured data schema with delimiter-based parsing and
+
+•
+
+error-checking routines. The ESP32 retained valid previous
+C. Software Design
+The software integrates real-time monitoring and control,
+using:
+•
+
+Arduino Mega: Collects data from sensors and adjusts
+fan speeds via PWM.
+
+•
+
+•
+
+ESP32 WROOM: Hosts a web-based dashboard built
+
+values when errors were detected, ensuring smooth dashboard
+operation. Optimization with the ESPAsyncWebServer library
+and asynchronous JavaScript minimized latency, achieving an
+average update time of 4.8 seconds.
+C. Summary
+The system met all hard and soft real-time constraints,
+
+with HTML, CSS, and JavaScript.
+
+demonstrating reliable performance under various test condi-
+
+Data Transmission: Sensor data is sent via UART in for-
+
+tions, including high discharge, overcurrent, and steady-state
+
+matted strings, parsed and validated to ensure reliability.
+
+scenarios.
+
+V. O BJECTIVES AND ACHIEVEMENTS
+A. Initial Objectives
+The project successfully developed a sustainable and advanced battery monitoring system with real-time control,
+precise monitoring, and robust safety mechanisms. The key
+objectives of the project were:
+•
+
+Environmental Sustainability: Repurpose discarded
+lithium-ion cells from vape devices to create an ecofriendly, portable battery pack, reducing e-waste.
+
+•
+
+Advanced Monitoring: Provide continuous, real-time
+monitoring of temperature, voltage, and current for each
+cell row, ensuring reliable and accurate data collection.
+
+•
+
+Energy Efficiency: Optimize charging and discharging
+cycles through dynamic cell management to extend battery life.
+
+•
+
+Safety and Longevity: Employ robust safety features,
+
+Fig. 2. Dashboard
+
+including thermal management, overcurrent protection,
+
+•
+
+and cell balancing, to ensure safe and durable operation.
+
+3) Real-Time Dashboard and Control: The ESP32 hosted a
+
+User-Friendly Interface: Develop a real-time dashboard
+
+web dashboard that updated every 5 seconds, providing real-
+
+for seamless interaction with the system, displaying crit-
+
+time visualizations of temperature, voltage, current, and fan
+
+ical battery health metrics.
+
+speeds. Built using HTML, CSS, and JavaScript, the dashboard
+
+B. Achievements
+
+offered an intuitive interface for users to monitor performance
+and make informed decisions.
+
+1) Battery Pack Design and Assembly: The battery pack
+was constructed using recycled lithium-ion cells, each tested
+and sorted to ensure capacity and reliability. The pack comprised 4 cell rows, each containing 3 cells in parallel, yielding
+a 16.1V nominal voltage system. The CF-4S30A-A BMS was
+integrated to manage cell balancing, regulating charging and
+
+4) Safety and Real-Time Control: The Arduino Mega implemented a real-time control system to manage sensors, peripherals, and fan PWM. Fans activated dynamically based on
+temperature thresholds, maintaining safe operating conditions.
+Overcurrent protection was validated during tests, responding
+within 200ms to current spikes exceeding 5A.
+
+discharging cycles to prevent overcharging, undercharging, and
+uneven wear among the cells, enhancing energy efficiency and
+
+VI. E XPERIMENTATION AND VALIDATION
+
+prolonging battery life.
+2) Sensor Integration: Each cell row was equipped with
+
+A. Battery Efficiency Testing
+
+a DHT11 sensor to measure temperature and humidity, while
+
+Recycled lithium-ion cells were tested for charge-discharge
+
+INA219 current sensors monitored voltage and current. This
+
+cycles. Results revealed that the batteries sustained stable
+
+granular monitoring setup provided detailed insights into per-
+
+capacity across multiple cycles, validating their suitability for
+
+formance, enabling precise control and fault detection.
+
+reuse and the effectiveness of the BMS.
+
+B. Thermal Testing
+The thermal control system, including temperature sensors and cooling fans, was evaluated under different load
+
+and Wi-Fi settings ensured reliable hosting and communication.
+C. Observations on System Performance and User Experience
+
+conditions. As temperatures approached the threshold, fans
+The EcoCharge system provides a strong and intuitive user
+activated, successfully maintaining safe operating conditions
+experience. The dashboard presents clear information for realand preventing overheating.
+time tracking of battery performance, while its modular design
+C. Real-Time Data Logging Validation
+Dashboard data logging was validated through continuous
+transmission from sensors to the ESP32. Key metrics, such
+
+supports straightforward integration of additional components.
+Performance indicators, including accuracy, responsiveness,
+and safety, exceed expectations.
+
+as voltage and temperature, refreshed every few seconds
+
+VIII. S USTAINABILITY I MPACT
+
+with minimal delay, demonstrating accurate and timely user
+monitoring capabilities.
+
+This project demonstrates a practical solution to e-waste,
+particularly disposable vapes. By recycling lithium-ion cells
+
+VII. R ESULTS AND D ISCUSSION
+A. Key Findings
+The EcoCharge system demonstrated strong performance:
+
+into a useful power bank, EcoCharge reduces waste and
+promotes sustainable practices. Over 30 discarded vapes were
+disassembled during the project, with 12 cells integrated into
+the final battery pack. Remaining cells were repurposed for
+
+•
+
+Real-time dashboard updates provided accurate battery
+performance metrics with minimal delay.
+
+•
+
+smaller applications, maximizing their use and minimizing
+premature disposal.
+
+The thermal management system enhanced safety by
+IX. B ILL OF M ATERIALS (BOM)
+
+dynamically activating cooling fans.
+•
+
+Recycled vape batteries showed consistent performance
+TABLE I
+
+in charge-discharge cycles, confirming their suitability for
+
+B ILL OF M ATERIALS FOR THE BATTERY PACK
+
+reuse.
+B. Challenges and Resolutions
+•
+
+•
+
+•
+
+•
+
+Component
+
+Description
+
+Unit Cost ($)
+
+Quantity
+
+Arduino Mega 2560
+
+Central control unit
+
+70.00
+
+1
+
+ESP32 WROOM
+
+Wi-Fi/Bluetooth, web server
+
+12.99
+
+1
+
+Battery Variability: Variations in size and capacity com-
+
+CF-4S30A-A BMS
+
+Cell balancing, protection
+
+10.99
+
+1
+
+plicated pack assembly. A modular design accommodated
+
+INA219 Sensor
+
+Voltage/current monitoring
+
+3.80
+
+5
+
+different battery sizes while maintaining performance.
+
+DHT11 Sensor
+
+Temperature/humidity
+
+2.80
+
+5
+
+Recycled Batteries
+
+3.7V lithium-ion cells
+
+0.00
+
+12
+
+Voltage Regulator
+
+D24V22F regulator
+
+11.95
+
+1
+
+posed connection difficulties. Calibration, debugging, and
+
+LED Display
+
+Charge state display
+
+6.78
+
+1
+
+firmware adjustments resolved these issues.
+
+3D Enclosure
+
+Modular battery housing
+
+0.00
+
+1
+
+Sensor Integration: INA219 and DHT sensors initially
+
+Hardware Modifications: The original 3D-printed module lacked space for additional electronics, requiring a
+
+X. C ONCLUSION
+
+redesign. The module was reengineered to fit all compo-
+
+EcoCharge repurposes lithium-ion cells from discarded
+
+nents securely.
+
+vapes to create a sustainable power bank, offering an eco-
+
+ESP32 Server Hosting: Establishing a stable web server
+
+friendly alternative to traditional power banks. It integrates
+
+was challenging. Testing and optimization of firmware
+
+a real-time BMS that monitors key battery parameters, such
+
+as voltage, temperature, and charge/discharge rates, with data
+displayed on a web-based dashboard. This project highlights
+the potential for reducing e-waste, promoting a circular economy. By offering a simpler alternative to traditional recycling
+methods, it contributes to more efficient e-waste management
+and supports the development of sustainable energy storage
+solutions.
+R EFERENCES
+[1] UN
+
+Geneva,
+
+“The
+
+growing
+
+environmental
+
+risks
+
+of
+
+e-waste,”
+
+https://www.genevaenvironmentnetwork.org/resources/updates/
+the-growing-environmental-risks-of-e-waste/, 2024.
+[2] CBC News, “What on Earth: Disposable vapes,” https://www.cbc.ca/
+news/science/what-on-earth-disposable-vapes-1.6832312, 2024.
+[3] EPA,
+
+“Lithium-ion
+
+battery
+
+recycling,”
+
+lithium-ion-battery-recycling, 2024.
+
+https://www.epa.gov/hw/
+
+

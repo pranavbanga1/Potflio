@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Solar Tracker | Pranav Banga</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">PB</div>
+        <div class="nav-links">
+            <a href="../index.html#home" class="nav-link">Home</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#projects" class="nav-link active">Projects</a>
+            <a href="../index.html#additive" class="nav-link">Additive Manufacturing</a>
+            <a href="../index.html#skills" class="nav-link">Skills</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-category">Automation</div>
+            <h1 class="project-title">Solar Tracker</h1>
+            <div class="project-info">
+                <div class="info-item">
+                    <div class="info-label">Year</div>
+                    <div class="info-value">2024</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Technologies</div>
+                    <div class="info-value">Arduino, Servo Motors, LDR Sensors, 3D Printing</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Role</div>
+                    <div class="info-value">Lead Developer</div>
+                </div>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../images/Portfolio Pic/Solar Tracker/St.jpg" alt="Solar Tracker">
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Overview</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-overview">
+                <div class="overview-text">
+                    <p>Developed a solar tracker using Arduino, servo motors, and LDR sensors for dynamic solar panel optimization. This project aimed to create an affordable, user-friendly solution for individuals and small organizations to enhance solar panel efficiency and promote sustainability education.</p>
+                    <p>The solar tracker automatically adjusts the position of a solar panel to follow the sun's movement throughout the day, maximizing energy capture and efficiency. By implementing a dual-axis tracking system, the device can optimize solar panel positioning in both horizontal and vertical planes.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="../images/Portfolio Pic/Solar Tracker/IMG_2573.JPEG" alt="Solar Tracker Overview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Implementation -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Implementation</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="technical-details">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Hardware Components</h3>
+                        <p>Implemented a dual-axis solar tracker with Arduino Uno, S3003 FUTABA, and MG90S servo motors. The system uses Light Dependent Resistor (LDR) sensors to detect light intensity from different directions, allowing the controller to determine the optimal position for the solar panel.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Software Development</h3>
+                        <p>Programmed Arduino to respond to LDR sensor feedback, ensuring precise solar panel alignment. The algorithm compares readings from multiple LDR sensors and calculates the optimal angle for both horizontal and vertical adjustments, continuously updating the position as the sun moves.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-cube"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Mechanical Design</h3>
+                        <p>Utilized 3D printing for a compact Pan-Tilt system using Solid Works, facilitating two-dimensional movement for efficient tilt and pan adjustments. The design ensures smooth movement while maintaining structural integrity to support the weight of the solar panel.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>System Dynamics</h3>
+                        <p>Applied equations and block diagrams to model servo motor torque and solar panel motion in MATLAB Simulink, ensuring an efficient and scalable solar tracking solution. This analysis helped optimize the control parameters and predict system behavior under various conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Gallery</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Solar Tracker/Front.JPG" alt="Solar Tracker - Front View">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Solar Tracker/Side.JPG" alt="Solar Tracker - Side View">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Solar Tracker/Main.JPG" alt="Solar Tracker - Components">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Solar Tracker/IMG_2573.JPEG" alt="Solar Tracker - Testing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Development Process</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Research & Planning</h3>
+                        <p>Conducted research on solar tracking systems, servo motor control, and light sensing technologies. Defined project requirements and created a detailed plan for implementation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Prototyping</h3>
+                        <p>Developed initial prototypes to test sensor responsiveness and motor control. Iterated on the design based on performance testing and feedback.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>3D Modeling & Printing</h3>
+                        <p>Created detailed 3D models in SolidWorks for the mechanical components. Printed and assembled the parts, making adjustments as needed for optimal fit and function.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Electronics Integration</h3>
+                        <p>Integrated Arduino controller, servo motors, and LDR sensors. Developed and refined the control algorithm for accurate sun tracking.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Testing & Optimization</h3>
+                        <p>Conducted extensive testing under various lighting conditions. Optimized the system for energy efficiency and tracking accuracy.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Final Implementation</h3>
+                        <p>Completed the final assembly and documentation. Demonstrated the system's effectiveness in real-world conditions.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Impact -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Results & Impact</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="results-content">
+                <div class="results-text">
+                    <p>The solar tracker successfully demonstrated improved energy capture efficiency compared to fixed solar panels. Testing showed an increase in energy production of approximately 25-30% under optimal conditions.</p>
+                    <p>The project serves as an educational tool for demonstrating renewable energy concepts and automation principles. Its affordable design makes solar tracking technology accessible to individuals and small organizations interested in optimizing their solar energy systems.</p>
+                    <div class="results-stats">
+                        <div class="stat">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-text">Increased Energy Capture</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">2</div>
+                            <div class="stat-text">Axis Tracking</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">360°</div>
+                            <div class="stat-text">Rotation Range</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-image">
+                    <img src="../images/Portfolio Pic/Solar Tracker/IMG_2573.JPEG" alt="Solar Tracker Results">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges & Solutions -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Challenges & Solutions</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-item">
+                    <h3>Sensor Calibration</h3>
+                    <p><strong>Challenge:</strong> Ensuring consistent LDR sensor readings under varying light conditions.</p>
+                    <p><strong>Solution:</strong> Implemented adaptive calibration algorithm that normalizes readings based on ambient light levels.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Motor Precision</h3>
+                    <p><strong>Challenge:</strong> Achieving precise positioning with affordable servo motors.</p>
+                    <p><strong>Solution:</strong> Developed a PID control system to improve positioning accuracy and reduce oscillation.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Power Consumption</h3>
+                    <p><strong>Challenge:</strong> Minimizing power usage to maximize net energy gain.</p>
+                    <p><strong>Solution:</strong> Implemented power-saving modes and optimized movement intervals to reduce unnecessary adjustments.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Mechanical Stability</h3>
+                    <p><strong>Challenge:</strong> Creating a stable platform that can withstand environmental factors.</p>
+                    <p><strong>Solution:</strong> Reinforced 3D printed components and added counterweights to improve stability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Related Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="related-projects">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/EcoCharge/IMG_2573.JPEG" alt="EcoCharge">
+                        <div class="project-overlay">
+                            <div class="project-category">Automation</div>
+                            <h3 class="project-title">EcoCharge</h3>
+                            <a href="ecocharge.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Autonomous Car/IMG_2573.JPEG" alt="Autonomous Car Navigation">
+                        <div class="project-overlay">
+                            <div class="project-category">Robotics</div>
+                            <h3 class="project-title">Autonomous Car Navigation</h3>
+                            <a href="autonomous-car.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Power Drawer/IMG_2573.JPEG" alt="Power Drawer">
+                        <div class="project-overlay">
+                            <div class="project-category">Energy</div>
+                            <h3 class="project-title">Power Drawer</h3>
+                            <a href="power-drawer.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="prev-project">
+            <a href="power-drawer.html">
+                <span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Project</span>
+                <span class="nav-title">Power Drawer</span>
+            </a>
+        </div>
+        <div class="all-projects">
+            <a href="../index.html#projects">
+                <span class="nav-label">All Projects</span>
+                <span class="nav-icon"><i class="fas fa-th"></i></span>
+            </a>
+        </div>
+        <div class="next-project">
+            <a href="autonomous-car.html">
+                <span class="nav-label">Next Project <i class="fas fa-arrow-right"></i></span>
+                <span class="nav-title">Autonomous Car Navigation</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Pranav Banga</h3>
+                <p>Mechatronics Engineer</p>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#additive">Additive Manufacturing</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pranav Banga. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/project.js"></script>
+</body>
+</html>

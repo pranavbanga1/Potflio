@@ -1,0 +1,176 @@
+/* 
+   Skills Section Stylesheet for Pranav Banga's Portfolio
+   Hybrid Version with V4 Pill-Style Tabs
+*/
+
+/* Skills Section Container */
+.skills-section {
+    padding: 100px 0;
+    background-color: var(--bg-dark);
+}
+
+.skills-header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.skills-title {
+    font-size: 4rem;
+    font-weight: 800;
+    margin-bottom: 10px;
+    color: #fff;
+}
+
+.skills-subtitle {
+    font-size: 1.8rem;
+    color: var(--text-muted);
+}
+
+/* Pill-Style Tabs */
+.skills-tabs {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-bottom: 50px;
+}
+
+.skills-tab {
+    padding: 12px 25px;
+    background-color: var(--bg-card);
+    color: var(--text-secondary);
+    border: none;
+    border-radius: 50px;
+    font-size: 1.6rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.skills-tab:hover {
+    background-color: rgba(255, 77, 90, 0.2);
+    transform: translateY(-3px);
+}
+
+.skills-tab.active {
+    background-color: var(--primary-color);
+    color: #fff;
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s ease;
+}
+
+.tab-content.active {
+    display: grid;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Skill Cards */
+.skill-card {
+    background-color: var(--bg-card);
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.skill-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+}
+
+.skill-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background: var(--primary-color);
+    border-radius: 5px 0 0 5px;
+}
+
+.skill-icon {
+    font-size: 3.5rem;
+    color: var(--primary-color);
+    margin-bottom: 20px;
+    display: inline-block;
+}
+
+.skill-name {
+    font-size: 2.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+    color: #fff;
+}
+
+.skill-progress {
+    width: 100%;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    margin-bottom: 20px;
+    overflow: hidden;
+}
+
+.skill-progress-bar {
+    height: 100%;
+    background: linear-gradient(90deg, var(--primary-color), #ff8f6b);
+    border-radius: 10px;
+    width: 0;
+    transition: width 1.5s ease-out;
+}
+
+.skill-description {
+    font-size: 1.5rem;
+    color: var(--text-muted);
+    line-height: 1.6;
+}
+
+/* Category Indicator */
+.skill-category-indicator {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--primary-color);
+    color: #fff;
+    font-size: 1.8rem;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+    .skills-tabs {
+        gap: 10px;
+    }
+    
+    .skills-tab {
+        padding: 10px 20px;
+        font-size: 1.4rem;
+    }
+    
+    .tab-content {
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    }
+}
+
+@media (max-width: 576px) {
+    .tab-content {
+        grid-template-columns: 1fr;
+    }
+}

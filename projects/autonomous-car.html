@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Car Navigation | Pranav Banga</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">PB</div>
+        <div class="nav-links">
+            <a href="../index.html#home" class="nav-link">Home</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#projects" class="nav-link active">Projects</a>
+            <a href="../index.html#additive" class="nav-link">Additive Manufacturing</a>
+            <a href="../index.html#skills" class="nav-link">Skills</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-category">Robotics</div>
+            <h1 class="project-title">Autonomous Car Navigation System</h1>
+            <div class="project-info">
+                <div class="info-item">
+                    <div class="info-label">Year</div>
+                    <div class="info-value">2023</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Technologies</div>
+                    <div class="info-value">LIDAR, ROS, Raspberry Pi, Computer Vision</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Role</div>
+                    <div class="info-value">Lead Developer</div>
+                </div>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../images/Portfolio Pic/Autonomous Car/main.png" alt="Autonomous Car Navigation System">
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Overview</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-overview">
+                <div class="overview-text">
+                    <p>Built a 1/10th scale autonomous vehicle to overcome challenges in researching full-sized autonomous vehicles, focusing on dynamic object avoidance and LIDAR-based navigation. This project served as a testbed for developing and refining algorithms for autonomous navigation in complex environments.</p>
+                    <p>The autonomous car navigation system integrates hardware components with sophisticated software algorithms to enable the vehicle to perceive its environment, make decisions, and navigate safely without human intervention. The system demonstrates advanced capabilities in mapping, localization, path planning, and obstacle avoidance.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="../images/Portfolio Pic/Autonomous Car/Side.png" alt="Autonomous Car Overview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Implementation -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Implementation</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="technical-details">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Hardware Platform</h3>
+                        <p>Utilized a Traxxas Rally car as the base platform, implementing a brushless DC motor for propulsion and a servo motor for steering control. The vehicle was modified to accommodate the additional sensors and computing hardware required for autonomous operation.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Perception System</h3>
+                        <p>Implemented LIDAR for environmental perception, providing 360-degree awareness of obstacles and terrain features. The LIDAR data is processed to create a point cloud representation of the surrounding environment, enabling accurate distance measurements and object detection.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Software Architecture</h3>
+                        <p>Employed ROS (Robot Operating System) on Raspberry Pi 3 for communication and control. The modular software architecture includes nodes for sensor data processing, localization, mapping, path planning, and motor control, all communicating through ROS topics and services.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-map-marked-alt"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Navigation Algorithms</h3>
+                        <p>Implemented Hector SLAM for mapping and Pure Pursuit for autonomous navigation. The system builds a map of the environment in real-time while simultaneously localizing the vehicle within that map. The Pure Pursuit algorithm calculates steering commands to follow a predetermined path while avoiding obstacles.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Gallery</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Autonomous Car/image2.png" alt="Autonomous Car - Front View">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Autonomous Car/Side.png" alt="Autonomous Car - Side View">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Autonomous Car/image3.png" alt="LIDAR Data Visualization">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Autonomous Car/Video.mp4" alt="Navigation Testing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Development Process</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Research & Planning</h3>
+                        <p>Conducted extensive research on autonomous vehicle technologies, sensor options, and navigation algorithms. Defined project requirements and created a detailed implementation plan.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Platform Modification</h3>
+                        <p>Modified the Traxxas Rally car to accommodate the LIDAR sensor, Raspberry Pi, and additional electronics. Designed and fabricated custom mounting brackets and enclosures.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Sensor Integration</h3>
+                        <p>Integrated the LIDAR sensor and calibrated it for accurate distance measurements. Developed ROS nodes to process and publish sensor data.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>SLAM Implementation</h3>
+                        <p>Implemented Hector SLAM for simultaneous localization and mapping. Tuned parameters for optimal performance in indoor environments.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Navigation Development</h3>
+                        <p>Developed and implemented the Pure Pursuit algorithm for path following. Created a path planning system to generate optimal routes based on the current map.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Testing & Refinement</h3>
+                        <p>Conducted extensive testing in various environments, collecting performance data and refining algorithms. Implemented improvements based on test results.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Impact -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Results & Impact</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="results-content">
+                <div class="results-text">
+                    <p>The autonomous car navigation system successfully demonstrated reliable navigation in complex environments, with the ability to avoid obstacles and follow predetermined paths. The system achieved a navigation accuracy of approximately 95% in controlled environments.</p>
+                    <p>This project provided valuable insights into the challenges of autonomous vehicle development and served as a platform for testing and refining navigation algorithms. The modular architecture allows for easy integration of additional sensors and capabilities in future iterations.</p>
+                    <div class="results-stats">
+                        <div class="stat">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-text">Navigation Accuracy</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">360°</div>
+                            <div class="stat-text">LIDAR Coverage</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">10Hz</div>
+                            <div class="stat-text">Control Loop Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-image">
+                    <img src="../images/Portfolio Pic/Autonomous Car/IMG_2573.JPEG" alt="Autonomous Car Results">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges & Solutions -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Challenges & Solutions</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-item">
+                    <h3>ESC Configuration</h3>
+                    <p><strong>Challenge:</strong> Configuring the Electronic Speed Controller (ESC) to work with ROS control signals.</p>
+                    <p><strong>Solution:</strong> Developed a custom ROS node to translate high-level velocity commands into appropriate PWM signals for the ESC, with safety limits and failsafe mechanisms.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>ROS Integration</h3>
+                    <p><strong>Challenge:</strong> Integrating all components within the ROS framework with limited computational resources.</p>
+                    <p><strong>Solution:</strong> Optimized node communication and processing to reduce computational load, prioritizing critical navigation functions.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Odometry Data</h3>
+                    <p><strong>Challenge:</strong> Generating accurate odometry data for localization without wheel encoders.</p>
+                    <p><strong>Solution:</strong> Implemented a sensor fusion approach combining LIDAR scan matching and IMU data to estimate vehicle position and orientation.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Pure Pursuit Implementation</h3>
+                    <p><strong>Challenge:</strong> Adapting the Pure Pursuit algorithm for the specific dynamics of the vehicle.</p>
+                    <p><strong>Solution:</strong> Tuned lookahead distance and control parameters based on extensive testing, implementing adaptive parameters based on vehicle speed.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Related Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="related-projects">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Solar Tracker/IMG_2573.JPEG" alt="Solar Tracker">
+                        <div class="project-overlay">
+                            <div class="project-category">Automation</div>
+                            <h3 class="project-title">Solar Tracker</h3>
+                            <a href="solar-tracker.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/ATMS/IMG_2573.JPEG" alt="ATMS">
+                        <div class="project-overlay">
+                            <div class="project-category">Robotics</div>
+                            <h3 class="project-title">Autonomous Telescope Mount</h3>
+                            <a href="atms.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Terrain Robot/IMG_2573.JPEG" alt="Terrain Robot">
+                        <div class="project-overlay">
+                            <div class="project-category">Robotics</div>
+                            <h3 class="project-title">Terrain Navigation Robot</h3>
+                            <a href="terrain-robot.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="prev-project">
+            <a href="solar-tracker.html">
+                <span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Project</span>
+                <span class="nav-title">Solar Tracker</span>
+            </a>
+        </div>
+        <div class="all-projects">
+            <a href="../index.html#projects">
+                <span class="nav-label">All Projects</span>
+                <span class="nav-icon"><i class="fas fa-th"></i></span>
+            </a>
+        </div>
+        <div class="next-project">
+            <a href="atms.html">
+                <span class="nav-label">Next Project <i class="fas fa-arrow-right"></i></span>
+                <span class="nav-title">Autonomous Telescope Mount</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Pranav Banga</h3>
+                <p>Mechatronics Engineer</p>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#additive">Additive Manufacturing</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pranav Banga. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/project.js"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+/* 
+   Experience Timeline Stylesheet for Pranav Banga's Portfolio
+   Version 4.0 - Dark Theme with Contrasting Elements
+*/
+
+/* ===== EXPERIENCE SECTION ===== */
+.experience {
+  background-color: var(--bg-dark);
+  position: relative;
+}
+
+.experience-timeline {
+  position: relative;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: var(--spacing-md) 0;
+}
+
+.experience-timeline::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(to bottom, transparent, var(--primary-color), var(--secondary-color), transparent);
+}
+
+.timeline-item {
+  position: relative;
+  display: flex;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-lg);
+}
+
+.timeline-item:nth-child(odd) {
+  flex-direction: row-reverse;
+}
+
+.timeline-icon {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background-color: var(--bg-card);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+  z-index: 1;
+  overflow: hidden;
+  border: 2px solid var(--primary-color);
+}
+
+.timeline-icon img {
+  width: 70%;
+  height: 70%;
+  object-fit: contain;
+}
+
+.timeline-content {
+  width: calc(50% - 50px);
+  padding: var(--spacing-md);
+  background-color: var(--bg-card);
+  border-radius: var(--radius-md);
+  box-shadow: var(--shadow-md);
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.timeline-content:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-lg);
+}
+
+.timeline-content::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  width: 20px;
+  height: 20px;
+  background-color: var(--bg-card);
+  transform: rotate(45deg);
+}
+
+.timeline-item:nth-child(odd) .timeline-content::before {
+  left: -10px;
+}
+
+.timeline-item:nth-child(even) .timeline-content::before {
+  right: -10px;
+}
+
+.timeline-date {
+  display: inline-block;
+  padding: 0.4rem 1.2rem;
+  background-color: var(--bg-dark);
+  border-radius: var(--radius-full);
+  font-size: 1.4rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.timeline-title {
+  font-size: 2.4rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.timeline-company {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: var(--spacing-sm);
+}
+
+.timeline-description {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-secondary);
+}
+
+.timeline-achievements {
+  list-style: none;
+}
+
+.timeline-achievements li {
+  position: relative;
+  padding-left: 2.5rem;
+  margin-bottom: 0.8rem;
+  color: var(--text-muted);
+}
+
+.timeline-achievements li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--secondary-color);
+  font-weight: bold;
+}
+
+/* Responsive adjustments */
+@media (max-width: 992px) {
+  .timeline-item {
+    flex-direction: column;
+    align-items: flex-start;
+    padding-left: 60px;
+  }
+  
+  .timeline-item:nth-child(odd) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  
+  .experience-timeline::before {
+    left: 30px;
+  }
+  
+  .timeline-icon {
+    left: 30px;
+    width: 50px;
+    height: 50px;
+  }
+  
+  .timeline-content {
+    width: 100%;
+  }
+  
+  .timeline-content::before {
+    display: none;
+  }
+}

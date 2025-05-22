@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Additive Manufacturing | 3D Printing Services</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/additive.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">PB</div>
+        <div class="nav-links">
+            <a href="../index.html" class="nav-link">Home</a>
+            <a href="../index.html#experience" class="nav-link">Experience</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#projects" class="nav-link">Projects</a>
+            <a href="additive-manufacturing.html" class="nav-link active">Additive Manufacturing</a>
+            <a href="../index.html#skills" class="nav-link">Skills</a>
+            <a href="../index.html#gallery" class="nav-link">Gallery</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Additive Manufacturing Section -->
+    <section id="additive" class="additive-section">
+        <div class="container">
+            <div class="additive-header">
+                <h2 class="additive-title">Additive Manufacturing</h2>
+            </div>
+            
+            <div class="services-container">
+                <div class="services-text">
+                    <h3>3D Printing Services & Expertise</h3>
+                    <p>Specializing in custom 3D printing solutions for prototypes, functional parts, and creative designs. With extensive experience in additive manufacturing, I offer end-to-end services from concept to finished product.</p>
+                    <p>My expertise spans multiple printing technologies, materials, and post-processing techniques, allowing me to deliver high-quality results for diverse applications.</p>
+                </div>
+                <div class="services-image">
+                    <img src="../images/placeholders/additive/main_image.jpg" alt="3D Printing Services">
+                </div>
+            </div>
+            
+            <div class="service-cards">
+                <!-- Custom Design -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <h3 class="service-title">Custom Design</h3>
+                    <p class="service-description">Tailored designs to meet specific requirements and constraints, optimized for additive manufacturing.</p>
+                </div>
+                
+                <!-- Functional Prototypes -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <h3 class="service-title">Functional Prototypes</h3>
+                    <p class="service-description">Rapid prototyping for testing and validation, with quick iteration cycles to refine designs.</p>
+                </div>
+                
+                <!-- Production Printing -->
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-print"></i>
+                    </div>
+                    <h3 class="service-title">Production Printing</h3>
+                    <p class="service-description">Small batch production with consistent quality, using industrial-grade materials for durable parts.</p>
+                </div>
+            </div>
+            
+            <!-- 3D Model Viewer -->
+            <div class="model-viewer-container">
+                <div class="model-viewer-header">
+                    <h3 class="model-viewer-title">Interactive 3D Model Viewer</h3>
+                    <div class="model-controls">
+                        <button class="model-control-btn" id="rotate-left"><i class="fas fa-undo"></i></button>
+                        <button class="model-control-btn" id="rotate-right"><i class="fas fa-redo"></i></button>
+                        <button class="model-control-btn" id="zoom-in"><i class="fas fa-search-plus"></i></button>
+                        <button class="model-control-btn" id="zoom-out"><i class="fas fa-search-minus"></i></button>
+                    </div>
+                </div>
+                
+                <div class="model-viewer" id="model-viewer">
+                    <div class="model-placeholder">
+                        <i class="fas fa-cube"></i>
+                        <p>Upload a SolidWorks part file (.SLDPRT) or STL file to view in 3D</p>
+                        <button class="model-upload-btn">Upload 3D Model</button>
+                    </div>
+                </div>
+                
+                <div class="model-selector">
+                    <button class="model-option active" data-model="model1">Mechanical Part</button>
+                    <button class="model-option" data-model="model2">Organic Design</button>
+                    <button class="model-option" data-model="model3">Assembly</button>
+                </div>
+            </div>
+            
+            <!-- Gallery -->
+            <div class="additive-gallery">
+                <div class="gallery-container">
+                    <div class="gallery-slide active">
+                        <img src="../images/placeholders/additive/gallery1.jpg" alt="3D Printed Part 1">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../images/placeholders/additive/gallery2.jpg" alt="3D Printed Part 2">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../images/placeholders/additive/gallery3.jpg" alt="3D Printed Part 3">
+                    </div>
+                    <div class="gallery-slide">
+                        <img src="../images/placeholders/additive/gallery4.jpg" alt="3D Printed Part 4">
+                    </div>
+                </div>
+                
+                <div class="gallery-controls">
+                    <button class="gallery-control" id="prev-slide"><i class="fas fa-chevron-left"></i></button>
+                    <button class="gallery-control" id="next-slide"><i class="fas fa-chevron-right"></i></button>
+                    <button class="gallery-control" id="zoom-gallery"><i class="fas fa-search"></i></button>
+                    <button class="gallery-control" id="zoom-out-gallery"><i class="fas fa-search-minus"></i></button>
+                </div>
+            </div>
+            
+            <!-- 3D Printed Parts Gallery -->
+            <div class="printed-parts">
+                <h3 class="printed-parts-title">3D Printed Parts</h3>
+                <div class="printed-parts-grid">
+                    <div class="printed-part">
+                        <img src="../images/placeholders/additive/part1.jpg" alt="3D Printed Part">
+                        <p>3D Printed Part</p>
+                    </div>
+                    <div class="printed-part">
+                        <img src="../images/placeholders/additive/part2.jpg" alt="3D Printed Part">
+                        <p>3D Printed Part</p>
+                    </div>
+                    <div class="printed-part">
+                        <img src="../images/placeholders/additive/part3.jpg" alt="3D Printed Part">
+                        <p>3D Printed Part</p>
+                    </div>
+                    <div class="printed-part">
+                        <img src="../images/placeholders/additive/part4.jpg" alt="3D Printed Part">
+                        <p>3D Printed Part</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">PB</div>
+                <div class="footer-social">
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 PB. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../js/main.js"></script>
+    <script src="../js/additive.js"></script>
+</body>
+</html>

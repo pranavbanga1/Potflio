@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terrain Navigation Robot | Pranav Banga</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">PB</div>
+        <div class="nav-links">
+            <a href="../index.html#home" class="nav-link">Home</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#projects" class="nav-link active">Projects</a>
+            <a href="../index.html#additive" class="nav-link">Additive Manufacturing</a>
+            <a href="../index.html#skills" class="nav-link">Skills</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-category">Robotics</div>
+            <h1 class="project-title">Terrain Navigation Robot</h1>
+            <div class="project-info">
+                <div class="info-item">
+                    <div class="info-label">Year</div>
+                    <div class="info-value">2024</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Technologies</div>
+                    <div class="info-value">Robotics, Sensors, Mechanical Design, Control Systems</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Role</div>
+                    <div class="info-value">Lead Designer & Developer</div>
+                </div>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../images/Portfolio Pic/Terrain Robot/main.jpg" alt="Terrain Navigation Robot">
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Overview</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-overview">
+                <div class="overview-text">
+                    <p>The Terrain Navigation Robot is an autonomous robotic system designed to navigate through various challenging terrains while identifying and collecting packages. This project addresses the growing need for versatile robots capable of operating in unstructured environments for applications such as search and rescue, exploration, and logistics.</p>
+                    <p>The robot combines advanced mechanical design with sophisticated sensing and control algorithms to overcome obstacles, adapt to different surface conditions, and perform precise manipulation tasks. Its modular architecture allows for easy customization and expansion of capabilities to meet specific operational requirements.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="../images/Portfolio Pic/Terrain Robot/I.JPEG" alt="Terrain Robot Overview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Implementation -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Implementation</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="technical-details">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Mechanical Design</h3>
+                        <p>Developed a robust chassis with articulated suspension system that adapts to uneven terrain. The design incorporates high-torque motors, custom-designed wheels with optimized tread patterns, and a low center of gravity to maintain stability on inclines up to 30 degrees. The manipulator arm features 5 degrees of freedom with precision grippers for package handling.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-microchip"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Sensing & Perception</h3>
+                        <p>Implemented a comprehensive sensor suite including LIDAR for obstacle detection, stereo cameras for visual navigation, IMU for orientation tracking, and force sensors for terrain characterization. The perception system fuses data from multiple sensors to create a detailed environmental model that informs navigation and manipulation decisions.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-code"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Control Architecture</h3>
+                        <p>Developed a hierarchical control system with high-level planning, mid-level behavior coordination, and low-level motor control. The architecture implements adaptive control algorithms that adjust parameters based on terrain conditions and task requirements. Path planning incorporates terrain difficulty assessment to optimize routes for efficiency and safety.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-battery-full"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Power & Communication</h3>
+                        <p>Designed an efficient power management system with hot-swappable battery modules for extended operation. The communication system includes redundant wireless links with mesh networking capabilities for robust connectivity in challenging environments. A local processing unit enables autonomous operation when communication is limited or unavailable.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Gallery</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Terrain Robot/IMG_2525.jpeg" alt="Terrain Robot - Full System">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Terrain Robot/IMG_2418.jpg" alt="Terrain Robot - Suspension System">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Terrain Robot/New.png" alt="Terrain Robot - Manipulator Arm">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Terrain Robot/IMG.JPEG" alt="Terrain Robot - Field Testing">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Development Process</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Requirements Analysis</h3>
+                        <p>Conducted comprehensive research on terrain navigation challenges and package handling requirements. Defined performance specifications and operational constraints based on target use cases.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Conceptual Design</h3>
+                        <p>Developed multiple design concepts and evaluated them using simulation and analytical models. Selected the optimal approach based on performance, reliability, and manufacturability criteria.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Detailed Design</h3>
+                        <p>Created detailed CAD models of all mechanical components and conducted FEA analysis to validate structural integrity. Designed electronic systems and developed control algorithms through iterative simulation.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Prototype Development</h3>
+                        <p>Fabricated mechanical components using precision machining and 3D printing. Assembled electronic systems and integrated sensors and actuators. Implemented and debugged control software on the target hardware.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Testing & Refinement</h3>
+                        <p>Conducted systematic testing in controlled environments with progressively increasing difficulty. Collected performance data and identified areas for improvement. Implemented design refinements based on test results.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Field Validation</h3>
+                        <p>Performed extensive field testing in real-world environments with various terrain types and operational scenarios. Validated system performance against requirements and documented capabilities and limitations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Impact -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Results & Impact</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="results-content">
+                <div class="results-text">
+                    <p>The Terrain Navigation Robot successfully demonstrated the ability to traverse a wide range of challenging terrains including rocky surfaces, sandy slopes, and muddy areas while maintaining stability and control. The system achieved a package identification accuracy of 95% and successful retrieval rate of 90% in varied environmental conditions.</p>
+                    <p>The project has advanced the state of the art in autonomous mobile manipulation for unstructured environments, with potential applications in disaster response, agricultural automation, and exploration of hazardous areas. The modular design approach and open architecture have facilitated knowledge transfer and adaptation for specific application requirements.</p>
+                    <div class="results-stats">
+                        <div class="stat">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-text">Package Identification Accuracy</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">30°</div>
+                            <div class="stat-text">Maximum Traversable Incline</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">90%</div>
+                            <div class="stat-text">Package Retrieval Success Rate</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-image">
+                    <img src="../images/Portfolio Pic/Terrain Robot/IMG_2573.JPEG" alt="Terrain Robot Results">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges & Solutions -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Challenges & Solutions</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-item">
+                    <h3>Terrain Adaptation</h3>
+                    <p><strong>Challenge:</strong> Maintaining mobility and stability across widely varying terrain types.</p>
+                    <p><strong>Solution:</strong> Developed an adaptive suspension system with real-time adjustment capabilities based on terrain sensing, complemented by specialized wheel designs for different surface conditions.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Manipulation Precision</h3>
+                    <p><strong>Challenge:</strong> Achieving precise manipulation for package handling while on uneven surfaces.</p>
+                    <p><strong>Solution:</strong> Implemented a vision-guided control system with force feedback that compensates for chassis movement and adapts gripper approach strategies based on package characteristics.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Power Efficiency</h3>
+                    <p><strong>Challenge:</strong> Balancing power requirements for mobility, sensing, and manipulation with battery life constraints.</p>
+                    <p><strong>Solution:</strong> Created a dynamic power allocation system that prioritizes subsystems based on current task requirements and implements energy-saving modes during less demanding operations.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Environmental Robustness</h3>
+                    <p><strong>Challenge:</strong> Ensuring reliable operation in dusty, wet, and temperature-variable environments.</p>
+                    <p><strong>Solution:</strong> Designed sealed enclosures with appropriate IP ratings for critical components, implemented thermal management systems, and added redundancy for mission-critical functions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Related Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="related-projects">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Autonomous Car/IMG_2573.JPEG" alt="Autonomous Car Navigation">
+                        <div class="project-overlay">
+                            <div class="project-category">Robotics</div>
+                            <h3 class="project-title">Autonomous Car Navigation</h3>
+                            <a href="autonomous-car.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/ATMS/IMG_2573.JPEG" alt="ATMS">
+                        <div class="project-overlay">
+                            <div class="project-category">Automation</div>
+                            <h3 class="project-title">Autonomous Telescope Mount</h3>
+                            <a href="atms.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/EcoCharge/IMG_2573.JPEG" alt="EcoCharge">
+                        <div class="project-overlay">
+                            <div class="project-category">Energy</div>
+                            <h3 class="project-title">EcoCharge</h3>
+                            <a href="ecocharge.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="prev-project">
+            <a href="atms.html">
+                <span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Project</span>
+                <span class="nav-title">Autonomous Telescope Mount</span>
+            </a>
+        </div>
+        <div class="all-projects">
+            <a href="../index.html#projects">
+                <span class="nav-label">All Projects</span>
+                <span class="nav-icon"><i class="fas fa-th"></i></span>
+            </a>
+        </div>
+        <div class="next-project">
+            <a href="ecocharge.html">
+                <span class="nav-label">Next Project <i class="fas fa-arrow-right"></i></span>
+                <span class="nav-title">EcoCharge</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Pranav Banga</h3>
+                <p>Mechatronics Engineer</p>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#additive">Additive Manufacturing</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pranav Banga. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/project.js"></script>
+</body>
+</html>

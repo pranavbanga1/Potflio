@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Gallery | Pranav Banga Portfolio</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/gallery.css">
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="container">
+            <div class="nav-wrapper">
+                <a href="../index.html" class="logo">Pranav<span>Banga</span></a>
+                <div class="nav-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul class="nav-links">
+                    <li><a href="../index.html#home" class="nav-link">Home</a></li>
+                    <li><a href="../index.html#about" class="nav-link">About</a></li>
+                    <li><a href="../index.html#experience" class="nav-link">Experience</a></li>
+                    <li><a href="../index.html#projects" class="nav-link">Projects</a></li>
+                    <li><a href="../index.html#skills" class="nav-link">Skills</a></li>
+                    <li><a href="../index.html#gallery" class="nav-link active">Gallery</a></li>
+                    <li><a href="../index.html#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Gallery Header -->
+    <header class="gallery-header">
+        <div class="gallery-header-overlay"></div>
+        <div class="container">
+            <div class="gallery-header-content">
+                <h1 class="gallery-title">Project Gallery</h1>
+                <p class="gallery-description">A visual showcase of my work across robotics, automation, design, and creative projects.</p>
+            </div>
+        </div>
+    </header>
+
+    <!-- Gallery Filters -->
+    <div class="container">
+        <div class="gallery-filters">
+            <button class="gallery-tab active" data-category="all">All Projects</button>
+            <button class="gallery-tab" data-category="robotics">Robotics</button>
+            <button class="gallery-tab" data-category="automation">Automation</button>
+            <button class="gallery-tab" data-category="design">Design</button>
+            <button class="gallery-tab" data-category="3d-printing">3D Printing</button>
+            <button class="gallery-tab" data-category="art">Artistic</button>
+        </div>
+
+        <!-- Main Gallery -->
+        <div class="main-gallery">
+            <h2 class="section-title">Featured Projects</h2>
+            
+            <!-- ATMS Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Autonomous Telescope Mount System (ATMS)</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="robotics automation">
+                        <img src="../images/placeholders/ATMS/main_project_view.jpg" alt="ATMS Full System">
+                        <div class="gallery-caption">Complete ATMS system setup</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics automation">
+                        <img src="../images/placeholders/ATMS/detail_1.jpg" alt="ATMS Motor Assembly">
+                        <div class="gallery-caption">Precision motor assembly</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics automation">
+                        <img src="../images/placeholders/ATMS/detail_2.jpg" alt="ATMS Control Electronics">
+                        <div class="gallery-caption">Control electronics</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics automation">
+                        <img src="../images/placeholders/ATMS/schematic.jpg" alt="ATMS System Schematic">
+                        <div class="gallery-caption">Technical schematic</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics automation">
+                        <img src="../images/placeholders/ATMS/team_photo.jpg" alt="ATMS Development Team">
+                        <div class="gallery-caption">Development team</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Autonomous Car Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Autonomous Car Navigation System</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/placeholders/Autonomous_Car/main_project_view.jpg" alt="Autonomous Car">
+                        <div class="gallery-caption">Autonomous car platform</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/placeholders/Autonomous_Car/detail_1.jpg" alt="LIDAR Sensor">
+                        <div class="gallery-caption">LIDAR sensor integration</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/placeholders/Autonomous_Car/detail_2.jpg" alt="Navigation System">
+                        <div class="gallery-caption">Navigation system architecture</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Terrain Robot Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">All-Terrain Navigation Robot</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/placeholders/Terrain_Robot/main_project_view.jpg" alt="Terrain Robot">
+                        <div class="gallery-caption">All-terrain robot platform</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/placeholders/Terrain_Robot/detail_1.jpg" alt="Robot Suspension">
+                        <div class="gallery-caption">Advanced suspension system</div>
+                    </div>
+                    <div class="gallery-item" data-category="robotics">
+                        <img src="../images/placeholders/Terrain_Robot/detail_2.jpg" alt="Package Pickup">
+                        <div class="gallery-caption">Package pickup mechanism</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- EcoCharge Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">EcoCharge Sustainable Energy</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="automation">
+                        <img src="../images/placeholders/EcoCharge/main_project_view.jpg" alt="EcoCharge System">
+                        <div class="gallery-caption">Complete EcoCharge system</div>
+                    </div>
+                    <div class="gallery-item" data-category="automation">
+                        <img src="../images/placeholders/EcoCharge/detail_1.jpg" alt="Energy Storage">
+                        <div class="gallery-caption">Energy storage solution</div>
+                    </div>
+                    <div class="gallery-item" data-category="automation">
+                        <img src="../images/placeholders/EcoCharge/detail_2.jpg" alt="Control Interface">
+                        <div class="gallery-caption">User control interface</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Solar Tracker Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Solar Tracker</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="automation">
+                        <img src="../images/placeholders/Solar_Tracker/main_project_view.jpg" alt="Solar Tracker">
+                        <div class="gallery-caption">Dual-axis solar tracker</div>
+                    </div>
+                    <div class="gallery-item" data-category="automation">
+                        <img src="../images/placeholders/Solar_Tracker/detail_1.jpg" alt="Tracking Mechanism">
+                        <div class="gallery-caption">Precision tracking mechanism</div>
+                    </div>
+                    <div class="gallery-item" data-category="automation">
+                        <img src="../images/placeholders/Solar_Tracker/detail_2.jpg" alt="Control System">
+                        <div class="gallery-caption">Arduino-based control system</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Design Projects</h2>
+            
+            <!-- Helmet Design Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Helmet Design</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Helmet_Design/main_project_view.jpg" alt="Helmet Design">
+                        <div class="gallery-caption">Aerodynamic helmet design</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Helmet_Design/detail_1.jpg" alt="Helmet Prototype">
+                        <div class="gallery-caption">Prototype development</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Helmet_Design/detail_2.jpg" alt="Helmet Testing">
+                        <div class="gallery-caption">Aerodynamic testing</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Car Seat Design Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Car Seat Design</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Car_Seat_Design/main_project_view.jpg" alt="Car Seat Design">
+                        <div class="gallery-caption">Ergonomic car seat design</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Car_Seat_Design/detail_1.jpg" alt="Seat Mechanism">
+                        <div class="gallery-caption">Adjustment mechanism</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Car_Seat_Design/detail_2.jpg" alt="Comfort Testing">
+                        <div class="gallery-caption">Comfort and safety testing</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Mini Design Projects Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Mini Design Projects</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Mini_Design_Projects/main_project_view.jpg" alt="Mini Design Projects">
+                        <div class="gallery-caption">Collection of mini design projects</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Mini_Design_Projects/detail_1.jpg" alt="CAD Models">
+                        <div class="gallery-caption">CAD modeling examples</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Mini_Design_Projects/detail_2.jpg" alt="Prototypes">
+                        <div class="gallery-caption">Physical prototypes</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Simulations & Analysis</h2>
+            
+            <!-- Simulations Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Simulation Projects</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Simulations/main_project_view.jpg" alt="Simulation Projects">
+                        <div class="gallery-caption">Engineering simulation work</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Simulations/detail_1.jpg" alt="FEA Analysis">
+                        <div class="gallery-caption">Finite element analysis</div>
+                    </div>
+                    <div class="gallery-item" data-category="design">
+                        <img src="../images/placeholders/Simulations/detail_2.jpg" alt="Motion Analysis">
+                        <div class="gallery-caption">Motion and dynamics analysis</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">3D Printing & Additive Manufacturing</h2>
+            
+            <!-- 3D Printing Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Additive Manufacturing Projects</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="3d-printing">
+                        <img src="../images/placeholders/3D_Printing/main_project_view.jpg" alt="3D Printing Projects">
+                        <div class="gallery-caption">3D printing service showcase</div>
+                    </div>
+                    <div class="gallery-item" data-category="3d-printing">
+                        <img src="../images/placeholders/3D_Printing/detail_1.jpg" alt="Complex Prints">
+                        <div class="gallery-caption">Complex geometries and structures</div>
+                    </div>
+                    <div class="gallery-item" data-category="3d-printing">
+                        <img src="../images/placeholders/3D_Printing/detail_2.jpg" alt="Functional Parts">
+                        <div class="gallery-caption">Functional engineering parts</div>
+                    </div>
+                </div>
+            </div>
+            
+            <h2 class="section-title">Artistic Endeavors</h2>
+            
+            <!-- Artistic Section -->
+            <div class="gallery-section">
+                <h3 class="gallery-section-title">Creative Works</h3>
+                <div class="gallery-grid">
+                    <div class="gallery-item" data-category="art">
+                        <img src="../images/placeholders/Artistic_Endeavors/main_project_view.jpg" alt="Artistic Projects">
+                        <div class="gallery-caption">Artistic expression</div>
+                    </div>
+                    <div class="gallery-item" data-category="art">
+                        <img src="../images/placeholders/Artistic_Endeavors/detail_1.jpg" alt="Paintings">
+                        <div class="gallery-caption">Painting collection</div>
+                    </div>
+                    <div class="gallery-item" data-category="art">
+                        <img src="../images/placeholders/Artistic_Endeavors/detail_2.jpg" alt="Digital Art">
+                        <div class="gallery-caption">Digital art creations</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <a href="../index.html">Pranav<span>Banga</span></a>
+                    <p>Mechatronics Engineer | Robotics Specialist | Innovative Problem Solver</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-links-column">
+                        <h3>Navigation</h3>
+                        <ul>
+                            <li><a href="../index.html#home">Home</a></li>
+                            <li><a href="../index.html#about">About</a></li>
+                            <li><a href="../index.html#experience">Experience</a></li>
+                            <li><a href="../index.html#projects">Projects</a></li>
+                            <li><a href="../index.html#skills">Skills</a></li>
+                            <li><a href="../index.html#gallery">Gallery</a></li>
+                            <li><a href="../index.html#contact">Contact</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Projects</h3>
+                        <ul>
+                            <li><a href="../projects/atms.html">ATMS</a></li>
+                            <li><a href="../projects/autonomous-car.html">Autonomous Car</a></li>
+                            <li><a href="../projects/terrain-robot.html">Terrain Robot</a></li>
+                            <li><a href="../projects/ecocharge.html">EcoCharge</a></li>
+                            <li><a href="../projects/solar-tracker.html">Solar Tracker</a></li>
+                            <li><a href="../projects/additive-manufacturing.html">3D Printing</a></li>
+                        </ul>
+                    </div>
+                    <div class="footer-links-column">
+                        <h3>Connect</h3>
+                        <ul class="social-links">
+                            <li><a href="#"><i class="fab fa-linkedin"></i> LinkedIn</a></li>
+                            <li><a href="#"><i class="fab fa-github"></i> GitHub</a></li>
+                            <li><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
+                            <li><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
+                            <li><a href="mailto:contact@pranavbanga.com"><i class="fas fa-envelope"></i> Email</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Pranav Banga. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Gallery Modal -->
+    <div class="gallery-modal">
+        <div class="modal-content">
+            <span class="modal-close">&times;</span>
+            <img src="" alt="" class="modal-image">
+            <div class="modal-caption"></div>
+            <div class="modal-nav">
+                <span class="modal-prev"><i class="fas fa-chevron-left"></i></span>
+                <span class="modal-next"><i class="fas fa-chevron-right"></i></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.11.4/ScrollTrigger.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Gallery filtering
+            const galleryTabs = document.querySelectorAll('.gallery-tab');
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            
+            galleryTabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs
+                    galleryTabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    tab.classList.add('active');
+                    
+                    const category = tab.getAttribute('data-category');
+                    
+                    galleryItems.forEach(item => {
+                        if (category === 'all') {
+                            item.style.display = 'block';
+                        } else {
+                            const itemCategories = item.getAttribute('data-category');
+                            if (itemCategories && itemCategories.includes(category)) {
+                                item.style.display = 'block';
+                            } else {
+                                item.style.display = 'none';
+                            }
+                        }
+                    });
+                });
+            });
+            
+            // Gallery modal
+            const galleryModal = document.querySelector('.gallery-modal');
+            const modalImage = document.querySelector('.modal-image');
+            const modalCaption = document.querySelector('.modal-caption');
+            const modalClose = document.querySelector('.modal-close');
+            const modalPrev = document.querySelector('.modal-prev');
+            const modalNext = document.querySelector('.modal-next');
+            
+            let currentIndex = 0;
+            let visibleItems = [];
+            
+            function updateVisibleItems() {
+                visibleItems = Array.from(galleryItems).filter(item => 
+                    item.style.display !== 'none'
+                );
+            }
+            
+            // Open modal
+            galleryItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    updateVisibleItems();
+                    const imgSrc = item.querySelector('img').getAttribute('src');
+                    const caption = item.querySelector('.gallery-caption').textContent;
+                    
+                    modalImage.setAttribute('src', imgSrc);
+                    modalCaption.textContent = caption;
+                    currentIndex = visibleItems.indexOf(item);
+                    
+                    galleryModal.classList.add('active');
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            // Close modal
+            modalClose.addEventListener('click', () => {
+                galleryModal.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal on outside click
+            galleryModal.addEventListener('click', (e) => {
+                if (e.target === galleryModal) {
+                    galleryModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Previous image
+            modalPrev.addEventListener('click', () => {
+                currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+                updateModalImage();
+            });
+            
+            // Next image
+            modalNext.addEventListener('click', () => {
+                currentIndex = (currentIndex + 1) % visibleItems.length;
+                updateModalImage();
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                if (!galleryModal.classList.contains('active')) return;
+                
+                if (e.key === 'Escape') {
+                    galleryModal.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                } else if (e.key === 'ArrowLeft') {
+                    currentIndex = (currentIndex - 1 + visibleItems.length) % visibleItems.length;
+                    updateModalImage();
+                } else if (e.key === 'ArrowRight') {
+                    currentIndex = (currentIndex + 1) % visibleItems.length;
+                    updateModalImage();
+                }
+            });
+            
+            // Update modal image
+            function updateModalImage() {
+                const item = visibleItems[currentIndex];
+                const imgSrc = item.querySelector('img').getAttribute('src');
+                const caption = item.querySelector('.gallery-caption').textContent;
+                
+                modalImage.setAttribute('src', imgSrc);
+                modalCaption.textContent = caption;
+            }
+        });
+    </script>
+</body>
+</html>

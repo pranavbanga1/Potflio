@@ -1,0 +1,1190 @@
+FACULTY OF ENGINEERING AND APPLIED SCIENCE
+METE4300U Intro to Mobile Robotics
+Winter 2025
+
+Turtlebot ROS Project
+Milestone 3 (Phase C) Report
+April 8, 2025
+
+Course Instructor
+
+Dr. Scott Nokleby
+
+Project Instructor
+
+Aidan Barber
+
+PROJECT GROUP NUMBER #: 3
+First Name
+
+Last Name
+
+Student ID
+
+Harsh
+
+Kachhia
+
+100792045
+
+Hardik
+
+Maheshwari
+
+100781873
+
+Pranav
+
+Banga
+
+100799008
+
+Table Of Contents
+1. Introduction....................................................................................................................... 2
+1.1 Overview of Milestone 3 Task......................................................................................2
+1.2 Motivation and Real-World Relevance........................................................................ 2
+1.3 Recap of Previous Milestones and Integration............................................................3
+2. Milestone Requirements and Engineering Specifications............................................4
+2.1 Functional Requirements............................................................................................ 4
+2.2 Engineering Specifications.......................................................................................... 5
+3. Background Research......................................................................................................6
+3.1 Vision-Based Obstacle Avoidance: Literature and Industry Approaches.................... 6
+3.2 ROS Implementations for Cone and Obstacle Detection............................................ 6
+3.3 Calibration Techniques and Limitations.......................................................................7
+4. Functional Decomposition and Software Design.......................................................... 8
+4.1 System Architecture Overview.................................................................................... 8
+4.2 ROS Nodes and Data Flow......................................................................................... 8
+4.3 Obstacle Detection Logic............................................................................................ 9
+4.4 Obstacle Avoidance Strategy.................................................................................... 10
+4.5 Node Modifications and Custom Code Snippets.......................................................10
+4.6 UML Activity Diagram................................................................................................12
+5. Test Plan and Results..................................................................................................... 13
+5.1 Testing Environment and Methodology..................................................................... 13
+5.2 Test Results Summary.............................................................................................. 14
+5.3 Detection Accuracy Analysis..................................................................................... 14
+5.4 Review of Behavior Execution...................................................................................15
+5.5 Debugging and Improvement Insights.......................................................................15
+6. Discussion.......................................................................................................................16
+6.1 Performance Analysis............................................................................................... 16
+6.2 Limitations and Constraints....................................................................................... 17
+6.3 Technical Lessons from Phase C.............................................................................. 17
+7. Conclusion and Future Work......................................................................................... 18
+7.1 Summary of Accomplishments..................................................................................18
+7.2 System Readiness and Integration........................................................................... 18
+7.3 Future Improvements................................................................................................ 19
+References...........................................................................................................................20
+Appendix..............................................................................................................................21
+Detect Cone Configuration Settings................................................................................ 21
+Node Controller Code......................................................................................................21
+Node Decider Code.........................................................................................................25
+
+1
+
+1. Introduction
+1.1 Overview of Milestone 3 Task
+Phase C Milestone 3 of the mobile robot project involved the implementation of
+vision-based obstacle detection and avoidance on the TurtleBot3 Burger platform. The
+main aim was to equip the robot with autonomous traffic cone detection that mimicked a
+road construction situation in its travel lane. The robot had to swerve out of its lane
+around the cones upon detection by momentarily entering the opposing lane before it
+resumed the original lane of travel after passing the obstacle.
+This stage was all about reactive behavior in changing environments, where a real-time
+combination of visual perception, control reasoning, and navigation of a camera-only
+world had to be accomplished. The robot was supposed to do this correctly and
+effectively without LIDAR, depth sensors, or pre-mapped worlds.
+
+1.2 Motivation and Real-World Relevance
+Obstacle evasion is an inherent ability for independent devices in structured and
+unstructured environments. All technologies like robots in warehouses, autonomous
+delivery UAVs, and autonomous vehicles should be able to react to passing obstacles,
+like construction areas or unforeseen risks, without endangering operational integrity.
+This achievement emulated such real-world scenarios with low-cost hardware and
+open-source software. With only monocular vision and ROS-based processing, the
+system was attempting to show a technique for real-time obstacle management scaled
+to tight environments.
+
+2
+
+1.3 Recap of Previous Milestones and Integration
+The solution developed in this milestone builds upon the foundational work completed in
+Milestones 1 and 2. In Milestone 1, a vision-based lane-following system was
+implemented using Canny edge detection and Hough transforms, paired with a
+proportional controller to maintain center alignment within the lane. Milestone 2
+expanded the system with traffic light detection and stop-go logic based on HSV color
+segmentation. This phase also introduced synchronized ROS nodes that interpreted
+visual data and generated velocity commands.
+For Milestone 3, the traffic light detection node was adapted to identify orange traffic
+cones based on calibrated HSV thresholds. A custom obstacle avoidance node was
+introduced to execute a predefined sequence of actions upon cone detection. These
+actions included veering into the opposing lane, bypassing the obstacle, and returning
+to the original lane once the path was clear. Although the final demonstration exhibited
+some inconsistencies in behavior, the cone detection logic triggered reliably in both
+trials, suggesting that the perception and node activation layers were functioning as
+intended.
+This milestone marked a significant step in developing a reactive, autonomous
+navigation system capable of adapting to changing environments in real time.
+
+3
+
+2. Milestone Requirements and Engineering Specifications
+2.1 Functional Requirements
+The activity given for Milestone 3 was to make the robot detect and avoid objects on its
+path of movement. For this milestone, obstacles were in the form of orange traffic cones
+laid continuously along the lane to represent a construction zone. The system functional
+requirements under this milestone are given below:
+Obstacle Detection: Detects the occurrence of traffic cones in the line of sight of the
+robot through real-time processing of images.
+Obstacle Avoidance Maneuver: Execute a specified avoidance maneuver when an
+obstacle is detected. The robot should turn into the neighboring lane, bypass the
+obstacle, and rejoin the original lane following the completion of the construction zone.
+Vision-Based Operation: Detection and control had to be done solely with camera input,
+without the use of depth sensors or external localization.
+Autonomous Control: The whole detection and maneuvering process had to be done
+autonomously, with no human intervention during operation.
+ROS Node Integration: Previous ROS nodes from prior milestones, e.g., traffic light
+detection and lane following, would be reused or built upon during the process in order
+to provide support for cone detection and behavior control.
+
+4
+
+2.2 Engineering Specifications
+To meet the above requirements, the system was designed to operate within the
+following engineering constraints and performance targets:
+
+Specification
+
+Target Value or Range
+
+Rationale
+
+Camera Resolution
+
+640×480 at 30 FPS
+
+Ensures sufficient frame quality for
+accurate cone detection using color
+filtering.
+
+HSV Range for Cone
+Detection
+
+Hue: 5–20, Sat: 150–255, Value:
+80–255 (approx.)
+
+Calibrated to detect orange cones
+under variable lighting conditions.
+
+Detection Threshold
+
+>300 non-zero pixels in mask
+
+Prevents false positives due to small
+background noise.
+
+Obstacle Reaction
+Latency
+
+<1 second from detection to
+behavior execution
+
+Required for timely decision-making
+and safe navigation.
+
+Forward Velocity
+(Normal)
+
+0.2 m/s
+
+Maintains stable motion during
+regular navigation.
+
+Turn Radius / Speed
+
+Predefined values for left/right veer
+and return
+
+Hardcoded to ensure deterministic
+avoidance behavior.
+
+Computation Platform
+
+Raspberry Pi 3B+
+
+Real-time processing required for
+image capture, filtering, and ROS
+topic handling.
+
+Table 1: Engineering Specifications Phase C
+
+All specifications were informed by previous milestones, hardware limitations, and
+calibration tests performed in the lab. The HSV range values were derived through
+empirical tuning using rqt_reconfigure and iterative testing with real traffic cones under
+typical room lighting.
+
+5
+
+3. Background Research
+3.1 Vision-Based Obstacle Avoidance: Literature and Industry Approaches
+Obstacle detection and avoidance are essential features on mobile robotics platforms.
+Traditional systems make use of LIDAR or depth sensors to create an environmental
+map and find obstacles, yet vision-based techniques offer a lightweight and lower-cost
+solution for less demanding applications. Specifically, monocular vision methods are
+extensively deployed on small autonomous robots, i.e., indoor delivery robots and
+educational robots [1].
+Typical computer vision methods used for obstacle detection are color segmentation,
+contour detection, and blob detection. Traffic cones can be separated from the
+background by using color filtering in HSV color space. It is suitable for well-shaped,
+highly colored objects in fairly controlled lighting conditions [2]. Pre-defined maneuvers
+or behavior trees can also be used by vision-based detection systems to do robust
+avoidance without depth information [3].
+
+3.2 ROS Implementations for Cone and Obstacle Detection
+Most default obstacle avoidance packages in the ROS system, including move_base,
+have been tuned for LIDAR and occupancy grid maps. Monocular cameras, however,
+need customized solutions. The ROS packages listed below were applicable in this
+implementation:
+●​ cv_bridge and image_transport: These packages are typically used to subscribe
+to topics from cameras and convert images into OpenCV-compatible data types.
+●​ rqt_reconfigure:
+
+This
+
+provided
+
+real-time
+
+adjustment
+
+of
+
+HSV
+
+threshold
+
+parameters, which was required to adjust cone detection in changing illumination.
+●​ Custom detection node: A custom ROS node was duplicated over from the traffic
+light detection node employed in Milestone 2. The node used HSV filtering to
+identify orange cones and provided a Boolean flag to initiate the obstacle
+avoidance process.
+6
+
+ROS-based software packages, e.g., TurtleBot3 Autorace and open-source cone
+detection lessons, illustrate the applicability of HSV filtering to real-time object detection
+and suggest the performance limitations inherent with low-cost camera-based systems.
+
+3.3 Calibration Techniques and Limitations
+Color-based detection is vulnerable to environmental conditions. In order to provide
+efficient cone detection, the HSV threshold values were tuned through rqt_reconfigure
+and validated in realistic lab settings. Hue, saturation, and value thresholds were
+adjusted to aim at the distinctive orange color of the traffic cones.
+The following calibration methods were utilized:
+●​ Color thresholding in HSV color space: Used instead of RGB because it can
+separate the chromatic information from brightness more efficiently.
+●​ Region Of Interest (ROI) filtering: Image filtering was limited to the lower part of
+the image where obstacles are likely to occur, leaving noise from other areas out.
+●​ Pixel mask thresholding: Detection was only triggered if the number of orange
+pixels had exceeded a pre-set threshold, to avoid spurious detection from noise
+or subpixel detection.
+Even with precise calibration, shadow and lighting issues caused sporadic missed
+detections or unstable triggering of the avoidance routine. These findings are in line with
+results in vision-only systems, which improve with the inclusion of other modalities like
+depth sensing or IMU feedback.
+
+7
+
+4. Functional Decomposition and Software Design
+4.1 System Architecture Overview
+The system developed for Milestone 3 builds upon the ROS node framework
+established in previous phases, with the addition of a cone detection pipeline and a
+reactive obstacle avoidance behavior node. The overall architecture is modular, allowing
+for separation of concerns between perception, decision-making, and motion control.
+The core subsystems include:
+●​ Camera Vision System: Captures RGB images in real time using the Raspberry
+Pi Camera, publishing them to the /camera/image_raw topic.
+●​ Light Detection Node (Core Node Decider): Subscribes to the image stream,
+converts it to HSV, applies a binary mask for the calibrated orange cone range,
+and counts the number of detected pixels.
+●​ Obstacle Avoidance Node (Core Mode Controller): Monitors detection flags and
+executes a fixed movement sequence when cones are detected.
+●​ Velocity Publisher Node: Publishes geometry_msgs/Twist commands to /cmd_vel
+for executing avoidance maneuvers.
+
+4.2 ROS Nodes and Data Flow
+The data flow between nodes is as follows:
+1.​ The camera node publishes image data to /camera/image_raw.
+2.​ The cone detection node subscribes to this topic, performs color filtering in HSV
+space, and publishes a Boolean flag to a custom topic (e.g., /cone_detected)
+when cones are identified.
+3.​ The obstacle avoidance node subscribes to /cone_detected. When a detection is
+triggered, it overrides normal motion and publishes a sequence of Twist
+messages to /cmd_vel to veer left, move forward, veer right, and return to the
+original lane.
+8
+
+4.​ When no cones are detected, control is returned to the standard lane-following
+node.
+This architecture preserves compatibility with previous milestone components while
+allowing localized control logic for obstacle-specific behaviors.
+
+4.3 Obstacle Detection Logic
+The traffic cone detection node utilizes a real-time image processing pipeline based on
+HSV color filtering. The overall logic and processing steps are summarized in the table
+below:
+
+Step
+
+Description
+
+1. Image Acquisition
+
+Subscribes to /camera/image_raw topic to receive real-time image
+frames from the Raspberry Pi Camera.
+
+2. Color Space Conversion
+
+Converts incoming BGR frames to HSV using OpenCV’s
+cv2.cvtColor() to isolate hue, saturation, and brightness
+components.
+
+3. HSV Thresholding
+
+Applies a binary mask using cv2.inRange() with calibrated values for
+obstacle colors:
+• Red – H: 0–53, S: 104–255, V: 123–255
+• Yellow – H: 19–33, S: 237–255, V: 231–255
+• Green – H: 40–113, S: 210–255, V: 131–255
+(Refer to Appendix for Full Configuration Values)
+
+4. Region of Interest (ROI)
+
+Focuses processing on the lower portion of the frame to minimize
+noise from irrelevant background areas.
+
+5. Pixel Count Thresholding
+
+Counts the number of non-zero pixels in the binary mask. If the count
+exceeds a fixed threshold (e.g., 300 pixels), detection is considered
+valid.
+
+6. Detection Flag Publishing
+
+Publishes a Boolean message (True or False) to the /cone_detected
+topic, which is monitored by the obstacle avoidance node.
+Table 2: Obstacle Detection Logic
+
+This method provides a computationally efficient approach suitable for real-time
+processing on the Raspberry Pi 3B+, while remaining flexible to lighting conditions
+through adjustable threshold parameters.
+9
+
+4.4 Obstacle Avoidance Strategy
+Obstacle avoidance procedure is executed as a series of discrete motion steps. The
+behavior is time-constrained and aimed at navigating the robot into the neighboring
+lane, past the obstacle, and onto its original course. The procedure does not require
+mapping or localization and can thus be executed in real time on vision-only platforms.
+Step
+
+Action
+
+Description
+
+1
+
+Turn Left
+
+Applies angular velocity to shift the robot laterally into
+the adjacent lane.
+
+2
+
+Move Forward
+
+Maintains forward linear velocity to bypass the
+obstacle area.
+
+3
+
+Turn Right
+
+Applies angular velocity in the opposite direction to
+re-align with the lane.
+
+4
+
+Resume Lane Following
+
+Stops publishing from the avoidance node, returning
+control to the lane follower.
+
+Table 3: Obstacle Avoidance Strategy
+
+Each step is done by sending messages on the /cmd_vel topic. The timing between
+steps is managed with rospy.sleep() function calls or timers to make the maneuver
+deterministic and replicable.
+
+4.5 Node Modifications and Custom Code Snippets
+To support traffic light detection and behavior switching, two core ROS nodes were
+modified
+
+and
+
+integrated
+
+into
+
+the
+
+system:
+
+the
+
+core_mode_decider
+
+and
+
+core_node_controller.
+The core_mode_decider node is responsible for monitoring high-level detection inputs
+(such as traffic lights) and determining the current operating mode. Upon detection of a
+traffic light, it publishes the updated mode to the /core/decided_mode topic. This
+ensures that only one mission (e.g., lane following or traffic light handling) is active at a
+time. The initial mode is set to lane_following, and the state is toggled based on
+detection inputs.
+
+10
+
+The core_node_controller subscribes to the decided mode and launches or shuts down
+specific nodes depending on the mode received. For example, if the received mode is
+traffic_light, the controller launches the detection and control nodes required for traffic
+light handling, while deactivating lane-related subsystems. This modular design avoids
+interference between concurrent tasks and maintains clarity in node responsibilities.
+Below is a simplified snippet illustrating the decision and execution flow:
+Core_mode_decider Snippet
+# --- core_mode_decider ---​
+def fnInitMode(self):​
+self.current_mode = self.CurrentMode.lane_following.value​
+self.fnPublishMode()​
+​
+def cbInvokedByTrafficLight(self, msg):​
+if self.current_mode == self.CurrentMode.lane_following.value:​
+self.current_mode = self.CurrentMode.traffic_light.value​
+self.fnPublishMode()
+
+Core_node_controller Snippet
+# --- core_node_controller ---​
+def cbReceiveMode(self, mode_msg):​
+self.current_mode = mode_msg.data​
+self.is_triggered = True​
+​
+def fnControlNode(self):​
+if self.current_mode == self.CurrentMode.lane_following.value:​
+self.fnLaunch(self.Launcher.launch_detect_lane.value, True)​
+self.fnLaunch(self.Launcher.launch_detect_traffic_light.value,
+False)​
+self.fnLaunch(self.Launcher.launch_driving_lane.value, True)​
+​
+elif self.current_mode == self.CurrentMode.traffic_light.value:​
+self.fnLaunch(self.Launcher.launch_detect_traffic_light.value,
+True)​
+self.pub_traffic_light_order.publish(UInt8(self.StepOfTrafficLight.in_traff
+ic_light.value))
+
+11
+
+4.6 UML Activity Diagram
+The following UML diagram outlines the system behavior from image capture to
+maneuver execution:
+
+Figure 1: UML Activity Diagram
+
+The conditional logic ensures that obstacle avoidance only interrupts normal navigation
+when a detection is active, preserving modularity and reducing conflicts between nodes.
+
+12
+
+5. Test Plan and Results
+5.1 Testing Environment and Methodology
+It was tested in a controlled indoor setup with the TurtleBot3 Burger on a motionless
+track under constant illumination. Traffic cones were set along one lane to create a
+construction area where the robot needs to drive into the next lane. The system was
+initialized using regular ROS launch files, and node communications were confirmed
+with rqt_graph and rostopic echo.
+The testing procedure was organized as follows:
+Test Category
+
+Description
+
+Location
+
+Indoor test track with stable lighting conditions.
+
+Obstacle Setup
+
+Orange traffic cones placed along a single lane
+to simulate a construction zone.
+
+Launch Process
+
+Nodes initiated using custom launch files. Order
+and readiness confirmed using rosnode list.
+
+Detection Validation
+
+Cone detection evaluated using rostopic echo
+/detect/cone. Pixel threshold triggering tested.
+
+Node Interaction Checks
+
+Verified mode switching and launch behavior
+via /core/decided_mode and ROS logs.
+
+Behavior Response
+
+Monitored execution of avoidance logic and
+return to original lane using /cmd_vel
+messages.
+
+Tools Used
+
+rqt_graph, rqt_reconfigure, rostopic echo,
+roslaunch, and terminal logs.
+Table 4: Testing Procedure
+
+13
+
+5.2 Test Results Summary
+
+Test Case
+
+Expected Behavior
+
+Observed Behavior
+
+Status
+
+Cone Detection at
+~0.2m distance
+
+Detection node triggers and
+publishes UInt8(1)
+
+Cone detected consistently
+above pixel threshold
+
+Pass
+
+No Cone in View
+
+Detection node publishes
+UInt8(0)
+
+No false positive triggered
+
+Pass
+
+Obstacle Avoidance
+Activation
+
+Detection flag triggers
+movement override sequence
+
+Motion override attempted, but
+inconsistent redirection
+
+Partial
+Pass
+
+Return to Original
+Lane
+
+After bypassing obstacle, robot
+realigns with lane
+
+Behavior partially completed,
+but drift observed
+
+Partial
+Pass
+
+ROS Node
+Synchronization
+
+Nodes launch in correct order
+based on mode
+
+Mode logic activated, but
+occasional delays seen in
+/cmd_vel updates
+
+Needs
+Improve
+ment
+
+System Stability
+(Multiple Runs)
+
+Robot consistently avoids cones
+across multiple trials
+
+Inconsistent due to network
+latency
+
+Needs
+Improve
+ment
+
+Table 5: Testing Results Summary
+
+The system successfully detected cones and triggered avoidance logic, but exhibited
+partial success in redirection and lane realignment due to timing inconsistencies and
+network-related issues.
+
+5.3 Detection Accuracy Analysis
+Calibration tuning with rqt_reconfigure gave decent detection accuracy under best
+illumination. HSV threshold limits were strongly invariant to the majority of shadowing,
+though minute change of cone orientation or contrast of the background would
+occasionally produce misclassifications. The most stable detection of the cones was
+when the object was wholly in view within the lower image boundary.
+
+14
+
+5.4 Review of Behavior Execution
+Turn-left → forward → turn-right → re-align obstacle avoidance maneuver was
+performed using rospy.sleep()-timed velocity commands. During two live trials, the
+maneuver started properly but frequently failed to re-align the robot onto its original
+course. This is likely a result of time-based control lacking closed-loop correction.
+ROS logs verified that the detection flag had indeed reached the controller node,
+while delay in booting up control scripts contributed insignificant timing discrepancies.
+
+5.5 Debugging and Improvement Insights
+Throughout testing, the following issues and debugging steps were noted:
+Issue
+
+Description
+
+Proposed Solution
+
+Network Latency
+
+Node startup delays and missing
+/cmd_vel messages due to
+communication lag.
+
+Minimize launch file complexity and
+stagger node initialization to avoid
+bottlenecks.
+
+Edge-Case Cone
+Detection Failures
+
+Detection node failed to trigger when
+cones appeared at the image
+periphery or in partially visible areas.
+
+Improve Region of Interest (ROI)
+targeting and apply morphological
+filtering.
+
+Missing /cmd_vel
+Response During
+Switching
+
+Robot occasionally failed to respond
+to velocity commands after mode
+transitions.
+
+Introduce heartbeat publishers or
+watchdog timers to maintain
+command flow.
+
+Table 6: Learning Outcomes from Failures/Debugging
+
+Key issues such as latency, edge-case detection failures, and missing velocity
+commands were identified, with proposed solutions including staggered node launches,
+ROI tuning, and implementing watchdog mechanisms.
+
+15
+
+6. Discussion
+6.1 Performance Analysis
+Obstacle detection and avoidance implementation reached basic functionality, with good
+cone detection under normal lighting and positioning. HSV thresholding application
+offered a minimal and deterministic approach to separating orange cones. However,
+according to the TurtleBot3 documentation, vision perception is highly susceptible to the
+light, shadow, and orientation of objects in the environment [4]. Spurious failure of
+detection happens when cones are placed on image boundaries or are occluded.
+Avoidance behavior was achieved through triggering from a custom node sending
+velocity commands with an open-loop approach through a predefined time sequence.
+Successful obstacle avoidance in some trials, though, motion sequences were purely
+open-loop based through time delay. In subsequent path planning using closed-loop
+feedback including localization and mapping of obstacles, as quoted in the TurtleBot3
+Navigation manual, they were not subjected to this milestone. Thus, the robot showed
+evident drift while cornering and was unable to return to the center of the lane
+consistently.
+The system responsiveness also suffered from intermittent message delay and
+occasional node launch conflicts. These symptoms are consistent with documented
+performance traits of the Raspberry Pi 3B+ board used on the TurtleBot3 Burger, which
+does not have enough processing power for simultaneous real-time operations such as
+image processing and motion control [4].
+
+16
+
+6.2 Limitations and Constraints
+
+The performance of the system was constrained by both hardware and architectural
+limitations. Key issues included the absence of odometry feedback, lack of closed-loop
+control, and reliance on manual parameter tuning. Additionally, resource limitations on
+the Raspberry Pi 3B+ and the decision not to leverage the TurtleBot3 simulation
+environment further hindered consistent performance and made calibration more
+time-consuming.
+
+Limitation
+
+Description
+
+Impact on System
+
+No Odometry/IMU
+Integration
+
+Encoders or IMU data were not used
+to correct drift or adjust movement.
+
+Robot veered off during avoidance
+and could not reliably re-center itself.
+
+Hardware Constraints
+
+Raspberry Pi 3B+ lacks GPU and has
+limited CPU bandwidth.
+
+Caused detection frame drops,
+slowdowns, and launch-time delays.
+
+No Mapping or
+Planning Stack
+
+Global/local costmaps and path
+planners were not implemented.
+
+Robot could not adapt its trajectory
+based on cone layout or surrounding
+environment.
+
+No Simulation-Based
+Tuning
+
+Gazebo simulation was not used for
+prototyping.
+
+All tuning required real-world testing,
+increasing time and reducing
+repeatability.
+
+Manual HSV + ROI
+Calibration
+
+Cone detection relied on fixed color
+bounds and image regions.
+
+Detection was brittle under varying
+lighting, cone positions, or partial
+occlusions.
+
+Table 7: System Limitations and Constraints
+
+6.3 Technical Lessons from Phase C
+This milestone highlighted the benefits of modular ROS architecture, where separating
+detection, control, and decision logic into dedicated nodes improved scalability and
+debugging. However, reliance on open-loop motion without feedback led to drift and
+inconsistent behavior, reinforcing the need for odometry or IMU-based correction.
+
+17
+
+Additionally, the lack of simulation testing made real-world calibration time-consuming.
+Leveraging tools like Gazebo for parameter tuning and integrating closed-loop control
+with sensory feedback would improve both robustness and efficiency in future iterations.
+
+7. Conclusion and Future Work
+7.1 Summary of Accomplishments
+In Milestone 3, an obstacle detection and avoidance system was implemented using
+cameras and integrated with the base TurtleBot3 ROS setup. The robot successfully
+identified orange traffic cones with HSV thresholding and engaged a pre-configured
+avoidance procedure. Control passing between the node detecting cones, the core
+mode decider node, and the node controller node was achieved by ROS topics to
+provide a modular and scalable system architecture. Despite certain performance
+limitations, the milestone showed that reactive navigation with only vision is possible in
+restricted environments.
+
+7.2 System Readiness and Integration
+Obstacle avoidance behavior is also backward compatible with the architecture of
+previous milestones and can be run in parallel with lane following and traffic light
+detection behaviors. The present method, however, is optimized for planar
+environments with controlled lighting. For more difficult scenarios like dynamic
+placement of obstacles, changing lighting, or outdoor deployment, perception
+robustness and motion planning need to be enhanced.
+
+18
+
+7.3 Future Improvements
+To extend this system into a fully autonomous platform, the following improvements are
+recommended:
+●​ Closed-Loop Control: Integrate encoder and IMU data to correct drift during
+avoidance and support accurate realignment with the original lane.
+●​ Simulation-Based Development: Utilize Gazebo, as recommended in the
+TurtleBot3 simulation documentation, for iterative testing of parameters and
+motion sequences prior to deployment.
+●​ Sensor Fusion: Incorporate LIDAR or depth cameras to improve obstacle range
+estimation and handle a wider variety of object shapes and sizes.
+●​ Dynamic Behavior Planning: Introduce a behavior tree or state machine
+framework to manage transitions between multiple navigation goals more reliably.
+●​ Adaptive Perception: Implement auto-tuning or machine learning-based methods
+to dynamically adjust detection thresholds based on real-time lighting and
+environmental context.
+With these enhancements, the system will be more robust, adaptive, and capable of
+handling diverse navigation tasks in real-world environments.
+
+19
+
+References
+[1] M. Buehler, K. Iagnemma, and S. Singh, The DARPA Urban Challenge: Autonomous
+Vehicles in City Traffic, Springer, 2009.
+[2] G. Bradski, “The OpenCV Library,” Dr. Dobb’s Journal of Software Tools, vol. 25, no.
+11, pp. 120–125, 2000.
+[3] D. Scaramuzza and F. Fraundorfer, “Visual Odometry [Tutorial],” IEEE Robotics &
+Automation Magazine, vol. 18, no. 4, pp. 80–92, Dec. 2011.
+[4] ROBOTIS Co., Ltd., "TurtleBot3 Overview," ROBOTIS e-Manual, [Online]. Available:
+https://emanual.robotis.com/docs/en/platform/turtlebot3/overview/
+
+20
+
+Appendix
+Detect Cone Configuration Settings
+
+Node Controller Code
+#!/usr/bin/env python​
+# -*- coding: utf-8 -*-​
+​
+################################################################################​
+# Copyright 2018 ROBOTIS CO., LTD.​
+#​
+# Licensed under the Apache License, Version 2.0 (the "License");​
+# you may not use this file except in compliance with the License.​
+# You may obtain a copy of the License at​
+#​
+#
+http://www.apache.org/licenses/LICENSE-2.0​
+#​
+# Unless required by applicable law or agreed to in writing, software​
+# distributed under the License is distributed on an "AS IS" BASIS,​
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.​
+# See the License for the specific language governing permissions and​
+# limitations under the License.​
+################################################################################​
+
+21
+
+​
+# Authors: Leon Jung, [AuTURBO] Kihoon Kim (https://github.com/auturbo), Gilbert, Ashe Kim​
+​
+import rospy, roslaunch​
+import subprocess​
+import os​
+import sys​
+from enum import Enum​
+from std_msgs.msg import UInt8, Float64​
+​
+class CoreNodeController():​
+def __init__(self):​
+self.ros_package_path = os.path.dirname(os.path.realpath(__file__))​
+self.ros_package_path =
+self.ros_package_path.replace('turtlebot3_autorace_core/nodes', '')​
+​
+# subscribes : status returned​
+self.sub_mode_control = rospy.Subscriber('/core/decided_mode', UInt8,
+self.cbReceiveMode, queue_size=1)​
+​
+# publishes orders​
+self.pub_traffic_light_order = rospy.Publisher('/detect/traffic_light_order', UInt8,
+queue_size=1)​
+self.pub_mode_return = rospy.Publisher('/core/returned_mode', UInt8, queue_size=1)​
+self.pub_timer_start = rospy.Publisher('/detect/timer/start', Float64, queue_size=
+1)​
+​
+self.CurrentMode = Enum('CurrentMode', 'idle lane_following traffic_light')​
+self.current_mode = self.CurrentMode.idle.value​
+​
+self.StepOfTrafficLight = Enum('StepOfTrafficLight', 'searching_traffic_light
+​
+in_traffic_light')
+self.current_step_traffic_light =
+self.StepOfTrafficLight.searching_traffic_light.value​
+​
+self.Launcher = Enum('Launcher', 'launch_camera_ex_calib launch_detect_lane
+launch_detect_traffic_light launch_driving_lane')​
+self.uuid = roslaunch.rlutil.get_or_generate_uuid(None, False)​
+​
+self.launch_camera_launched = False​
+​
+self.launch_detect_lane_launched = False
+self.launch_detect_traffic_light_launched = False​
+self.launch_driving_lane_launched = False​
+​
+self.is_triggered = False​
+​
+loop_rate = rospy.Rate(10) # 10hz​
+while not rospy.is_shutdown():​
+if self.is_triggered == True:​
+self.fnControlNode()​
+​
+loop_rate.sleep()​
+
+22
+
+​
+def cbReceiveMode(self, mode_msg):​
+rospy.loginfo("starts the progress with %d", mode_msg.data)​
+​
+self.current_mode = mode_msg.data​
+self.is_triggered = True​
+​
+​
+def fnControlNode(self): ​
+# lane_following​
+if self.current_mode == self.CurrentMode.lane_following.value:​
+rospy.loginfo("New trigger for lane_following")​
+​
+self.fnLaunch(self.Launcher.launch_camera_ex_calib.value, True)​
+​
+self.fnLaunch(self.Launcher.launch_detect_lane.value, True)​
+self.fnLaunch(self.Launcher.launch_detect_traffic_light.value, False)​
+​
+self.fnLaunch(self.Launcher.launch_driving_lane.value, True)​
+​
+# traffic_light​
+elif self.current_mode == self.CurrentMode.traffic_light.value:​
+rospy.loginfo("New trigger for traffic_light")​
+msg_pub_traffic_light_order = UInt8()​
+​
+if self.current_step_traffic_light ==
+self.StepOfTrafficLight.searching_traffic_light.value:​
+rospy.loginfo("Current step : searching_traffic_light")​
+rospy.loginfo("Go to next step : in_traffic_light")​
+​
+msg_pub_traffic_light_order.data =
+self.StepOfTrafficLight.in_traffic_light.value​
+​
+self.fnLaunch(self.Launcher.launch_detect_lane.value, True)​
+self.fnLaunch(self.Launcher.launch_detect_traffic_light.value, True)​
+​
+self.fnLaunch(self.Launcher.launch_driving_lane.value, False)​
+​
+elif self.current_step_traffic_light ==
+self.StepOfTrafficLight.in_traffic_light.value:​
+rospy.loginfo("Current step : in_traffic_light")​
+rospy.loginfo("Go to next step : pass_traffic_light")​
+​
+self.fnLaunch(self.Launcher.launch_detect_lane.value, True)​
+self.fnLaunch(self.Launcher.launch_detect_traffic_light.value, False)​
+​
+self.fnLaunch(self.Launcher.launch_driving_lane.value, True)​
+​
+rospy.sleep(2)​
+​
+self.pub_traffic_light_order.publish(msg_pub_traffic_light_order)​
+​
+
+23
+
+​
+def fnLaunch(self, launch_num, is_start):​
+if launch_num == self.Launcher.launch_camera_ex_calib.value:​
+if is_start == True:​
+if self.launch_camera_launched == False:​
+self.launch_camera = roslaunch.scriptapi.ROSLaunch()​
+self.launch_camera = roslaunch.parent.ROSLaunchParent(self.uuid,
+[self.ros_package_path +
+"turtlebot3_autorace_camera/launch/extrinsic_camera_calibration.launch"])​
+self.launch_camera_launched = True​
+self.launch_camera.start()​
+else:​
+pass​
+else:​
+if self.launch_camera_launched == True:​
+self.launch_camera_launched = False​
+self.launch_camera.shutdown()​
+else:​
+pass
+​
+​
+elif launch_num == self.Launcher.launch_detect_lane.value:​
+if is_start == True:​
+if self.launch_detect_lane_launched == False:​
+self.launch_detect_lane = roslaunch.scriptapi.ROSLaunch()​
+self.launch_detect_lane = roslaunch.parent.ROSLaunchParent(self.uuid,
+[self.ros_package_path + "turtlebot3_autorace_detect/launch/detect_lane.launch"])​
+self.launch_detect_lane_launched = True​
+self.launch_detect_lane.start()​
+else:​
+pass​
+else:​
+if self.launch_detect_lane_launched == True:​
+self.launch_detect_lane_launched = False​
+self.launch_detect_lane.shutdown()​
+else:​
+pass ​
+​
+elif launch_num == self.Launcher.launch_detect_traffic_light.value:​
+if is_start == True:​
+if self.launch_detect_traffic_light_launched == False:​
+self.launch_detect_traffic_light = roslaunch.scriptapi.ROSLaunch()​
+self.launch_detect_traffic_light =
+roslaunch.parent.ROSLaunchParent(self.uuid, [self.ros_package_path +
+​
+"turtlebot3_autorace_detect/launch/detect_traffic_light.launch"])
+self.launch_detect_traffic_light_launched = True​
+self.launch_detect_traffic_light.start()​
+else:​
+pass​
+else:​
+if self.launch_detect_traffic_light_launched == True:​
+self.launch_detect_traffic_light_launched = False​
+self.launch_detect_traffic_light.shutdown()​
+
+24
+
+else:​
+pass
+​
+​
+elif launch_num == self.Launcher.launch_driving_lane.value:​
+if is_start == True:​
+if self.launch_driving_lane_launched == False:​
+self.launch_driving_lane = roslaunch.scriptapi.ROSLaunch()​
+self.launch_driving_lane = roslaunch.parent.ROSLaunchParent(self.uuid,
+[self.ros_package_path +
+"turtlebot3_autorace_driving/launch/turtlebot3_autorace_control_lane.launch"])​
+self.launch_driving_lane_launched = True​
+self.launch_driving_lane.start()​
+else:​
+pass​
+else:​
+if self.launch_driving_lane_launched == True:​
+self.launch_driving_lane_launched = False​
+self.launch_driving_lane.shutdown()​
+else:​
+pass
+​
+​
+def main(self):​
+rospy.spin()​
+​
+if __name__ == '__main__':​
+rospy.init_node('core_node_controller')​
+node = CoreNodeController()​
+node.main()
+
+Node Decider Code
+#!/usr/bin/env python​
+# -*- coding: utf-8 -*-​
+​
+################################################################################​
+# Copyright 2018 ROBOTIS CO., LTD.​
+#​
+# Licensed under the Apache License, Version 2.0 (the "License");​
+# you may not use this file except in compliance with the License.​
+# You may obtain a copy of the License at​
+#​
+#
+http://www.apache.org/licenses/LICENSE-2.0​
+#​
+# Unless required by applicable law or agreed to in writing, software​
+# distributed under the License is distributed on an "AS IS" BASIS,​
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.​
+# See the License for the specific language governing permissions and​
+# limitations under the License.​
+################################################################################​
+​
+
+25
+
+# Author: Leon Jung, Gilbert, Ashe Kim​
+​
+import rospy​
+import numpy as np​
+from enum import Enum​
+from std_msgs.msg import UInt8​
+from turtlebot3_autorace_msgs.msg import MovingParam​
+​
+class CoreModeDecider():​
+def __init__(self):​
+# subscribes : invoking object detected​
+self.sub_traffic_light = rospy.Subscriber('/detect/traffic_light', UInt8,
+self.cbInvokedByTrafficLight, queue_size=1)​
+self.sub_returned_mode = rospy.Subscriber('/core/returned_mode', UInt8,
+self.cbReturnedMode, queue_size=1)​
+​
+# publishes : decided mode​
+self.pub_decided_mode = rospy.Publisher('/core/decided_mode', UInt8, queue_size=1)​
+​
+self.InvokedObject = Enum('InvokedObject', 'traffic_light')​
+self.CurrentMode = Enum('CurrentMode', 'idle lane_following traffic_light')​
+​
+self.fnInitMode()​
+​
+# Invoke if traffic light is detected​
+def cbInvokedByTrafficLight(self, traffic_light_type_msg):​
+rospy.loginfo("invoke light")​
+self.fnDecideMode(self.InvokedObject.traffic_light.value, traffic_light_type_msg)​
+rospy.loginfo("Traffic light detected")​
+​
+def cbReturnedMode(self, mode):​
+rospy.loginfo("Init Mode")​
+self.fnInitMode()​
+​
+def fnInitMode(self):
+# starts only
+when the program is started initially or any mission is completed​
+self.current_mode = self.CurrentMode.lane_following.value​
+self.fnPublishMode()​
+​
+def fnDecideMode(self, invoked_object, msg_data):
+# starts only
+when the traffic sign / traffic light is detected & current_mode is lane_following​
+if self.current_mode == self.CurrentMode.lane_following.value:​
+if invoked_object == self.InvokedObject.traffic_light.value:
+# Traffic Light
+detected​
+self.current_mode = self.CurrentMode.traffic_light.value​
+else:​
+pass​
+self.fnPublishMode()​
+​
+elif self.current_mode == self.CurrentMode.traffic_light.value:​
+if invoked_object == self.InvokedObject.traffic_light.value:​
+self.current_mode = self.CurrentMode.lane_following.value​
+
+26
+
+else:​
+pass​
+self.fnPublishMode()​
+​
+else:​
+pass​
+​
+def fnPublishMode(self):​
+decided_mode = UInt8()​
+decided_mode.data = self.current_mode​
+self.pub_decided_mode.publish(decided_mode)​
+​
+def main(self):​
+rospy.spin()​
+​
+if __name__ == '__main__':​
+rospy.init_node('core_mode_decider')​
+node = CoreModeDecider()​
+node.main()
+
+27
+
+

@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Helmet Design | Pranav Banga</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="../css/project.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.11.4/dist/ScrollTrigger.min.js"></script>
+</head>
+<body>
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-logo">PB</div>
+        <div class="nav-links">
+            <a href="../index.html#home" class="nav-link">Home</a>
+            <a href="../index.html#about" class="nav-link">About</a>
+            <a href="../index.html#projects" class="nav-link active">Projects</a>
+            <a href="../index.html#additive" class="nav-link">Additive Manufacturing</a>
+            <a href="../index.html#skills" class="nav-link">Skills</a>
+            <a href="../index.html#contact" class="nav-link">Contact</a>
+        </div>
+        <div class="nav-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-instagram"></i></a>
+        </div>
+        <div class="nav-toggle">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+
+    <!-- Project Hero -->
+    <section class="project-hero">
+        <div class="project-hero-content">
+            <div class="project-category">Product Design</div>
+            <h1 class="project-title">Helmet Design</h1>
+            <div class="project-info">
+                <div class="info-item">
+                    <div class="info-label">Year</div>
+                    <div class="info-value">2022</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Technologies</div>
+                    <div class="info-value">CAD Modeling, Ergonomics, Material Engineering</div>
+                </div>
+                <div class="info-item">
+                    <div class="info-label">Role</div>
+                    <div class="info-value">Lead Designer</div>
+                </div>
+            </div>
+        </div>
+        <div class="project-hero-image">
+            <img src="../images/Portfolio Pic/Helmet Design/IMG_2573.JPEG" alt="Helmet Design">
+        </div>
+        <div class="scroll-indicator">
+            <div class="mouse">
+                <div class="wheel"></div>
+            </div>
+            <div class="arrow">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Overview -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Overview</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-overview">
+                <div class="overview-text">
+                    <p>The Helmet Design project focused on creating an optimized lightweight, aerodynamic, and cost-effective helmet that addresses the key challenges faced by cyclists and other sports enthusiasts. The goal was to develop a helmet that fits varied head sizes, provides unobstructed vision, prevents sweat accumulation, and offers protection against sun exposure.</p>
+                    <p>Through an iterative design process, three distinct designs were created and evaluated, culminating in a final design that balances safety, comfort, and performance. The project demonstrates the application of ergonomic principles, material selection, and advanced CAD techniques to solve real-world design challenges.</p>
+                </div>
+                <div class="overview-image">
+                    <img src="../images/Portfolio Pic/Helmet Design/IMG_2573.JPEG" alt="Helmet Design Overview">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Technical Implementation -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Technical Implementation</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="technical-details">
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-drafting-compass"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Design Approach</h3>
+                        <p>Employed a user-centered design methodology that prioritized both safety and comfort. Created multiple conceptual designs through sketching and rapid prototyping, evaluating each against established criteria including weight, ventilation, impact protection, and manufacturability. The iterative approach allowed for continuous refinement based on testing and feedback.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-cubes"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Material Selection</h3>
+                        <p>Selected EPS (Expanded Polystyrene) material for the primary structure due to its excellent shock absorption properties, lightweight nature, and cost-effectiveness. Incorporated a porous foam shock absorber layer to enhance impact protection while maintaining comfort. The material choices balanced safety requirements with weight considerations and manufacturing feasibility.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-wind"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>Ventilation System</h3>
+                        <p>Designed strategic ventilation cut extrusions that create optimal airflow channels throughout the helmet. The ventilation system was developed through computational fluid dynamics analysis to maximize cooling efficiency while maintaining structural integrity. The final design ensures effective heat dissipation during extended use in various weather conditions.</p>
+                    </div>
+                </div>
+                <div class="tech-item">
+                    <div class="tech-icon">
+                        <i class="fas fa-laptop-code"></i>
+                    </div>
+                    <div class="tech-content">
+                        <h3>CAD Implementation</h3>
+                        <p>Utilized Rhino CAD for free-form modeling and conceptual design, leveraging its powerful NURBS-based modeling capabilities to create organic shapes that conform to human head anatomy. Complemented this with SolidWorks for complex simulations, including structural analysis and impact testing. The dual-software approach maximized design flexibility while ensuring technical feasibility.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Gallery -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Project Gallery</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="project-gallery">
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Helmet Design/IMG_2573.JPEG" alt="Helmet Design - Final Render">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Helmet Design/IMG_2573.JPEG" alt="Helmet Design - Side View">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Helmet Design/IMG_2573.JPEG" alt="Helmet Design - Sketches">
+                </div>
+                <div class="gallery-item">
+                    <img src="../images/Portfolio Pic/Helmet Design/IMG_2573.JPEG" alt="Helmet Design - Wireframe">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Development Process -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Development Process</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="process-timeline">
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Research & Requirements</h3>
+                        <p>Conducted comprehensive research on existing helmet designs, safety standards, and user pain points. Analyzed anthropometric data to understand the range of head sizes and shapes that needed to be accommodated. Established clear design requirements and performance criteria.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Conceptual Design</h3>
+                        <p>Created multiple concept sketches exploring different approaches to helmet design. Evaluated concepts based on established criteria and selected the most promising directions for further development. Refined concepts through iterative sketching and basic 3D modeling.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Detailed Design</h3>
+                        <p>Developed three distinct detailed designs using Rhino CAD, focusing on different aspects of the design requirements. Created precise 3D models with attention to wall thickness, ventilation patterns, and ergonomic fit. Incorporated attachment points for straps and accessories.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Engineering Analysis</h3>
+                        <p>Conducted structural simulations in SolidWorks to evaluate impact resistance and identify potential weak points. Performed computational fluid dynamics analysis to optimize ventilation flow. Made design adjustments based on simulation results to improve performance.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Design Refinement</h3>
+                        <p>Selected the most promising design based on analysis results and refined it further. Optimized material distribution for weight reduction while maintaining safety standards. Improved ventilation cut extrusions based on airflow analysis and added final ergonomic features.</p>
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-marker"></div>
+                    <div class="timeline-content">
+                        <h3>Final Documentation</h3>
+                        <p>Created comprehensive technical documentation including detailed drawings, material specifications, and assembly instructions. Prepared high-quality renderings and presentation materials to communicate the design intent and features effectively.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Results & Impact -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Results & Impact</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="results-content">
+                <div class="results-text">
+                    <p>The Helmet Design project successfully delivered a comprehensive design solution that meets all established requirements. The final design achieves an optimal balance between safety, comfort, and aesthetics, with innovative features that address common user pain points in existing helmet designs.</p>
+                    <p>The project demonstrates the effective application of advanced CAD tools and engineering principles to create a product that is both technically sound and user-friendly. The design methodology and technical solutions developed during this project have potential applications in other protective equipment design challenges.</p>
+                    <div class="results-stats">
+                        <div class="stat">
+                            <div class="stat-number">30%</div>
+                            <div class="stat-text">Weight Reduction vs. Comparable Helmets</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">12</div>
+                            <div class="stat-text">Ventilation Channels</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number">95%</div>
+                            <div class="stat-text">Head Size Accommodation Range</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="results-image">
+                    <img src="../images/Portfolio Pic/Helmet Design/IMG_2573.JPEG" alt="Helmet Design Results">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Challenges & Solutions -->
+    <section class="project-section bg-secondary">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Challenges & Solutions</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="challenges-grid">
+                <div class="challenge-item">
+                    <h3>Weight vs. Protection</h3>
+                    <p><strong>Challenge:</strong> Balancing the need for lightweight design with adequate impact protection.</p>
+                    <p><strong>Solution:</strong> Utilized variable thickness EPS material with strategic reinforcement in critical impact zones. Conducted finite element analysis to optimize material distribution, removing excess material in low-risk areas while maintaining or enhancing protection in high-risk zones.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Ventilation Efficiency</h3>
+                    <p><strong>Challenge:</strong> Creating effective cooling without compromising structural integrity.</p>
+                    <p><strong>Solution:</strong> Designed aerodynamic ventilation channels based on computational fluid dynamics simulations. The final design incorporates strategically placed intake and exhaust vents that create a "chimney effect" to maximize airflow while maintaining the helmet's structural framework.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Universal Fit</h3>
+                    <p><strong>Challenge:</strong> Accommodating a wide range of head sizes and shapes with a single design.</p>
+                    <p><strong>Solution:</strong> Incorporated an adjustable internal fit system with a combination of flexible materials and mechanical adjustment mechanisms. The design allows for both circumferential size adjustment and localized fit customization to accommodate different head shapes.</p>
+                </div>
+                <div class="challenge-item">
+                    <h3>Manufacturing Feasibility</h3>
+                    <p><strong>Challenge:</strong> Ensuring the design could be manufactured cost-effectively at scale.</p>
+                    <p><strong>Solution:</strong> Designed the helmet with consideration for molding processes and assembly requirements. Minimized the number of separate components and selected materials compatible with established manufacturing techniques to ensure production viability.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Related Projects -->
+    <section class="project-section">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Related Projects</h2>
+                <div class="section-line"></div>
+            </div>
+            <div class="related-projects">
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Car Seat Design/IMG_2573.JPEG" alt="Car Seat Design">
+                        <div class="project-overlay">
+                            <div class="project-category">Design</div>
+                            <h3 class="project-title">Car Seat Design</h3>
+                            <a href="car-seat-design.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Mini Design Projects/IMG_2573.JPEG" alt="Mini Design Projects">
+                        <div class="project-overlay">
+                            <div class="project-category">Design</div>
+                            <h3 class="project-title">Mini Design Projects</h3>
+                            <a href="mini-design-projects.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+                <div class="project-card">
+                    <div class="project-image">
+                        <img src="../images/Portfolio Pic/Power Drawer/IMG_2573.JPEG" alt="Power Drawer">
+                        <div class="project-overlay">
+                            <div class="project-category">Energy</div>
+                            <h3 class="project-title">Power Drawer</h3>
+                            <a href="power-drawer.html" class="project-link">View Project</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Project Navigation -->
+    <section class="project-navigation">
+        <div class="prev-project">
+            <a href="power-drawer.html">
+                <span class="nav-label"><i class="fas fa-arrow-left"></i> Previous Project</span>
+                <span class="nav-title">Power Drawer</span>
+            </a>
+        </div>
+        <div class="all-projects">
+            <a href="../index.html#projects">
+                <span class="nav-label">All Projects</span>
+                <span class="nav-icon"><i class="fas fa-th"></i></span>
+            </a>
+        </div>
+        <div class="next-project">
+            <a href="car-seat-design.html">
+                <span class="nav-label">Next Project <i class="fas fa-arrow-right"></i></span>
+                <span class="nav-title">Car Seat Design</span>
+            </a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-logo">
+                <h3>Pranav Banga</h3>
+                <p>Mechatronics Engineer</p>
+            </div>
+            <div class="footer-links">
+                <a href="../index.html#home">Home</a>
+                <a href="../index.html#about">About</a>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#additive">Additive Manufacturing</a>
+                <a href="../index.html#skills">Skills</a>
+                <a href="../index.html#contact">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="#" class="social-icon"><i class="fab fa-linkedin"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2025 Pranav Banga. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../js/particles.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/project.js"></script>
+</body>
+</html>
